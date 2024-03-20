@@ -2,6 +2,52 @@
     "name": "mskcc/neoantigenpipeline",
     "homePage": "https://github.com/mskcc/neoantigenpipeline",
     "repos": {
+        "https://github.com/mskcc-omics-workflows/modules.git": {
+            "modules": {
+                "msk": {
+                    "neoantigenediting/aligntoIEDB": {
+                        "branch": "neoantigen",
+                        "git_sha": "9abdcf4cf133575f279594aaef08485bf49a2360",
+                        "installed_by": ["modules"]
+                    },
+                    "neoantigenediting/computeFitness": {
+                        "branch": "neoantigen",
+                        "git_sha": "cab67089d500fa0cc9f2ca0831311c71ff798fe0",
+                        "installed_by": ["modules"]
+                    },
+                    "neoantigeninput": {
+                        "branch": "neoantigen",
+                        "git_sha": "859d25976ad24121de770097357446a5748b420b",
+                        "installed_by": ["modules"]
+                    },
+                    "netmhcpan": {
+                        "branch": "neoantigen",
+                        "git_sha": "f66082b022ee21858aebe72481920a27573a67e3",
+                        "installed_by": ["modules"]
+                    },
+                    "phylowgs/createinput": {
+                        "branch": "neoantigen",
+                        "git_sha": "e126271e9c4331d2471f174221612e7bd78523e6",
+                        "installed_by": ["modules"]
+                    },
+                    "phylowgs/multievolve": {
+                        "branch": "neoantigen",
+                        "git_sha": "1e29241fc058ce2d318c81bb4f100aa5dc9e5209",
+                        "installed_by": ["modules"]
+                    },
+                    "phylowgs/parsecnvs": {
+                        "branch": "neoantigen",
+                        "git_sha": "3da8e727f6f6c4be3e8e067566bfc52d78e14d73",
+                        "installed_by": ["modules"]
+                    },
+                    "phylowgs/writeresults": {
+                        "branch": "neoantigen",
+                        "git_sha": "662ce0ad9d2e6494a7ef69cb1bc0df53e2cc601b",
+                        "installed_by": ["modules"]
+                    }
+                }
+            }
+        },
         "https://github.com/nf-core/modules.git": {
             "modules": {
                 "nf-core": {
