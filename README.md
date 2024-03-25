@@ -10,7 +10,7 @@
 
 ## Introduction
 
-**mskcc/neoantigenpipeline** is a bioinformatics pipeline that ...
+**mskcc/neoantigenpipeline** is a bioinformatics pipeline that adapts Luksza et al.'s neoantigenEditing and fitness pipeline for usage by investigators in MSK. The pipeline curently supports working with TEMPO output mafs, Facets gene-level copy number calls, and Polysolver outputs. It outputs a json representation of the clonal structure of the tumor annotated with neoantigen burden, driver burden, and fitness of the clone.  Also individual neoantigens are labeled with the quality of the neoantigen as describe dby Luksza et al.
 
 <!-- TODO nf-core:
    Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
