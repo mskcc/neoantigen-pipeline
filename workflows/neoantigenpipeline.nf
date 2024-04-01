@@ -14,8 +14,8 @@ include { PHYLOWGS_PARSECNVS } from '../modules/msk/phylowgs/parsecnvs/main'
 include { PHYLOWGS_WRITERESULTS } from '../modules/msk/phylowgs/writeresults/main'
 include { NEOANTIGENINPUT } from '../modules/msk/neoantigeninput/main'
 include { NETMHCPAN } from '../modules/msk/netmhcpan/main'
-include { NEOANTIGENEDITING_ALIGNTOIEDB } from '../modules/msk/neoantigenediting/aligntoIEDB'
-include { NEOANTIGENEDITING_COMPUTEFITNESS } from '../modules/msk/neoantigenediting/computeFitness'
+include { NEOANTIGENEDITING_ALIGNTOIEDB } from '../modules/msk/neoantigenediting/aligntoiedb'
+include { NEOANTIGENEDITING_COMPUTEFITNESS } from '../modules/msk/neoantigenediting/computefitness'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
