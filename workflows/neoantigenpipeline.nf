@@ -26,12 +26,31 @@ include { NEOANTIGENEDITING_COMPUTEFITNESS } from '../modules/msk/neoantigenedit
 workflow NEOANTIGENPIPELINE {
 
     take:
-    ch_samplesheet // channel: samplesheet read in from --input
+    ch_samplesheet // channel: samplesheet read in from --input It should have maf, polysolver file, facets gene level file
+    netMHCpan_input_ch
 
     main:
 
     ch_versions = Channel.empty()
 
+    ch_samplesheet.map {
+            meta, maf, facets_gene, hla_file ->
+                [meta.id, maf, hla_file]
+                
+        }
+        .set { netMHCpan_input_ch }
+    
+
+    ch_samplesheet.map {
+            meta, maf, facets_gene, hla_file ->
+                [meta.id, maf, facets_gene]
+                
+        }
+        .set { phylowgs_input_ch }
+
+    // phylowgs workflow
+
+    NETMHCPAN(netMHCpan_input_ch)
 
     //
     // Collate and save software versions
