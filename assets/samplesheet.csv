@@ -1,2 +1,2 @@
 sample,tempo_maf,facets_gene_level,hla_file
-tumor_normal,tempo_maf_test,facets_gene_level_test,hla_file_test
+tumor_normal,maf_test,facets_gene_level_test,hla_file_test
