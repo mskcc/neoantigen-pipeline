@@ -1,0 +1,46 @@
+{
+    "netmhcpan - xls,output,fa": {
+        "content": [
+            [
+                "versions.yml:md5,35ec563839ee27410cf9f8d134c6e8e5"
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test.mutated_sequences.fa:md5,a998392759482f8a1c63c795cfd9e399",
+                    "test.WT_sequences.fa:md5,27e677ffa032a87934df4c62e9f15357"
+                ]
+            ],
+            "test.MUT.xls",
+            "test.WT.xls",
+            "test.MUT.netmhcpan.output",
+            "test.WT.netmhcpan.output"
+        ],
+        "timestamp": "2024-03-27T16:03:49.449294"
+    },
+    "netmhcpan - xls,output,fa - stub": {
+        "content": [
+            [
+                "versions.yml:md5,35ec563839ee27410cf9f8d134c6e8e5"
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test.mutated_sequences.fa:md5,d41d8cd98f00b204e9800998ecf8427e",
+                    "test.WT_sequences.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ]
+            ],
+            "test.MUT.xls",
+            "test.WT.xls",
+            "test.MUT.netmhcpan.output",
+            "test.WT.netmhcpan.output"
+        ],
+        "timestamp": "2024-03-27T16:05:06.65743"
+    }
+}
