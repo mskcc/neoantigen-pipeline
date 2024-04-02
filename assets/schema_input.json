@@ -25,7 +25,7 @@
                 "format": "file-path",
                 "exists": true,
                 "pattern": "^\\S+.txt$",
-                "errorMessage": "Factes gene level file output for the sample pair '*.txt'"
+                "errorMessage": "Facets gene level file output for the sample pair '*.txt'"
             },
             "hla_file": {
                 "type": "string",
@@ -35,6 +35,6 @@
                 "errorMessage": "HLA_file output by polysolver."
             }
         },
-        "required": ["sample", "fastq_1"]
+        "required": ["sample", "tempo_maf","facets_gene_level","hla_file"]
     }
 }
