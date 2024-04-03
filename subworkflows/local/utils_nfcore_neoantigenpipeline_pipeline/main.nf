@@ -84,35 +84,17 @@ workflow PIPELINE_INITIALISATION {
         .fromSamplesheet("input")
         .map {
             meta, maf, facets_gene, hla_file ->
-                [meta.id, maf, facets_gene, hla_file]
+                [meta, maf, facets_gene, hla_file]
                 
         }
         .set { ch_samplesheet }
 
-    Channel
-        .fromSamplesheet("input")
-        .map {
-            meta, maf, hla_file ->
-                [meta.id, maf, hla_file]
-                
-        }
-        .set { netMHCpan_input_ch }
     
-    Channel
-        .fromSamplesheet("input")
-        .map {
-            meta, maf, facets_gene ->
-                [meta.id, maf, facets_gene]
-                
-        }
-        .set { phylowgs_input_ch }
         
         
 
     emit:
     samplesheet = ch_samplesheet
-    netMHCpan_input = netMHCpan_input_ch
-    phylowgs_input_ch = phylowgs_input_ch
     versions    = ch_versions
 }
 
