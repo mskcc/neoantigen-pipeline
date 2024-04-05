@@ -53,15 +53,26 @@ workflow NEOANTIGENPIPELINE {
     // phylowgs workflow
     PHYLOWGS(phylowgs_input_ch)
 
-    NETMHCPAN(netMHCpan_input_ch)
+    mut_wt = Channel.of('MUT','WT')
+    NETMHCPAN(netMHCpan_input_ch,mut_wt)
+
+    NETMHCPAN.out.netmhcpanoutput.view()
 
     phylowgs_output_ch = PHYLOWGS.out.summ.join(PHYLOWGS.out.muts, by:[0]).join(PHYLOWGS.out.mutass, by:[0])
-    phylowgs_output_ch.view()
+    // phylowgs_output_ch.view()
 
+    netmhcpan_mut_wt = NETMHCPAN.out.netmhcpanoutput.collect().groupTuple(by:[0], sort:true).map{
+        meta1, netmhcoutput1, meta2, netmhcoutput2 -> [meta1 , netmhcoutput1[0] , netmhcoutput2[0]]
+        }
 
-    NEOANTIGENINPUT(netMHCpan_input_ch,phylowgs_output_ch,NETMHCPAN.out.netmhcpanoutput)
+        
+    netmhcpan_mut_wt.view()
+
+    NEOANTIGENINPUT(netMHCpan_input_ch,phylowgs_output_ch,netmhcpan_mut_wt)
     
-    // NEOANTIGEN_EDITING()
+    iedbfasta_input_ch = Channel.of(file(params.iedbfasta))
+    NEOANTIGEN_EDITING(NEOANTIGENINPUT.out.json, file(params.iedbfasta))
+    
     //
     // Collate and save software versions
     //
