@@ -56,7 +56,7 @@
                 "msk": {
                     "neoantigen_editing": {
                         "branch": "neoantigen",
-                        "git_sha": "cfd0486716e933311bd356a59b0a49547916e70e",
+                        "git_sha": "a01ec8be9464741139db9864511c747f76c0a25f",
                         "installed_by": ["subworkflows"]
                     },
                     "phylowgs": {

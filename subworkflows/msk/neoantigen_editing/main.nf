@@ -15,14 +15,14 @@ workflow NEOANTIGEN_EDITING {
     NEOANTIGENEDITING_ALIGNTOIEDB (neoantigenInput_ch, iedbfasta)
     ch_versions = ch_versions.mix(NEOANTIGENEDITING_ALIGNTOIEDB.out.versions.first())
 
-    
-    neoantigenInput_ch.combine(NEOANTIGENEDITING_ALIGNTOIEDB.out.iedb_alignment, by: [0]).set{ ch_computeFitnessIn }
-    
+
+    ch_computeFitnessIn = neoantigenInput_ch.combine(NEOANTIGENEDITING_ALIGNTOIEDB.out.iedb_alignment, by: [0])
+
     NEOANTIGENEDITING_COMPUTEFITNESS ( ch_computeFitnessIn )
 
     ch_versions = ch_versions.mix(NEOANTIGENEDITING_COMPUTEFITNESS.out.versions.first())
 
     emit:
     annotated_output      = NEOANTIGENEDITING_COMPUTEFITNESS.out.annotated_output           // channel: [ val(meta), [ annotated_json ] ]
-    versions = ch_versions                     // channel: [ versions.yml ]
+    versions              = ch_versions                                                     // channel: [ versions.yml ]
 }
