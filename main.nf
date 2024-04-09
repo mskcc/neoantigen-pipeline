@@ -56,7 +56,7 @@ workflow MSKCC_NEOANTIGENPIPELINE {
     )
 
     emit:
-    out = NEOANTIGENPIPELINE.out.neoin // channel: /path/to/multiqc_report.html
+    out = NEOANTIGENPIPELINE.out.neo_out // channel: /path/to/multiqc_report.html
 
 }
 /*
