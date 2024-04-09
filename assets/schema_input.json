@@ -35,6 +35,6 @@
                 "errorMessage": "HLA_file output by polysolver."
             }
         },
-        "required": ["sample", "maf","facets_gene_level","hla_file"]
+        "required": ["sample", "maf", "facets_gene_level", "hla_file"]
     }
 }
