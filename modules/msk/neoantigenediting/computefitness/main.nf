@@ -1,6 +1,6 @@
 process NEOANTIGENEDITING_COMPUTEFITNESS {
     tag "$meta.id"
-    label 'process_low'
+    label 'process_medium'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'docker://mskcc/neoantigenediting:1.2':
