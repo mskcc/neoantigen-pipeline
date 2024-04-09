@@ -76,8 +76,8 @@ workflow NEOANTIGENPIPELINE {
 
 
     emit:
-    versions       = ch_versions                 // channel: [ path(versions.yml) ]
-    neoin          = NEOANTIGENINPUT.out.json
+    versions         = ch_versions                 // channel: [ path(versions.yml) ]
+    neo_out          = NEOANTIGENEDITING_COMPUTEFITNESS.out.annotated_output
 }
 
 /*
