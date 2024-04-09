@@ -22,8 +22,9 @@
      workflows use the "tube map" design for that. See https://nf-co.re/docs/contributing/design_guidelines#examples for examples.   -->
 <!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
 
-1. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
-2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+1. Create phylogenetic trees using [PhyloWGS](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0602-8)
+2. Use netMHCpan to calculate binding affinities [netMHCpan](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/) 
+3. Use Luksza et al.'s Neoantigen Quality and Fitness computations to evaluate peptides ([`Neoantigen Quality`](https://github.com/LukszaLab/NeoantigenEditing))) 
 
 ## Usage
 
