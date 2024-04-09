@@ -22,7 +22,7 @@
                     },
                     "netmhcpan": {
                         "branch": "neoantigen",
-                        "git_sha": "6d0ea94029be446d087f86bb061e6781a21045fa",
+                        "git_sha": "25a52c362c1a5cc152c759cbb50bc9b2811cf008",
                         "installed_by": ["modules"]
                     },
                     "netmhcstabpan": {
