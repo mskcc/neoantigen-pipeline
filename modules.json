@@ -17,7 +17,7 @@
                     },
                     "neoantigeninput": {
                         "branch": "neoantigen",
-                        "git_sha": "b12e5a8bfe7303d5b086fce25641a395e897ec6c",
+                        "git_sha": "3bd5f41f44ab3b8036090be6d0ce04034402199e",
                         "installed_by": ["modules"]
                     },
                     "netmhcpan": {
