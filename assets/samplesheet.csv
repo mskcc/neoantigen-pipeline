@@ -1,2 +1,3 @@
-sample,tempo_maf,facets_gene_level,hla_file
-tumor_normal,maf_test,facets_gene_level_test,hla_file_test
+sample,maf,facets_gene_level,hla_file
+tumor_normal,https://raw.githubusercontent.com/mskcc-omics-workflows/test-datasets/neoantigen/neoantigen/temp_test_somatic_unfiltered.maf,https://raw.githubusercontent.com/mskcc-omics-workflows/test-datasets/neoantigen/neoantigen/facets_gene_level.txt,https://raw.githubusercontent.com/mskcc-omics-workflows/test-datasets/neoantigen/neoantigen/winners.hla.txt
+tumor_normal2,https://raw.githubusercontent.com/mskcc-omics-workflows/test-datasets/neoantigen/neoantigen/temp_test_somatic_unfiltered.maf,https://raw.githubusercontent.com/mskcc-omics-workflows/test-datasets/neoantigen/neoantigen/facets_gene_level.txt,https://raw.githubusercontent.com/mskcc-omics-workflows/test-datasets/neoantigen/neoantigen/winners.hla.txt

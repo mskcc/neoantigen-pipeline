@@ -7,47 +7,47 @@
                 "msk": {
                     "neoantigenediting/aligntoiedb": {
                         "branch": "neoantigen",
-                        "git_sha": "cfd0486716e933311bd356a59b0a49547916e70e",
+                        "git_sha": "1ae70920a4e6d4dd1ba5768ed9981af2599ac485",
                         "installed_by": ["neoantigen_editing"]
                     },
                     "neoantigenediting/computefitness": {
                         "branch": "neoantigen",
-                        "git_sha": "97ad2d024d5e8e1093a8c3841ade7aea9b64b3f9",
+                        "git_sha": "1ae70920a4e6d4dd1ba5768ed9981af2599ac485",
                         "installed_by": ["neoantigen_editing"]
                     },
                     "neoantigeninput": {
                         "branch": "neoantigen",
-                        "git_sha": "e121c3c714b031c44bc44866229a2a306adae8f2",
+                        "git_sha": "3bd5f41f44ab3b8036090be6d0ce04034402199e",
                         "installed_by": ["modules"]
                     },
                     "netmhcpan": {
                         "branch": "neoantigen",
-                        "git_sha": "3534d48f9e05309827bc64d5ddcfc4ca51eb1614",
+                        "git_sha": "193e1b26617143e566a901b45c8cd264872db9a6",
                         "installed_by": ["modules"]
                     },
                     "netmhcstabpan": {
                         "branch": "neoantigen",
-                        "git_sha": "f8d8e8a5077a1f769071362343be49fd0e3ab34c",
+                        "git_sha": "193e1b26617143e566a901b45c8cd264872db9a6",
                         "installed_by": ["modules"]
                     },
                     "phylowgs/createinput": {
                         "branch": "neoantigen",
-                        "git_sha": "bae67bcbf852ab882b4a2c959bd9f79389291186",
+                        "git_sha": "193e1b26617143e566a901b45c8cd264872db9a6",
                         "installed_by": ["phylowgs"]
                     },
                     "phylowgs/multievolve": {
                         "branch": "neoantigen",
-                        "git_sha": "1e29241fc058ce2d318c81bb4f100aa5dc9e5209",
+                        "git_sha": "193e1b26617143e566a901b45c8cd264872db9a6",
                         "installed_by": ["phylowgs"]
                     },
                     "phylowgs/parsecnvs": {
                         "branch": "neoantigen",
-                        "git_sha": "747df7c9545731ef8aa90907c1f8295ced09ec57",
+                        "git_sha": "193e1b26617143e566a901b45c8cd264872db9a6",
                         "installed_by": ["phylowgs"]
                     },
                     "phylowgs/writeresults": {
                         "branch": "neoantigen",
-                        "git_sha": "662ce0ad9d2e6494a7ef69cb1bc0df53e2cc601b",
+                        "git_sha": "1ae70920a4e6d4dd1ba5768ed9981af2599ac485",
                         "installed_by": ["phylowgs"]
                     }
                 }
@@ -56,12 +56,12 @@
                 "msk": {
                     "neoantigen_editing": {
                         "branch": "neoantigen",
-                        "git_sha": "cfd0486716e933311bd356a59b0a49547916e70e",
+                        "git_sha": "a01ec8be9464741139db9864511c747f76c0a25f",
                         "installed_by": ["subworkflows"]
                     },
                     "phylowgs": {
                         "branch": "neoantigen",
-                        "git_sha": "4686de4352476a46bc515daf496dff39f9263bed",
+                        "git_sha": "193e1b26617143e566a901b45c8cd264872db9a6",
                         "installed_by": ["subworkflows"]
                     }
                 }
@@ -72,7 +72,7 @@
                 "nf-core": {
                     "fastqc": {
                         "branch": "master",
-                        "git_sha": "f4ae1d942bd50c5c0b9bd2de1393ce38315ba57c",
+                        "git_sha": "285a50500f9e02578d90b3ce6382ea3c30216acd",
                         "installed_by": ["modules"]
                     },
                     "multiqc": {
