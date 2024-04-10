@@ -85,13 +85,13 @@ workflow PIPELINE_INITIALISATION {
         .map {
             meta, maf, facets_gene, hla_file ->
                 [meta, maf, facets_gene, hla_file]
-                
+
         }
         .set { ch_samplesheet }
 
-    
-        
-        
+
+
+
 
     emit:
     samplesheet = ch_samplesheet

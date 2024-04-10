@@ -30,11 +30,11 @@ RUN set -xe \
 
 
 RUN git clone https://github.com/Sentieon/vcflib.git /usr/bin/vcflib/
-    
+
 
 RUN python3 -m pip install --upgrade pip && \
     pip3 install numpy && \
-    pip3 install pandas 
+    pip3 install pandas
 
 
 COPY eval_phyloWGS.py /usr/bin

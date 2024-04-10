@@ -23,7 +23,7 @@ process NEOANTIGENINPUT {
     def id = task.ext.prefix ?: "${meta.id}"
     def patientid = task.ext.cohort ?: "${meta.id}_patient"
     def cohort = task.ext.cohort ?: "${meta.id}_cohort"
-    
+
     """
         tree_folder_name=\$(basename -s .zip "${phyloWGSfolder}")
         mkdir \$tree_folder_name
@@ -32,7 +32,7 @@ process NEOANTIGENINPUT {
         gzip -d -c ${phyloWGSsumm} > ${id}.summ.json
         gzip -d -c ${phyloWGSmut} > ${id}.mut.json
 
-        
+
 
         python3 /usr/bin/eval_phyloWGS.py --maf_file ${inputMaf} \
         --summary_file ${id}.summ.json \
@@ -57,7 +57,7 @@ process NEOANTIGENINPUT {
     def patientid =task.ext.cohort ?: "${meta.id}_patient"
     def cohort =task.ext.cohort ?: "${meta.id}_cohort"
     """
-    
+
         touch ${patientid}_${id}_.json
         touch ${patientid}.MUT.tsv
         touch ${patientid}.WT.tsv
