@@ -43,7 +43,7 @@ process NEOANTIGENINPUT {
         --netMHCpan_MUT_input ${mutNetMHCpan} \
         --netMHCpan_WT_input ${wtNetMHCpan}
         ${args}
-        
+
 
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
