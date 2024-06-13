@@ -17,52 +17,52 @@
                     },
                     "neoantigenutils/formatnetmhcpan": {
                         "branch": "neoantigen",
-                        "git_sha": "9080d6b0e587299ad168f25915dd256e39c328bc",
+                        "git_sha": "fceccd3f96fec678849bb9bc0c04e53d9965f973",
                         "installed_by": ["netmhcstabandpan"]
                     },
                     "neoantigenutils/generatehlastring": {
                         "branch": "neoantigen",
-                        "git_sha": "332dacb3377b996a196d63c3e5cb45dd8189f209",
+                        "git_sha": "33f0bd33095fa15016ee24f4fb4d61e896dbb970",
                         "installed_by": ["netmhcstabandpan"]
                     },
                     "neoantigenutils/generatemutfasta": {
                         "branch": "neoantigen",
-                        "git_sha": "6103db8e0c140d355e3e226ba8e868bbcf309415",
+                        "git_sha": "bb7975c796ab9a2d7a45ef733a6a226a0f5ad74a",
                         "installed_by": ["netmhcstabandpan"]
                     },
                     "neoantigenutils/neoantigeninput": {
                         "branch": "neoantigen",
-                        "git_sha": "c3ede79420569b783fceabb6fa001690f8eb8ae0",
+                        "git_sha": "b6706a9e9fc817edb2b509f4f0f9f10fbd624137",
                         "installed_by": ["modules"]
                     },
                     "netmhcpan": {
                         "branch": "neoantigen",
-                        "git_sha": "3c47955ad853bdcc2dce902cbaca8a3417a2056c",
+                        "git_sha": "33f0bd33095fa15016ee24f4fb4d61e896dbb970",
                         "installed_by": ["modules", "netmhcstabandpan"]
                     },
                     "netmhcstabpan": {
                         "branch": "neoantigen",
-                        "git_sha": "3c47955ad853bdcc2dce902cbaca8a3417a2056c",
+                        "git_sha": "33f0bd33095fa15016ee24f4fb4d61e896dbb970",
                         "installed_by": ["modules", "netmhcstabandpan"]
                     },
                     "phylowgs/createinput": {
                         "branch": "neoantigen",
-                        "git_sha": "193e1b26617143e566a901b45c8cd264872db9a6",
+                        "git_sha": "b031249dcf4279606c25e626da2a628756e75e8a",
                         "installed_by": ["phylowgs"]
                     },
                     "phylowgs/multievolve": {
                         "branch": "neoantigen",
-                        "git_sha": "193e1b26617143e566a901b45c8cd264872db9a6",
+                        "git_sha": "a5f5476db782b89c5fd0d2bdb329345c2577800f",
                         "installed_by": ["phylowgs"]
                     },
                     "phylowgs/parsecnvs": {
                         "branch": "neoantigen",
-                        "git_sha": "193e1b26617143e566a901b45c8cd264872db9a6",
+                        "git_sha": "b031249dcf4279606c25e626da2a628756e75e8a",
                         "installed_by": ["phylowgs"]
                     },
                     "phylowgs/writeresults": {
                         "branch": "neoantigen",
-                        "git_sha": "1ae70920a4e6d4dd1ba5768ed9981af2599ac485",
+                        "git_sha": "a5f5476db782b89c5fd0d2bdb329345c2577800f",
                         "installed_by": ["phylowgs"]
                     }
                 }
@@ -76,12 +76,12 @@
                     },
                     "netmhcstabandpan": {
                         "branch": "neoantigen",
-                        "git_sha": "4c9ae8f186bfabd2111c0d59959b848d66cff787",
+                        "git_sha": "b6658d4990e307f47f11a33e7c494d17a725f1bc",
                         "installed_by": ["subworkflows"]
                     },
                     "phylowgs": {
                         "branch": "neoantigen",
-                        "git_sha": "193e1b26617143e566a901b45c8cd264872db9a6",
+                        "git_sha": "19384625647769fde875d4d5e3ff6c6de865232d",
                         "installed_by": ["subworkflows"]
                     }
                 }
@@ -97,7 +97,7 @@
                     },
                     "multiqc": {
                         "branch": "master",
-                        "git_sha": "b7ebe95761cd389603f9cc0e0dc384c0f663815a",
+                        "git_sha": "8f2062e7b4185590fb9f43c275381a31a6544fc0",
                         "installed_by": ["modules"]
                     }
                 }
