@@ -41,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install git+https://github.com/nf-core/tools.git@dev
+          pip install git+https://github.com/nf-core/tools.git@2.14.1
 
       - name: Get the repository name and current branch set as environment variable
         run: |
