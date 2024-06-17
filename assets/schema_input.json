@@ -40,7 +40,7 @@
         "required": [
             "sample",
             "maf",
-            "facets_gene_level",
+            "facets_hisens_cncf",
             "hla_file"
         ]
     }
