@@ -11,7 +11,9 @@
                 "type": "string",
                 "pattern": "^\\S+$",
                 "errorMessage": "Sample name must be provided and cannot contain spaces",
-                "meta": ["id"]
+                "meta": [
+                    "id"
+                ]
             },
             "maf": {
                 "type": "string",
@@ -20,12 +22,12 @@
                 "pattern": "^\\S+.maf$",
                 "errorMessage": "TEMPO outputted maf file.  Other mafs may be usable. '*.maf'"
             },
-            "facets_gene_level": {
+            "facets_hisens_cncf": {
                 "type": "string",
                 "format": "file-path",
                 "exists": true,
                 "pattern": "^\\S+.txt$",
-                "errorMessage": "Facets gene level file output for the sample pair '*.txt'"
+                "errorMessage": "Facets hisens cncf file output for the sample pair '*.txt'"
             },
             "hla_file": {
                 "type": "string",
@@ -35,6 +37,11 @@
                 "errorMessage": "HLA_file output by polysolver."
             }
         },
-        "required": ["sample", "maf", "facets_gene_level", "hla_file"]
+        "required": [
+            "sample",
+            "maf",
+            "facets_gene_level",
+            "hla_file"
+        ]
     }
 }

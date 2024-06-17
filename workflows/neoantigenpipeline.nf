@@ -37,7 +37,7 @@ workflow NEOANTIGENPIPELINE {
     ch_cds_and_cdna = Channel.value([file(params.cds), file(params.cdna)])
 
     ch_samplesheet.map {
-            meta, maf, facets_gene, hla_file ->
+            meta, maf, facets_hisens_cncf, hla_file ->
                 [meta, maf, hla_file]
 
         }
@@ -45,8 +45,8 @@ workflow NEOANTIGENPIPELINE {
 
 
     ch_samplesheet.map {
-            meta, maf, facets_gene, hla_file ->
-                [meta, maf, facets_gene]
+            meta, maf, facets_hisens_cncf, hla_file ->
+                [meta, maf, facets_hisens_cncf]
 
         }
         .set { phylowgs_input_ch }
