@@ -7,12 +7,12 @@
                 "msk": {
                     "neoantigenediting/aligntoiedb": {
                         "branch": "neoantigen",
-                        "git_sha": "1ae70920a4e6d4dd1ba5768ed9981af2599ac485",
+                        "git_sha": "14ae2b3db25701828835e7145cee14dfdaddf180",
                         "installed_by": ["neoantigen_editing"]
                     },
                     "neoantigenediting/computefitness": {
                         "branch": "neoantigen",
-                        "git_sha": "1ae70920a4e6d4dd1ba5768ed9981af2599ac485",
+                        "git_sha": "14ae2b3db25701828835e7145cee14dfdaddf180",
                         "installed_by": ["neoantigen_editing"]
                     },
                     "neoantigenutils/formatnetmhcpan": {
@@ -57,12 +57,12 @@
                     },
                     "phylowgs/parsecnvs": {
                         "branch": "neoantigen",
-                        "git_sha": "b031249dcf4279606c25e626da2a628756e75e8a",
+                        "git_sha": "064ce5b42a8f711fb4d8107150aad2d382ae99c2",
                         "installed_by": ["phylowgs"]
                     },
                     "phylowgs/writeresults": {
                         "branch": "neoantigen",
-                        "git_sha": "a5f5476db782b89c5fd0d2bdb329345c2577800f",
+                        "git_sha": "6d27f08bf649e8680ace321d3127dcdf0e210973",
                         "installed_by": ["phylowgs"]
                     }
                 }
@@ -71,7 +71,7 @@
                 "msk": {
                     "neoantigen_editing": {
                         "branch": "neoantigen",
-                        "git_sha": "a01ec8be9464741139db9864511c747f76c0a25f",
+                        "git_sha": "56a628201401866096d6307b9e8c690c5eb46ac2",
                         "installed_by": ["subworkflows"]
                     },
                     "netmhcstabandpan": {
