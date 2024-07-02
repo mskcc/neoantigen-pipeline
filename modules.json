@@ -32,7 +32,7 @@
                     },
                     "neoantigenutils/neoantigeninput": {
                         "branch": "neoantigen",
-                        "git_sha": "3d72ebdc83a83d57d94bda60e22ab8c2f8843af6",
+                        "git_sha": "d66d3e2c7d132efe8bbde0c7e8a072b0f974b085",
                         "installed_by": ["modules"]
                     },
                     "netmhcpan": {
@@ -52,7 +52,7 @@
                     },
                     "phylowgs/multievolve": {
                         "branch": "neoantigen",
-                        "git_sha": "a5f5476db782b89c5fd0d2bdb329345c2577800f",
+                        "git_sha": "535662d391a3533dea3b11c462c14799227e08b2",
                         "installed_by": ["phylowgs"]
                     },
                     "phylowgs/parsecnvs": {
@@ -81,7 +81,7 @@
                     },
                     "phylowgs": {
                         "branch": "neoantigen",
-                        "git_sha": "19384625647769fde875d4d5e3ff6c6de865232d",
+                        "git_sha": "a5d61394af346f21ee2eb7ecfd97ab25bdbd1d0e",
                         "installed_by": ["subworkflows"]
                     }
                 }
@@ -97,7 +97,7 @@
                     },
                     "multiqc": {
                         "branch": "master",
-                        "git_sha": "8f2062e7b4185590fb9f43c275381a31a6544fc0",
+                        "git_sha": "314d742bdb357a1df5f9b88427b3b6ac78aa33f7",
                         "installed_by": ["modules"]
                     }
                 }

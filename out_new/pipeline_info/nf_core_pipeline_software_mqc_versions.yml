@@ -1,0 +1,28 @@
+NEOANTIGENEDITING_ALIGNTOIEDB:
+  neoantigenEditing: 1.2
+NEOANTIGENEDITING_COMPUTEFITNESS:
+  neoantigenEditing: 1.2
+NEOANTIGENUTILS_FORMATNETMHCPAN:
+  formatNetmhcpanOutput: format_netmhcpan_output.py 1.0
+NEOANTIGENUTILS_GENERATEHLASTRING:
+  generateHLAstring: 1.0.0
+NEOANTIGENUTILS_GENERATEMUTFASTA:
+  generateMutFasta: generateMutFasta.py 1.1
+NEOANTIGENUTILS_NEOANTIGENINPUT:
+  neoantigeninput: generate_input.py 1.6
+NETMHCPAN:
+  netmhcpan: v4.1
+NETMHCSTABPAN:
+  netmhcpan: v4.1
+  netmhcstabpan: v1.0
+PHYLOWGS_CREATEINPUT:
+  phylowgs: v1.5-msk
+PHYLOWGS_MULTIEVOLVE:
+  phylowgs: v1.5-msk
+PHYLOWGS_PARSECNVS:
+  phylowgs: v1.5-msk
+PHYLOWGS_WRITERESULTS:
+  phylowgs: v1.5-msk
+Workflow:
+    mskcc/neoantigenpipeline: v1.0.0-dev
+    Nextflow: 23.10.1
