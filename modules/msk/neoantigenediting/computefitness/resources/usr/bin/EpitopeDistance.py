@@ -10,7 +10,8 @@ import numpy as np
 import json
 import os
 
-#%
+
+# %
 class EpitopeDistance(object):
     """Base class for epitope crossreactivity.
 
