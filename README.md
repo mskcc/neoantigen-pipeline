@@ -1,29 +1,22 @@
-> [![GitHub Actions CI Status](https://github.com/mskcc/neoantigenpipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/mskcc/neoantigenpipeline/actions/workflows/ci.yml) > [![GitHub Actions Linting Status](https://github.com/mskcc/neoantigenpipeline/actions/workflows/linting.yml/badge.svg)](https://github.com/mskcc/neoantigenpipeline/actions/workflows/linting.yml) > [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
+> [![GitHub Actions CI Status](https://github.com/mskcc/neoantigen-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/mskcc/neoantigen-pipeline/actions/workflows/ci.yml) > [![GitHub Actions Linting Status](https://github.com/mskcc/neoantigen-pipeline/actions/workflows/linting.yml/badge.svg)](https://github.com/mskcc/neoantigen-pipeline/actions/workflows/linting.yml) > [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
 
 [![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A523.04.0-23aa62.svg)](https://www.nextflow.io/)
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
-[![Launch on Seqera Platform](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Seqera%20Platform-%234256e7)](https://tower.nf/launch?pipeline=https://github.com/mskcc/neoantigenpipeline)
+[![Launch on Seqera Platform](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Seqera%20Platform-%234256e7)](https://tower.nf/launch?pipeline=https://github.com/mskcc/neoantigen-pipeline)
 
 ## Introduction
 
 **mskcc/neoantigenpipeline** is a bioinformatics pipeline that adapts Luksza et al.'s neoantigenEditing and fitness pipeline for usage by investigators in MSK. The pipeline curently supports working with TEMPO output mafs, Facets gene-level copy number calls, and Polysolver outputs. It outputs a json representation of the clonal structure of the tumor annotated with neoantigen burden, driver burden, and fitness of the clone. Also individual neoantigens are labeled with the quality of the neoantigen as described by Luksza et al.
 
-<!-- TODO nf-core:
-   Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
-   major pipeline sections and the types of output it produces. You're giving an overview to someone new
-   to nf-core here, in 15-20 seconds. For an example, see https://github.com/nf-core/rnaseq/blob/master/README.md#introduction
--->
+[Workflow Diagram](assets/workflow_diagram.png)
 
-<!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
-     workflows use the "tube map" design for that. See https://nf-co.re/docs/contributing/design_guidelines#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
 
 1. Create phylogenetic trees using [PhyloWGS](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0602-8)
-2. Use netMHCpan to calculate binding affinities [netMHCpan](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/)
-3. Use netMHCpanStab to calculate stability scores [netMHCpanStab](https://services.healthtech.dtu.dk/services/NetMHCstabpan-1.0/)
-4. Use Luksza et al.'s Neoantigen Quality and Fitness computations to evaluate peptides ([`Neoantigen Quality`](https://github.com/LukszaLab/NeoantigenEditing)))
+2. Use [netMHCpan-4](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/) to calculate binding affinities 
+3. Use [netMHCpanStab](https://services.healthtech.dtu.dk/services/NetMHCstabpan-1.0/) to calculate stability scores 
+4. Use Luksza et al.'s neoantigen quality and fitness computations tool ([NeoantigenEditing](https://github.com/LukszaLab/NeoantigenEditing)) to evaluate peptides
 
 ## Usage
 
@@ -63,11 +56,12 @@ nextflow run mskcc/neoantigenpipeline \
 
 We thank the following people for their extensive assistance in the development of this pipeline:
 
-- Nikhil ([@nikhil](https://github.com/nikhil))
-- John ([@johnoooh](https://github.com/johnoooh))
-- Alex ([@pintoa1-mskcc](https://github.com/pintoa1-mskcc))
-- Martina ([@BradicM](https://github.com/BradicM))
-- Allison ([@arichards2564](https://github.com/arichards2564))
+ - Nikhil ([@nikhil](https://github.com/nikhil))
+ - John ([@johnoooh](https://github.com/johnoooh))
+ - Alex ([@pintoa1-mskcc](https://github.com/pintoa1-mskcc))
+ - Martina ([@BradicM](https://github.com/BradicM))
+ - Allison ([@arichards2564](https://github.com/arichards2564))
+
 
 ## Contributions and Support
 
@@ -75,7 +69,12 @@ If you would like to contribute to this pipeline, please see the [contributing g
 
 ## Citations
 
-<!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
+
+- Deshwar, A. G., Vembu, S., Yung, C. K., Jang, G. H., Stein, L., & Morris, Q. (2015). PhyloWGS: reconstructing subclonal composition and evolution from whole-genome sequencing of tumors. Genome biology, 16(1), 35. https://doi.org/10.1186/s13059-015-0602-8
+- Jurtz, V., Paul, S., Andreatta, M., Marcatili, P., Peters, B., & Nielsen, M. (2017). NetMHCpan-4.0: Improved Peptide-MHC Class I Interaction Predictions Integrating Eluted Ligand and Peptide Binding Affinity Data. Journal of immunology (Baltimore, Md. : 1950), 199(9), 3360–3368. https://doi.org/10.4049/jimmunol.1700893
+- Łuksza, M., Sethna, Z.M., Rojas, L.A. et al. Neoantigen quality predicts immunoediting in survivors of pancreatic cancer. Nature 606, 389–395 (2022). https://doi.org/10.1038/s41586-022-04735-9
+- Rasmussen, M., Fenoy, E., Harndahl, M., Kristensen, A. B., Nielsen, I. K., Nielsen, M., & Buus, S. (2016). Pan-Specific Prediction of Peptide-MHC Class I Complex Stability, a Correlate of T Cell Immunogenicity. Journal of immunology (Baltimore, Md. : 1950), 197(4), 1517–1524. https://doi.org/10.4049/jimmunol.1600582
+
 
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 
