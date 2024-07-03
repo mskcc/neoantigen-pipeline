@@ -21,9 +21,9 @@
 <!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
 
 1. Create phylogenetic trees using [PhyloWGS](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0602-8)
-2. Use netMHCpan to calculate binding affinities [netMHCpan](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/) 
-3. Use netMHCpanStab to calculate stability scores [netMHCpanStab](https://services.healthtech.dtu.dk/services/NetMHCstabpan-1.0/) 
-4. Use Luksza et al.'s Neoantigen Quality and Fitness computations to evaluate peptides ([`Neoantigen Quality`](https://github.com/LukszaLab/NeoantigenEditing))) 
+2. Use netMHCpan to calculate binding affinities [netMHCpan](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/)
+3. Use netMHCpanStab to calculate stability scores [netMHCpanStab](https://services.healthtech.dtu.dk/services/NetMHCstabpan-1.0/)
+4. Use Luksza et al.'s Neoantigen Quality and Fitness computations to evaluate peptides ([`Neoantigen Quality`](https://github.com/LukszaLab/NeoantigenEditing)))
 
 ## Usage
 
@@ -63,20 +63,17 @@ nextflow run mskcc/neoantigenpipeline \
 
 We thank the following people for their extensive assistance in the development of this pipeline:
 
- - Nikhil ([@nikhil](https://github.com/nikhil))
- - John ([@johnoooh](https://github.com/johnoooh))
- - Alex ([@pintoa1-mskcc](https://github.com/pintoa1-mskcc))
- - Martina ([@BradicM](https://github.com/BradicM))
- - Allison ([@arichards2564](https://github.com/arichards2564))
-
+- Nikhil ([@nikhil](https://github.com/nikhil))
+- John ([@johnoooh](https://github.com/johnoooh))
+- Alex ([@pintoa1-mskcc](https://github.com/pintoa1-mskcc))
+- Martina ([@BradicM](https://github.com/BradicM))
+- Allison ([@arichards2564](https://github.com/arichards2564))
 
 ## Contributions and Support
 
 If you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).
 
 ## Citations
-
-
 
 <!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
 
