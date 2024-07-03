@@ -10,7 +10,7 @@
 
 **mskcc/neoantigenpipeline** is a bioinformatics pipeline that adapts Luksza et al.'s neoantigenEditing and fitness pipeline for usage by investigators in MSK. The pipeline curently supports working with TEMPO output mafs, Facets gene-level copy number calls, and Polysolver outputs. It outputs a json representation of the clonal structure of the tumor annotated with neoantigen burden, driver burden, and fitness of the clone. Also individual neoantigens are labeled with the quality of the neoantigen as described by Luksza et al.
 
-[Workflow Diagram](assets/workflow_diagram.png)
+![Workflow Diagram](assets/workflow_diagram.png)
 
 
 1. Create phylogenetic trees using [PhyloWGS](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0602-8)
