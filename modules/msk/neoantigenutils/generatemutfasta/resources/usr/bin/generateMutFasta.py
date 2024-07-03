@@ -40,18 +40,10 @@ def main():
         help="sample_id used to limit neoantigen prediction to identify mutations "
         "associated with the patient in the MAF (column 16). ",
     )
-    required_arguments.add_argument(
-        "--output_dir", required=True, help="output directory"
-    )
-    required_arguments.add_argument(
-        "--maf_file", required=True, help="expects a CMO maf file (post vcf2maf.pl)"
-    )
-    required_arguments.add_argument(
-        "--CDS_file", required=True, help="expects a fa.gz file"
-    )
-    required_arguments.add_argument(
-        "--CDNA_file", required=True, help="expects a fa.gz file"
-    )
+    required_arguments.add_argument("--output_dir", required=True, help="output directory")
+    required_arguments.add_argument("--maf_file", required=True, help="expects a CMO maf file (post vcf2maf.pl)")
+    required_arguments.add_argument("--CDS_file", required=True, help="expects a fa.gz file")
+    required_arguments.add_argument("--CDNA_file", required=True, help="expects a fa.gz file")
 
     optional_arguments = parser.add_argument_group("Optional arguments")
     optional_arguments.add_argument(
@@ -59,9 +51,7 @@ def main():
         required=False,
         help="comma-separated numbers indicating the lengths of peptides to generate. Default: 9,10",
     )
-    optional_arguments.add_argument(
-        "-v", "--version", action="version", version="%(prog)s {}".format(VERSION)
-    )
+    optional_arguments.add_argument("-v", "--version", action="version", version="%(prog)s {}".format(VERSION))
 
     args = parser.parse_args()
 
@@ -84,9 +74,7 @@ def main():
     #
     logger = logging.getLogger("neoantigen")
     logger.setLevel(logging.DEBUG)
-    console_formatter = logging.Formatter(
-        "%(asctime)s: %(levelname)s: %(message)s", datefmt="%m-%d-%Y %H:%M:%S"
-    )
+    console_formatter = logging.Formatter("%(asctime)s: %(levelname)s: %(message)s", datefmt="%m-%d-%Y %H:%M:%S")
 
     # logfile handler
     handler_file = logging.FileHandler(output_dir + "/neoantigen_run.log", mode="w")
@@ -115,9 +103,7 @@ def main():
         logger.info("Finished loading reference CDS/cDNA sequences...")
 
         logger.info("Reading MAF file and constructing mutated peptides...")
-        maf_df = skip_lines_start_with(
-            maf_file, "#", low_memory=False, header=0, sep="\t"
-        )
+        maf_df = skip_lines_start_with(maf_file, "#", low_memory=False, header=0, sep="\t")
         n_muts = n_non_syn_muts = n_missing_tx_id = 0
         for index, row in maf_df.iterrows():
             cds_seq = ""
@@ -162,13 +148,7 @@ def main():
 
         logger.info("\tMAF mutations summary")
         logger.info("\t\t# mutations: " + str(n_muts))
-        logger.info(
-            "\t\t# non-syn: "
-            + str(n_non_syn_muts)
-            + " (# with missing CDS: "
-            + str(n_missing_tx_id)
-            + ")"
-        )
+        logger.info("\t\t# non-syn: " + str(n_non_syn_muts) + " (# with missing CDS: " + str(n_missing_tx_id) + ")")
 
     except Exception:
         logger.error("Error while generating mutated peptides")
@@ -283,18 +263,12 @@ class binding_predictions(object):
         return [x for x in self.get_best_per_icore() if x.is_weak_binder()]
 
     def get_all_binders(self):
-        return [
-            x
-            for x in self.get_best_per_icore()
-            if x.is_strong_binder() or x.is_weak_binder()
-        ]
+        return [x for x in self.get_best_per_icore() if x.is_strong_binder() or x.is_weak_binder()]
 
     def get_best_binder(self):
         if len(self.get_best_per_icore()) == 0:
             return None
-        return sorted(
-            self.get_best_per_icore(), key=lambda x: x.rank_el, reverse=False
-        )[0]
+        return sorted(self.get_best_per_icore(), key=lambda x: x.rank_el, reverse=False)[0]
 
 
 #
@@ -427,13 +401,7 @@ class mutation(object):
             )
         else:
 
-            self.identifier_key = (
-                str(self.maf_row["Chromosome"])
-                + encoded_position
-                + "_"
-                + "SY"
-                + Allele2code
-            )
+            self.identifier_key = str(self.maf_row["Chromosome"]) + encoded_position + "_" + "SY" + Allele2code
         print(self.identifier_key)
 
     ### Check if the variant_classification is among those that can generate a neoantigen
@@ -447,9 +415,7 @@ class mutation(object):
             "Nonstop_Mutation",
         ]
 
-        return self.maf_row["Variant_Classification"] in types and not pd.isnull(
-            self.maf_row["HGVSp_Short"]
-        )
+        return self.maf_row["Variant_Classification"] in types and not pd.isnull(self.maf_row["HGVSp_Short"])
 
     ### helper function #source: stackoverflow.
     def reverse_complement(self, dna):
@@ -556,19 +522,13 @@ class mutation(object):
         position, ref_allele, alt_allele, sequence, hgvsc_type = [-1, "", "", "", "ONP"]
 
         if re.match(r"^c\.(\d+).*([ATCG]+)>([ATCG]+)$", hgvsc):
-            position, ref_allele, alt_allele = re.match(
-                r"^c\.(\d+).*(\w+)>(\w+)", hgvsc
-            ).groups()
+            position, ref_allele, alt_allele = re.match(r"^c\.(\d+).*(\w+)>(\w+)", hgvsc).groups()
 
         elif re.match(r"^c\.(\d+).*del([ATCG]+)ins([ATCG]+)$", hgvsc):
-            position, ref_allele, alt_allele = re.match(
-                r"^c\.(\d+).*del([ATCG]+)ins([ATCG]+)$", hgvsc
-            ).groups()
+            position, ref_allele, alt_allele = re.match(r"^c\.(\d+).*del([ATCG]+)ins([ATCG]+)$", hgvsc).groups()
 
         elif re.match(r"^c\.(\d+).*(dup|ins|del|inv)([ATCG]+)$", hgvsc):
-            position, hgvsc_type, sequence = re.match(
-                r"^c\.(\d+).*(dup|ins|del|inv)([ATCG]+)$", hgvsc
-            ).groups()
+            position, hgvsc_type, sequence = re.match(r"^c\.(\d+).*(dup|ins|del|inv)([ATCG]+)$", hgvsc).groups()
 
         else:
             sys.exit("Error: not one of the known HGVSc strings: " + hgvsc)
@@ -612,10 +572,7 @@ class mutation(object):
         mt_rev = mt[::-1]
         for i in range(0, min(len(wt), len(mt))):
             len_from_end = i
-            if (
-                len_from_end + len_from_start >= min(len(wt), len(mt))
-                or wt_rev[i : i + 1] != mt_rev[i : i + 1]
-            ):
+            if len_from_end + len_from_start >= min(len(wt), len(mt)) or wt_rev[i : i + 1] != mt_rev[i : i + 1]:
                 break
 
         wt_start = len_from_start
@@ -627,12 +584,8 @@ class mutation(object):
         self.wt_aa = wt
         self.mt_aa = mt
 
-        self.wt_altered_aa = wt[
-            max(0, wt_start - pad_len + 1) : min(len(wt), wt_end + pad_len - 1)
-        ]
-        self.mt_altered_aa = mt[
-            max(0, mt_start - pad_len + 1) : min(len(mt), mt_end + pad_len - 1)
-        ]
+        self.wt_altered_aa = wt[max(0, wt_start - pad_len + 1) : min(len(wt), wt_end + pad_len - 1)]
+        self.mt_altered_aa = mt[max(0, mt_start - pad_len + 1) : min(len(mt), mt_end + pad_len - 1)]
 
     # function to iterate over all the the neopeptide predictions made in the entire MAF and identify
     # which neopeptides are generated by this mutation object
@@ -664,9 +617,7 @@ class mutation(object):
             row["neo_best_algorithm"] = best_binder.algorithm
             row["neo_best_version"] = best_binder.version
             row["neo_best_hla_allele"] = best_binder.hla_allele
-            row["neo_n_peptides_evaluated"] = len(
-                self.predicted_neopeptides.get_best_per_icore()
-            )
+            row["neo_n_peptides_evaluated"] = len(self.predicted_neopeptides.get_best_per_icore())
             row["neo_n_strong_binders"] = len(strong_binders)
             row["neo_n_weak_binders"] = len(weak_binders)
         else:

@@ -60,9 +60,7 @@ def fill_up_clone_neoantigens(tree, mut2neo):
     while len(nodes) > 0:
         node = nodes[0]
         nodes = nodes[1:]
-        node["neoantigens"] = [
-            neo["id"] for mid in node["all_mutations"] for neo in mut2neo[mid]
-        ]
+        node["neoantigens"] = [neo["id"] for mid in node["all_mutations"] for neo in mut2neo[mid]]
         node["neoantigen_load"] = len(node["neoantigens"])
         node["NA_Mut"] = sum([len(mut2neo[mid]) > 0 for mid in node["all_mutations"]])
         if "children" in node:
@@ -159,9 +157,7 @@ def compute_effective_sample_size(sample_json):
         for clone_muts, X in zip(clone_muts_list, freqs):
             for mid in clone_muts:
                 mut_freqs[mid].append(X)
-    avev = np.mean(
-        [np.var(mut_freqs[mid]) if mut_freqs[mid] else 0 for mid in mut_freqs]
-    )
+    avev = np.mean([np.var(mut_freqs[mid]) if mut_freqs[mid] else 0 for mid in mut_freqs])
     n = 1 / avev
     return n
 
