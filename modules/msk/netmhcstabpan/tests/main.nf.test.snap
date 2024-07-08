@@ -1,50 +1,59 @@
 {
-    "test_neoantigen - output,fa": {
+    "netmhcstabpan - MUT - xls,output,fa": {
         "content": [
             [
                 "versions.yml:md5,d1b3afd365748a44098c5642fad6c94a"
             ],
-            [
-                [
-                    {
-                        "id": "test",
-                        "single_end": false
-                    },
-                    "test.mutated_sequences.fa:md5,a998392759482f8a1c63c795cfd9e399",
-                    "test.WT_sequences.fa:md5,27e677ffa032a87934df4c62e9f15357"
-                ]
-            ],
-            "test.MUT.netmhcpan.output",
-            "test.WT.netmhcpan.output"
+            {
+                "id": "test",
+                "single_end": false,
+                "typeMut": true,
+                "fromStab": true
+            },
+            "test.MUT.netmhcstabpan.output"
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.0"
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-03-27T12:50:08.590894"
+        "timestamp": "2024-06-13T11:11:05.586612"
     },
-    "test_neoantigen - output,fa - stub": {
+    "netmhcstabpan - xls,output,fa - stub": {
         "content": [
             [
-                "versions.yml:md5,5a1475e210a9889a27d87db2acb5e703"
+                "versions.yml:md5,d1b3afd365748a44098c5642fad6c94a"
             ],
-            [
-                [
-                    {
-                        "id": "test",
-                        "single_end": false
-                    },
-                    "test.mutated_sequences.fa:md5,e9906f9f5e99d951038f78cc6217d43b",
-                    "test.WT_sequences.fa:md5,3b46893e0ed63a451ad40a645b5e350d"
-                ]
-            ],
-            "test.MUT.netmhcpan.output",
-            "test.WT.netmhcpan.output"
+            {
+                "id": "test",
+                "single_end": false,
+                "typeMut": true,
+                "fromStab": true
+            },
+            "test.MUT.netmhcstabpan.output"
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.0"
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-03-27T12:50:12.831267"
+        "timestamp": "2024-06-13T11:12:06.099529"
+    },
+    "netmhcstabpan - WT - xls,output,fa": {
+        "content": [
+            [
+                "versions.yml:md5,d1b3afd365748a44098c5642fad6c94a"
+            ],
+            {
+                "id": "test",
+                "single_end": false,
+                "typeMut": false,
+                "fromStab": true
+            },
+            "test.WT.netmhcstabpan.output"
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "24.04.2"
+        },
+        "timestamp": "2024-06-13T11:12:01.701587"
     }
 }

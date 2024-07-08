@@ -10,13 +10,20 @@
 
 ## Pipeline tools
 
-- [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+- [Phylowgs](https://github.com/morrislab/phylowgs)
 
-  > Andrews, S. (2010). FastQC: A Quality Control Tool for High Throughput Sequence Data [Online].
+  > Deshwar, A. G., Vembu, S., Yung, C. K., Jang, G. H., Stein, L., & Morris, Q. (2015). PhyloWGS: reconstructing subclonal composition and evolution from whole-genome sequencing of tumors. Genome biology, 16(1), 35. https://doi.org/10.1186/s13059-015-0602-8
 
-- [MultiQC](https://pubmed.ncbi.nlm.nih.gov/27312411/)
+- [NetMHCPan-4](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/)
 
-  > Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PubMed PMID: 27312411; PubMed Central PMCID: PMC5039924.
+  > Jurtz, V., Paul, S., Andreatta, M., Marcatili, P., Peters, B., & Nielsen, M. (2017). NetMHCpan-4.0: Improved Peptide-MHC Class I Interaction Predictions Integrating Eluted Ligand and Peptide Binding Affinity Data. Journal of immunology (Baltimore, Md. : 1950), 199(9), 3360–3368. https://doi.org/10.4049/jimmunol.1700893
+
+- [NeoantigenEditing](https://github.com/LukszaLab/NeoantigenEditing)
+
+  > Łuksza, M., Sethna, Z.M., Rojas, L.A. et al. Neoantigen quality predicts immunoediting in survivors of pancreatic cancer. Nature 606, 389–395 (2022). https://doi.org/10.1038/s41586-022-04735-9
+
+- [NetMHCPanStab](https://services.healthtech.dtu.dk/services/NetMHCstabpan-1.0/)
+  > Rasmussen, M., Fenoy, E., Harndahl, M., Kristensen, A. B., Nielsen, I. K., Nielsen, M., & Buus, S. (2016). Pan-Specific Prediction of Peptide-MHC Class I Complex Stability, a Correlate of T Cell Immunogenicity. Journal of immunology (Baltimore, Md. : 1950), 197(4), 1517–1524. https://doi.org/10.4049/jimmunol.1600582
 
 ## Software packaging/containerisation tools
 
