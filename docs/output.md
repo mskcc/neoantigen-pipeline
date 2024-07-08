@@ -64,16 +64,27 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
   - `*._annotated.json`: The final output of the pipeline.  This file is an annotated version of the tree output from phyloWGS with an extra property titled 'neoantigens'.  Each entry in 'neoantigens' is a property with properties describing the neoantigen.  These neoantigen properities are described below
     
     "id": "XSYI_MG_M_9_C1203_11",
+    
     "mutation_id": "X_72667534_C_G",
+    
     "HLA_gene_id": "HLA-C*12:03",
+    
     "sequence": "ASRSRHSPY",
+    
     "WT_sequence": "PSRSRHSPY",
+    
     "mutated_position": 1,
+    
     "Kd": 192.03,
+    
     "KdWT": 4582.17,
+    
     "R": 0.8911371281207195,
+    
     "logC": 2.263955023939215,
+    
     "logA": 3.1722763542054815,
+    
     "quality": 2.645601185190205
 
   The above is an example output from a run.  Each neoantigenic mutation will have an output like this.
