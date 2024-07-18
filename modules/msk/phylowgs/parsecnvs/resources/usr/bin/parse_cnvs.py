@@ -131,7 +131,8 @@ class FacetsParser(CnvParser):
                     and str.isdigit(record["lcn.em"])
                     and str.isdigit(record["cf.em"].replace(".", "", 1))
                 ):
-                    cnv["cellular_prevalence"] = float(record["cf.em"]) * self._cellularity
+                    cnv["cellular_prevalence"] = (
+                        float(record["cf.em"]))
                     cnv["minor_cn"] = int(record["lcn.em"])
                     cnv["major_cn"] = int(record["tcn.em"]) - cnv["minor_cn"]
                     chrom = record["chrom"]
@@ -181,7 +182,9 @@ class BattenbergParser(CnvParser):
                 cnv1["end"] = end
                 cnv1["major_cn"] = int(fields[8 + self._field_offset])
                 cnv1["minor_cn"] = int(fields[9 + self._field_offset])
-                cnv1["cellular_prevalence"] = float(fields[10 + self._field_offset]) * self._cellularity
+                cnv1["cellular_prevalence"] = (
+                    float(fields[10 + self._field_offset]) * self._cellularity
+                )
 
                 cnv2 = None
                 # Stefan's comment on p values: The p-values correspond "to whether a
@@ -198,11 +201,15 @@ class BattenbergParser(CnvParser):
                     cnv2["end"] = end
                     cnv2["major_cn"] = int(fields[11 + self._field_offset])
                     cnv2["minor_cn"] = int(fields[12 + self._field_offset])
-                    cnv2["cellular_prevalence"] = float(fields[13 + self._field_offset]) * self._cellularity
+                    cnv2["cellular_prevalence"] = (
+                        float(fields[13 + self._field_offset]) * self._cellularity
+                    )
                 else:
                     cnv1["cellular_prevalence"] = self._cellularity
 
-                if cnv1["start"] >= cnv1["end"] or (cnv2 is not None and cnv2["start"] >= cnv2["end"]):
+                if cnv1["start"] >= cnv1["end"] or (
+                    cnv2 is not None and cnv2["start"] >= cnv2["end"]
+                ):
                     continue
 
                 cn_regions[chrom].append(cnv1)
@@ -258,7 +265,8 @@ def main():
 
     if args.cellularity > 1.0:
         print(
-            "Cellularity for %s is %s. Setting to 1.0." % (args.cnv_file, args.cellularity),
+            "Cellularity for %s is %s. Setting to 1.0."
+            % (args.cnv_file, args.cellularity),
             file=sys.stderr,
         )
         cellularity = 1.0
