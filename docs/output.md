@@ -12,10 +12,9 @@ The directories listed below will be created in the results directory after the 
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
-
 1. Create phylogenetic trees using [PhyloWGS](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0602-8)
-2. Use [netMHCpan-4](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/) to calculate binding affinities 
-3. Use [netMHCpanStab](https://services.healthtech.dtu.dk/services/NetMHCstabpan-1.0/) to calculate stability scores 
+2. Use [netMHCpan-4](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/) to calculate binding affinities
+3. Use [netMHCpanStab](https://services.healthtech.dtu.dk/services/NetMHCstabpan-1.0/) to calculate stability scores
 4. Use Luksza et al.'s neoantigen quality and fitness computations tool ([NeoantigenEditing](https://github.com/LukszaLab/NeoantigenEditing)) to evaluate peptides
 
 ### PhyloWGS
@@ -28,9 +27,8 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
   - `*.muts.json.gz`: Output file for JSON-formatted list of mutations
   - `*.muts.json.gz`: Output file for JSON-formatted list of mutations
   - `*.muts.json.gz`: Output zipped folder for JSON-formatted list of SSMs and CNVs
- 
-</details>
 
+</details>
 
 ### netMHCpan
 
@@ -39,7 +37,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 
 - `netmhcpan/`
   - `*.xls`: TSV/XLS file of netMHCpan. This contains the MUT or WT antigens
-  - `*.WT.netmhcpan.output,*.MUT.netmhcpan.output`: STDOUT file of netMHCpan.  A uniquely formated file of neoantigens.  This contains either the MUT or WT neoantigens. Neoantigenutils contains a parser for this file.
+  - `*.WT.netmhcpan.output,*.MUT.netmhcpan.output`: STDOUT file of netMHCpan. A uniquely formated file of neoantigens. This contains either the MUT or WT neoantigens. Neoantigenutils contains a parser for this file.
 
 </details>
 
@@ -50,10 +48,9 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 
 - `netmhcstabpan/`
   - `*.xls`: TSV/XLS file of netMHCpan. This contains the MUT or WT antigens
-  - `*.WT.netmhcpan.output,*.MUT.netmhcpan.output`: STDOUT file of netMHCpan.  A uniquely formated file of neoantigens.  This contains either the MUT or WT neoantigens. Neoantigenutils contains a parser for this file.
+  - `*.WT.netmhcpan.output,*.MUT.netmhcpan.output`: STDOUT file of netMHCpan. A uniquely formated file of neoantigens. This contains either the MUT or WT neoantigens. Neoantigenutils contains a parser for this file.
 
 </details>
-
 
 ### Neoantigen Ediitng Final Output
 
@@ -61,50 +58,49 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 <summary>Output files</summary>
 
 - `neoantigenediting/`
-  - `*._annotated.json`: The final output of the pipeline.  This file is an annotated version of the tree output from phyloWGS with an extra property titled 'neoantigens'.  Each entry in 'neoantigens' is a property with properties describing the neoantigen.  These neoantigen properities are described below
-    
+
+  - `*._annotated.json`: The final output of the pipeline. This file is an annotated version of the tree output from phyloWGS with an extra property titled 'neoantigens'. Each entry in 'neoantigens' is a property with properties describing the neoantigen. These neoantigen properities are described below
+
     "id": "XSYI_MG_M_9_C1203_11",
-    
+
     "mutation_id": "X_72667534_C_G",
-    
-    "HLA_gene_id": "HLA-C*12:03",
-    
+
+    "HLA_gene_id": "HLA-C\*12:03",
+
     "sequence": "ASRSRHSPY",
-    
+
     "WT_sequence": "PSRSRHSPY",
-    
+
     "mutated_position": 1,
-    
+
     "Kd": 192.03,
-    
+
     "KdWT": 4582.17,
-    
+
     "R": 0.8911371281207195,
-    
+
     "logC": 2.263955023939215,
-    
+
     "logA": 3.1722763542054815,
-    
+
     "quality": 2.645601185190205
 
-  The above is an example output from a run.  Each neoantigenic mutation will have an output like this.
-  
+  The above is an example output from a run. Each neoantigenic mutation will have an output like this.
+
   - id: This is a unique id that combines an id created from the mutation, HLA allele, and window.
-  - mutation_id : ID containing the chromosome, position, ref and alt allele.  I and D denote insertions and deletions respectively.
+  - mutation_id : ID containing the chromosome, position, ref and alt allele. I and D denote insertions and deletions respectively.
   - HLA_gene_id : The HLA gene this neoantigen binds to
   - sequence : Mutated sequence
   - WT_sequence : The wild type sequence
   - mutated_position : The position of the first difference
-  - Kd:  Binding affinity in nM from netMHCpan for the mutated peptide
+  - Kd: Binding affinity in nM from netMHCpan for the mutated peptide
   - kdWT : Binding affinity in nM from netMHCpan for the wild type peptide
   - R : Similarity of mutated peptide to IEDB peptides
   - logC : the log of the cross-reactivity
-  - logA : Log of the amplitude.  This is a function of kd/kdWT and a constant
-  - quality:  The final output of the pipeline and neoantigen editing.  A higher quality is a better neoantigen.  This is decribed in the Luksza et al. paper and is visualized below
-
+  - logA : Log of the amplitude. This is a function of kd/kdWT and a constant
+  - quality: The final output of the pipeline and neoantigen editing. A higher quality is a better neoantigen. This is decribed in the Luksza et al. paper and is visualized below
 
 </details>
-
 
 ### Pipeline information
 
