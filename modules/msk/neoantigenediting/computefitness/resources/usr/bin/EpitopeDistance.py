@@ -11,7 +11,6 @@ import json
 import os
 
 
-# %
 class EpitopeDistance(object):
     """Base class for epitope crossreactivity.
 
@@ -39,7 +38,9 @@ class EpitopeDistance(object):
 
     def __init__(
         self,
-        model_file=os.path.join(os.path.dirname(__file__), "distance_data", "epitope_distance_model_parameters.json"),
+        model_file=os.path.join(
+            os.path.dirname(__file__), "distance_data", "epitope_distance_model_parameters.json"
+        ),
         amino_acids="ACDEFGHIKLMNPQRSTVWY",
     ):
         """Initialize class and compute M_ab."""
@@ -75,5 +76,11 @@ class EpitopeDistance(object):
         """
 
         return sum(
-            [self.d_i[i] * self.M_ab[self.amino_acid_dict[epiA[i]], self.amino_acid_dict[epiB[i]]] for i in range(9)]
+            [
+                self.d_i[i]
+                * self.M_ab[
+                    self.amino_acid_dict[epiA[i]], self.amino_acid_dict[epiB[i]]
+                ]
+                for i in range(9)
+            ]
         )

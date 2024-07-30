@@ -22,7 +22,9 @@ class ReadCountsUnavailableError(Exception):
 
 
 class MafVariant(object):
-    def __init__(self, chromosome, position, filter, t_ref, t_alt, ref_allele, alt_allele):
+    def __init__(
+        self, chromosome, position, filter, t_ref, t_alt, ref_allele, alt_allele
+    ):
         self.CHROM = chromosome
         self.POS = position
         self.FILTER = filter
@@ -105,8 +107,12 @@ class VariantParser(object):
         Might not always be true
         """
         if self._tumor_sample:
-            tumor_is = [i for i, s in enumerate(variant.samples) if s.sample == tumor_sample]
-            assert len(tumor_is) == 1, "Did not find tumor name %s in samples" % tumor_sample
+            tumor_is = [
+                i for i, s in enumerate(variant.samples) if s.sample == tumor_sample
+            ]
+            assert len(tumor_is) == 1, (
+                "Did not find tumor name %s in samples" % tumor_sample
+            )
             return tumor_is[0]
         else:
             # Don't make this -1, as some code assumes it will be >= 0.
@@ -146,10 +152,14 @@ class SangerParser(VariantParser):
             },
         }
 
-        ref_reads = tumor_reads["forward"][reference_nt] + tumor_reads["reverse"][reference_nt]
+        ref_reads = (
+            tumor_reads["forward"][reference_nt] + tumor_reads["reverse"][reference_nt]
+        )
         # For now, variant reads are defined as only the non-reference nucleotide in
         # the inferred tumor SNP. We ignore reads of a third or fourth base.
-        variant_reads = tumor_reads["forward"][variant_nt] + tumor_reads["reverse"][variant_nt]
+        variant_reads = (
+            tumor_reads["forward"][variant_nt] + tumor_reads["reverse"][variant_nt]
+        )
         total_reads = ref_reads + variant_reads
 
         return (ref_reads, total_reads)
@@ -235,7 +245,9 @@ class StrelkaParser(VariantParser):
             total_reads = 0
             variant_reads = 0
         else:
-            variant_reads = int(getattr(variant.samples[tumor_i].data, str(alt) + "U")[0])
+            variant_reads = int(
+                getattr(variant.samples[tumor_i].data, str(alt) + "U")[0]
+            )
 
         ref_reads = total_reads - variant_reads
         return (ref_reads, total_reads)
@@ -299,6 +311,7 @@ class MutectSmchetParser(VariantParser):
 
 
 class MafParser(MutectSmchetParser):
+
     def _calc_read_counts(self, variant):
         total_reads = variant.T_REF + variant.T_ALT
         return (variant.T_REF, total_reads)
@@ -323,7 +336,9 @@ class MafParser(MutectSmchetParser):
                 pos = start
                 if variant_type == "DEL":
                     pos = pos - 1
-                variant = MafVariant(chrom, pos, filter, ref_reads, variant_reads, ref_allele, alt_allele)
+                variant = MafVariant(
+                    chrom, pos, filter, ref_reads, variant_reads, ref_allele, alt_allele
+                )
                 variant_list.append(variant)
         return variant_list
 
@@ -433,7 +448,9 @@ class CnvFormatter(object):
 
         for chrom, chrom_cnvs in cnvs.items():
             for cnv in chrom_cnvs:
-                overlapping_variants = self._find_overlapping_variants(chrom, cnv, variants)
+                overlapping_variants = self._find_overlapping_variants(
+                    chrom, cnv, variants
+                )
                 total_reads = self._calc_total_reads(cnv["start"], cnv["end"])
                 ref_reads = self._calc_ref_reads(cnv["cell_prev"], total_reads)
                 yield {
@@ -477,12 +494,20 @@ class CnvFormatter(object):
             for K in ("chrom", "start", "end", "major_cn", "minor_cn"):
                 physical_cnvs[K] = cnv[K]
 
-            assert len(set(physical_cnvs["major_cn"])) == len(set(physical_cnvs["major_cn"])) == 1
+            assert (
+                len(set(physical_cnvs["major_cn"]))
+                == len(set(physical_cnvs["major_cn"]))
+                == 1
+            )
             physical_cnvs["major_cn"] = physical_cnvs["major_cn"][0]
             physical_cnvs["minor_cn"] = physical_cnvs["minor_cn"][0]
 
-            physical_cnvs["cell_prev"] = "|".join([str(C) for C in cnv["cellular_prevalence"]])
-            cnv["physical_cnvs"] = ",".join(["%s=%s" % (K, physical_cnvs[K]) for K in physical_cnvs.keys()])
+            physical_cnvs["cell_prev"] = "|".join(
+                [str(C) for C in cnv["cellular_prevalence"]]
+            )
+            cnv["physical_cnvs"] = ",".join(
+                ["%s=%s" % (K, physical_cnvs[K]) for K in physical_cnvs.keys()]
+            )
 
         merged, formatted = formatted[:1], formatted[1:]
         merged[0]["cnv_id"] = "c0"
@@ -496,13 +521,20 @@ class CnvFormatter(object):
 
             # Only merge CNVs if they're clonal. If they're subclonal, leave them
             # free to move around the tree.
-            if np.array_equal(current["cellular_prevalence"], last["cellular_prevalence"]) and np.array_equal(
-                last["cellular_prevalence"], cellularity
-            ):
+            if np.array_equal(
+                current["cellular_prevalence"], last["cellular_prevalence"]
+            ) and np.array_equal(last["cellular_prevalence"], cellularity):
                 # Merge the CNVs.
-                log("Merging %s_%s and %s_%s" % (current["chrom"], current["start"], last["chrom"], last["start"]))
-                last["total_reads"] = self._cap_cnv_D(current["total_reads"] + last["total_reads"])
-                last["ref_reads"] = self._calc_ref_reads(last["cellular_prevalence"], last["total_reads"])
+                log(
+                    "Merging %s_%s and %s_%s"
+                    % (current["chrom"], current["start"], last["chrom"], last["start"])
+                )
+                last["total_reads"] = self._cap_cnv_D(
+                    current["total_reads"] + last["total_reads"]
+                )
+                last["ref_reads"] = self._calc_ref_reads(
+                    last["cellular_prevalence"], last["total_reads"]
+                )
                 last["physical_cnvs"] += ";" + current["physical_cnvs"]
                 self._merge_variants(last, current)
             else:
@@ -534,7 +566,9 @@ class VariantFormatter(object):
             raise Exception("Nonsensical frequency: %s" % freq)
         return freq
 
-    def format_variants(self, variants, ref_read_counts, total_read_counts, error_rate, sex):
+    def format_variants(
+        self, variants, ref_read_counts, total_read_counts, error_rate, sex
+    ):
         for variant_idx, variant in enumerate(variants):
             ssm_id = "s%s" % self._counter
             if hasattr(variant, "ID") and variant.ID is not None:
@@ -649,7 +683,10 @@ class Segmenter(object):
                 # some intervals revealed that the code crashes on this input. We
                 # should provide a more informative error in such cases, which the
                 # following assertion does.
-                assert cnv["start"] < cnv["end"], "In CNV %s, start position occurs at or after the end position" % cnv
+                assert cnv["start"] < cnv["end"], (
+                    "In CNV %s, start position occurs at or after the end position"
+                    % cnv
+                )
 
             start_pos = [
                 (
@@ -670,7 +707,9 @@ class Segmenter(object):
 
             # True > False, so this sorting will place start positions after end
             # positions if both have same coordinate.
-            positions = sorted(start_pos + end_pos, key=lambda e: (e[0], e[1] == "start"))
+            positions = sorted(
+                start_pos + end_pos, key=lambda e: (e[0], e[1] == "start")
+            )
             assert len(positions) >= 2, "Fewer than two positions in %s" % positions
 
             # prev_pos is updated each time we move to a new coordinate on the
@@ -701,7 +740,9 @@ class Segmenter(object):
                     assert locus > prev_pos
                     interval = (prev_pos, locus)
                     if interval[1] - interval[0] > min_size_for_inclusion:
-                        intervals[chrom].append((interval[0], interval[1], sorted(list(set(open_samples)))))
+                        intervals[chrom].append(
+                            (interval[0], interval[1], sorted(list(set(open_samples))))
+                        )
                 else:
                     # All points should be start points.
                     assert set([i[1] for i in points_at_locus]) == set(["start"])
@@ -831,7 +872,9 @@ class MultisampleCnvCombiner(object):
         abnormal_state = None
         filtered = []
 
-        for sampidx, cell_prev, major, minor in zip(cnv["sampidx"], cnv["cell_prev"], cnv["major_cn"], cnv["minor_cn"]):
+        for sampidx, cell_prev, major, minor in zip(
+            cnv["sampidx"], cnv["cell_prev"], cnv["major_cn"], cnv["minor_cn"]
+        ):
             # Region may be (clonal or subclonal) normal in a sample, so ignore such records.
             if self._is_region_normal_cn(chrom, major, minor):
                 continue
@@ -908,12 +951,15 @@ class MultisampleCnvCombiner(object):
             if not is_good_chrom(chrom):
                 continue
             for cnv in chrom_cnvs:
-                states_for_all_samples = self._get_abnormal_state_for_all_samples(chrom, cnv)
+                states_for_all_samples = self._get_abnormal_state_for_all_samples(
+                    chrom, cnv
+                )
                 if states_for_all_samples is None:
                     continue
 
                 combined_states = {
-                    K: np.array([S[K] for S in states_for_all_samples]) for K in states_for_all_samples[0].keys()
+                    K: np.array([S[K] for S in states_for_all_samples])
+                    for K in states_for_all_samples[0].keys()
                 }
                 cnv.update(combined_states)
                 abnormal_cnvs[chrom].append(cnv)
@@ -932,7 +978,9 @@ class MultisampleCnvCombiner(object):
             if not is_good_chrom(chrom):
                 continue
             for cnv in chrom_cnvs:
-                if not self._is_multisample_region_normal_cn(chrom, cnv["major_cn"], cnv["minor_cn"]):
+                if not self._is_multisample_region_normal_cn(
+                    chrom, cnv["major_cn"], cnv["minor_cn"]
+                ):
                     continue
                 if not set(cnv["sampidx"]) == self.sampidxs:
                     continue
@@ -1081,7 +1129,9 @@ class VariantAndCnvGroup(object):
             raise Exception("CN regions not yet provided")
 
         normal_cn = self._multisamp_cnv.load_normal_cnvs()
-        filtered = self._filter_variants_outside_regions(normal_cn, "all_variants", "only_normal_cn")
+        filtered = self._filter_variants_outside_regions(
+            normal_cn, "all_variants", "only_normal_cn"
+        )
 
     def exclude_variants_in_multiple_abnormal_or_unlisted_regions(self):
         # Battenberg:
@@ -1104,9 +1154,13 @@ class VariantAndCnvGroup(object):
 
         # If variant isn't listed in *any* region: exclude (as we suspect CNV
         # caller didn't know what to do with the region).
-        self._filter_variants_outside_regions(self._multisamp_cnv.load_cnvs(), "all_variants", "within_cn_regions")
+        self._filter_variants_outside_regions(
+            self._multisamp_cnv.load_cnvs(), "all_variants", "within_cn_regions"
+        )
 
-    def format_variants(self, sample_size, error_rate, priority_ssms, only_priority, sex):
+    def format_variants(
+        self, sample_size, error_rate, priority_ssms, only_priority, sex
+    ):
         if sample_size is None:
             sample_size = len(self._variant_idxs)
         random.shuffle(self._variant_idxs)
@@ -1135,7 +1189,11 @@ class VariantAndCnvGroup(object):
             else:
                 nonsubsampled.append(variant_idx)
 
-        assert len(used_variant_idxs) == len(self._variant_idxs) == len(subsampled) + len(nonsubsampled)
+        assert (
+            len(used_variant_idxs)
+            == len(self._variant_idxs)
+            == len(subsampled) + len(nonsubsampled)
+        )
 
         subsampled.sort(key=lambda idx: variant_key(self._variants[idx]))
         subsampled_variants = get_elements_at_indices(self._variants, subsampled)
@@ -1174,7 +1232,9 @@ class VariantAndCnvGroup(object):
             print("\t".join(("id", "gene", "a", "d", "mu_r", "mu_v")), file=outf)
             for variant in variants:
                 variant["ref_reads"] = ",".join([str(v) for v in variant["ref_reads"]])
-                variant["total_reads"] = ",".join([str(v) for v in variant["total_reads"]])
+                variant["total_reads"] = ",".join(
+                    [str(v) for v in variant["total_reads"]]
+                )
                 vals = (
                     "ssm_id",
                     "variant_name",
@@ -1190,7 +1250,10 @@ class VariantAndCnvGroup(object):
         read_sum = 0
         if len(self._variants) == 0:
             default_read_depth = 50
-            log("No variants available, so fixing read depth at %s." % default_read_depth)
+            log(
+                "No variants available, so fixing read depth at %s."
+                % default_read_depth
+            )
             return default_read_depth
         else:
             return np.nanmedian(self._total_read_counts, axis=0)
@@ -1198,7 +1261,9 @@ class VariantAndCnvGroup(object):
     def write_cnvs(self, variants, outfn):
         with open(outfn, "w") as outf:
             print("\t".join(("cnv", "a", "d", "ssms", "physical_cnvs")), file=outf)
-            formatter = CnvFormatter(self._estimated_read_depth, self._sampidxs, self._hetsnp_rate)
+            formatter = CnvFormatter(
+                self._estimated_read_depth, self._sampidxs, self._hetsnp_rate
+            )
             for cnv in formatter.format_and_merge_cnvs(
                 self._multisamp_cnv.load_single_abnormal_state_cnvs(),
                 variants,
@@ -1298,7 +1363,9 @@ def impute_missing_total_reads(total_reads, missing_variant_confidence):
     assert np.sum(variant_mean_reads <= 0) == np.sum(np.isnan(variant_mean_reads)) == 0
 
     # Convert 1D arrays to vectors to permit matrix multiplication.
-    imputed_counts = np.dot(variant_mean_reads.reshape((-1, 1)), sample_means.reshape((1, -1)))
+    imputed_counts = np.dot(
+        variant_mean_reads.reshape((-1, 1)), sample_means.reshape((1, -1))
+    )
     nan_coords = np.where(np.isnan(total_reads))
     total_reads[nan_coords] = imputed_counts[nan_coords]
     assert np.sum(total_reads <= 0) == np.sum(np.isnan(total_reads)) == 0
@@ -1331,7 +1398,9 @@ def is_good_chrom(chrom):
         return False
 
 
-def parse_variants(samples, vcf_files, vcf_types, tumor_sample, missing_variant_confidence):
+def parse_variants(
+    samples, vcf_files, vcf_types, tumor_sample, missing_variant_confidence
+):
     parsed_variants = []
     all_variant_ids = []
     num_samples = len(samples)
@@ -1376,7 +1445,11 @@ def parse_variants(samples, vcf_files, vcf_types, tumor_sample, missing_variant_
                     )
                 )
             else:
-                variant_ids.append(VariantId(str(single_variant[0].CHROM), int(single_variant[0].POS), None))
+                variant_ids.append(
+                    VariantId(
+                        str(single_variant[0].CHROM), int(single_variant[0].POS), None
+                    )
+                )
         all_variant_ids += variant_ids
 
     all_variant_ids = list(set(all_variant_ids))  # Eliminate duplicates.
@@ -1398,7 +1471,9 @@ def parse_variants(samples, vcf_files, vcf_types, tumor_sample, missing_variant_
             ref_read_counts[variant_idx, sample_idx] = ref_reads
             total_read_counts[variant_idx, sample_idx] = total_reads
 
-    total_read_counts = impute_missing_total_reads(total_read_counts, missing_variant_confidence)
+    total_read_counts = impute_missing_total_reads(
+        total_read_counts, missing_variant_confidence
+    )
     ref_read_counts = impute_missing_ref_reads(ref_read_counts, total_read_counts)
     return (all_variant_ids, ref_read_counts, total_read_counts)
 
@@ -1411,7 +1486,9 @@ def infer_sex(variant_ids):
         return "female"
 
 
-def extract_sample_data(vcf_files_and_samples, vcf_types_and_samples, cnv_files_and_samples):
+def extract_sample_data(
+    vcf_files_and_samples, vcf_types_and_samples, cnv_files_and_samples
+):
     vcf_files = {}
     vcf_types = {}
     cnv_files = {}
@@ -1426,7 +1503,9 @@ def extract_sample_data(vcf_files_and_samples, vcf_types_and_samples, cnv_files_
 
     should_use_cnvs = cnv_files_and_samples is not None
     if should_use_cnvs:
-        assert len(cnv_files_and_samples) == len(vcf_files_and_samples), "Must specify same number of VCF and CNV files"
+        assert len(cnv_files_and_samples) == len(
+            vcf_files_and_samples
+        ), "Must specify same number of VCF and CNV files"
         srcs_and_dsts.append((cnv_files_and_samples, cnv_files))
 
     for src, dst in srcs_and_dsts:
@@ -1436,20 +1515,28 @@ def extract_sample_data(vcf_files_and_samples, vcf_types_and_samples, cnv_files_
             dst[sample] = val
 
     # Sample order will dictate eventual output order.
-    common_samps = reduce(lambda s1, s2: s1 & s2, [set(D[1].keys()) for D in srcs_and_dsts])
+    common_samps = reduce(
+        lambda s1, s2: s1 & s2, [set(D[1].keys()) for D in srcs_and_dsts]
+    )
     ordered_samps = [S.split("=", 1)[0] for S in vcf_files_and_samples]
     assert len(ordered_samps) == len(common_samps)  # Ensure no duplicates.
 
-    assert set(vcf_files.keys()) == common_samps, "VCF file samples (%s) differ from common samples (%s)" % (
+    assert (
+        set(vcf_files.keys()) == common_samps
+    ), "VCF file samples (%s) differ from common samples (%s)" % (
         vcf_files.keys(),
         common_samps,
     )
-    assert set(vcf_types.keys()) == common_samps, "VCF type samples (%s) differ from common samples (%s)" % (
+    assert (
+        set(vcf_types.keys()) == common_samps
+    ), "VCF type samples (%s) differ from common samples (%s)" % (
         vcf_types.keys(),
         common_samps,
     )
     if should_use_cnvs:
-        assert set(cnv_files.keys()) == common_samps, "CNV file samples (%s) differ from CNV file samples (%s)" % (
+        assert (
+            set(cnv_files.keys()) == common_samps
+        ), "CNV file samples (%s) differ from CNV file samples (%s)" % (
             cnv_files.keys(),
             common_samps,
         )
@@ -1600,7 +1687,9 @@ def main():
     log.verbose = args.verbose
     params = {}
 
-    samples, vcf_files, vcf_types, cnv_files = extract_sample_data(args.vcf_files, args.vcf_types, args.cnv_files)
+    samples, vcf_files, vcf_types, cnv_files = extract_sample_data(
+        args.vcf_files, args.vcf_types, args.cnv_files
+    )
     params["samples"], params["vcf_files"], params["vcf_types"], params["cnv_files"] = (
         samples,
         vcf_files,
@@ -1634,7 +1723,9 @@ def main():
         grouper.add_cnvs(cn_regions, sex)
 
     if not grouper.has_cnvs():
-        assert args.regions == "all", "If you do not provide CNA data, you must specify --regions=all"
+        assert (
+            args.regions == "all"
+        ), "If you do not provide CNA data, you must specify --regions=all"
 
     if args.regions == "normal_cn":
         grouper.retain_only_variants_in_normal_cn_regions()
@@ -1660,8 +1751,13 @@ def main():
     if grouper.has_cnvs() and args.regions != "normal_cn":
         # Write CNVs.
         grouper.write_cnvs(subsampled_vars, args.output_cnvs)
-        if args.output_nonsubsampled_variants and args.output_nonsubsampled_variants_cnvs:
-            grouper.write_cnvs(nonsubsampled_vars, args.output_nonsubsampled_variants_cnvs)
+        if (
+            args.output_nonsubsampled_variants
+            and args.output_nonsubsampled_variants_cnvs
+        ):
+            grouper.write_cnvs(
+                nonsubsampled_vars, args.output_nonsubsampled_variants_cnvs
+            )
     else:
         # Write empty CNV file.
         with open(args.output_cnvs, "w"):

@@ -71,7 +71,9 @@ def netMHCpan_out_reformat(netMHCpanoutput, mut, stab, prefix):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Process input files and parameters")
-    parser.add_argument("--netMHCpan_output", required=True, help="Path to netMHC output")
+    parser.add_argument(
+        "--netMHCpan_output", required=True, help="Path to netMHC output"
+    )
     parser.add_argument("--type_MUT", action="store_true", help="Output is a MUT type")
     parser.add_argument(
         "--from_STAB",
@@ -79,13 +81,17 @@ def parse_args():
         help="Output is from netmhcstab",
     )
     parser.add_argument("--id", required=True, help="Prefix to label the output")
-    parser.add_argument("-v", "--version", action="version", version="%(prog)s {}".format(VERSION))
+    parser.add_argument(
+        "-v", "--version", action="version", version="%(prog)s {}".format(VERSION)
+    )
 
     return parser.parse_args()
 
 
 def main(args):
-    netMHCpan_out_reformat(args.netMHCpan_output, args.type_MUT, args.from_STAB, args.id)
+    netMHCpan_out_reformat(
+        args.netMHCpan_output, args.type_MUT, args.from_STAB, args.id
+    )
 
 
 if __name__ == "__main__":

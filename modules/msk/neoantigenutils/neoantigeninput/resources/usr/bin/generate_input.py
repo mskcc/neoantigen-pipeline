@@ -9,8 +9,8 @@ import numpy as np
 
 VERSION = 1.7
 
-
 def main(args):
+
     def makeChild(subTree, start):
         if start:
             subTree = 0
@@ -37,10 +37,16 @@ def main(args):
                     pass
                 else:
                     for ssm in treefile["mut_assignments"][str(subTree)]["ssms"]:
-                        ssmli.append(chrom_pos_dict[mut_data["ssms"][ssm]["name"]]["id"])
+                        ssmli.append(
+                            chrom_pos_dict[mut_data["ssms"][ssm]["name"]]["id"]
+                        )
                 newsubtree["clone_mutations"] = ssmli
-                newsubtree["X"] = trees[tree]["populations"][str(subTree)]["cellular_prevalence"][0]
-                newsubtree["x"] = trees[tree]["populations"][str(subTree)]["cellular_prevalence"][0]
+                newsubtree["X"] = trees[tree]["populations"][str(subTree)][
+                    "cellular_prevalence"
+                ][0]
+                newsubtree["x"] = trees[tree]["populations"][str(subTree)][
+                    "cellular_prevalence"
+                ][0]
                 newsubtree["new_x"] = 0.0
             except Exception as e:
                 print("Error in adding new subtree. Error not in base case**")
@@ -59,15 +65,21 @@ def main(args):
                 try:
                     ssmli.append(chrom_pos_dict[mut_data["ssms"][ssm]["name"]]["id"])
                 except Exception as e:
-                    print("Error in appending to mutation list. Error in base case appending ssm to ssmli")
+                    print(
+                        "Error in appending to mutation list. Error in base case appending ssm to ssmli"
+                    )
                     print(e)
                     # print(str(subTree))
                     pass
 
             try:
                 newsubtree["clone_mutations"] = ssmli
-                newsubtree["X"] = trees[tree]["populations"][str(subTree)]["cellular_prevalence"][0]
-                newsubtree["x"] = trees[tree]["populations"][str(subTree)]["cellular_prevalence"][0]
+                newsubtree["X"] = trees[tree]["populations"][str(subTree)][
+                    "cellular_prevalence"
+                ][0]
+                newsubtree["x"] = trees[tree]["populations"][str(subTree)][
+                    "cellular_prevalence"
+                ][0]
                 newsubtree["new_x"] = 0.0
             except Exception as e:
                 print("Error in adding new subtree. Error in base case")
@@ -93,7 +105,7 @@ def main(args):
 
     for index, row in mafdf.iterrows():
         if (
-            # We
+            #We
             row["Variant_Type"] == "SNP"
             or row["Variant_Type"] == "DEL"
             or row["Variant_Type"] == "INS"
@@ -343,13 +355,13 @@ def main(args):
         # This is used as last resort for the matching.  We will preferentially find the peptide matching in length as well as POS. Worst case we will default to the WT pos 0
         if noposID not in WTdict:
             WTdict[noposID] = {
-                "peptides": {row_WT["peptide"]: id},  # This is a dict so we can match the peptide with the ID later
-                "affinity": row_WT["affinity"],
+                'peptides' : {row_WT["peptide"]:id},  #This is a dict so we can match the peptide with the ID later
+                "affinity": row_WT["affinity"]
             }
 
         else:
             # print(WTdict[noposID]['peptides'])
-            WTdict[noposID]["peptides"][row_WT["peptide"]] = id
+            WTdict[noposID]['peptides'][row_WT["peptide"]]=id
 
     def find_most_similar_string(target, strings):
         max_score = -1
@@ -375,7 +387,7 @@ def main(args):
                     max_score2 = score
                     most_similar_string2 = s
 
-            if target[0] == s[0]:
+            if target[0]==s[0]:
                 if score > first_AA_same_score:
                     first_AA_same = s
                     first_AA_same_score = score
@@ -383,13 +395,13 @@ def main(args):
         return most_similar_string, most_similar_string2, first_AA_same, first_AA_same_score, max_score
 
     for index_mut, row_mut in neoantigen_mut_in.iterrows():
-        IDsplit = row_mut["Identity"].split("_")
-        if row_mut["affinity"] < 500:
+        IDsplit = row_mut["Identity"].split('_')
+        if row_mut["affinity"]< 500:
             peplen = len(row_mut["peptide"])
             matchfound = False
-            IDsplit = row_mut["Identity"].split("_")
-            if IDsplit[1][0] == "S" and IDsplit[1][1] != "p":
-                # If it is a silent mutation.  Silent mutations can either be S or SY. These include intron mutations.  Splices can be Sp
+            IDsplit = row_mut["Identity"].split('_')
+            if (IDsplit[1][0] == "S" and IDsplit[1][1] != 'p') :
+                #If it is a silent mutation.  Silent mutations can either be S or SY. These include intron mutations.  Splices can be Sp
                 continue
             # first find match in WT
             WTid = (
@@ -410,7 +422,7 @@ def main(args):
                 + row_mut["MHC"].split("-")[1].replace(":", "").replace("*", "")
             )
 
-            if WTid in WTdict and ("M" == IDsplit[1][0] and "Sp" not in row_mut["Identity"]):
+            if WTid in WTdict and ('M' == IDsplit[1][0] and 'Sp' not in row_mut["Identity"]):
                 # match
                 matchfound = True
                 best_pepmatch = WTdict[WTid]["peptide"]
@@ -424,31 +436,28 @@ def main(args):
                     # print(mutation_dict[row_mut["Identity"]])
 
                 else:
-                    (
-                        best_pepmatch,
-                        best_pepmatch2,
-                        first_AA_same,
-                        first_AA_same_score,
-                        match_score,
-                    ) = find_most_similar_string(row_mut["peptide"], list(WTdict[noposID]["peptides"].keys()))
+                    best_pepmatch,best_pepmatch2 , first_AA_same, first_AA_same_score, match_score = find_most_similar_string(row_mut["peptide"],list(WTdict[noposID]['peptides'].keys()))
 
                     if best_pepmatch == row_mut["peptide"]:
-                        # it seems this can happen where the row_mut is actually the canonical sequence.
+                        #it seems this can happen where the row_mut is actually the canonical sequence.
                         # In this case we don't want to report the peptide as a neoantigen, its not neo
                         continue
 
-                    elif (best_pepmatch[0] != row_mut["peptide"][0] and best_pepmatch2[0] == row_mut["peptide"][0]) or (
-                        best_pepmatch[-1] != row_mut["peptide"][-1] and best_pepmatch2[-1] == row_mut["peptide"][-1]
-                    ):
+                    elif (best_pepmatch[0] != row_mut["peptide"][0] and best_pepmatch2[0] == row_mut["peptide"][0]) or (best_pepmatch[-1] != row_mut["peptide"][-1] and best_pepmatch2[-1] == row_mut["peptide"][-1]):
                         # We should preferentially match the first AA if we can.  I have found that the pairwise alignment isnt always the best at this.
                         # It will also do this when the last AA of the best match doesnt match but the last A of the second best match does
                         best_pepmatch = best_pepmatch2
 
-                    WTid = WTdict[noposID]["peptides"][best_pepmatch]
-                    matchfound = True
+                    WTid = WTdict[noposID]['peptides'][best_pepmatch]
+                    matchfound=True
 
             if matchfound == True:
-                mut_pos = find_first_difference_index(row_mut["peptide"], best_pepmatch) + 1  # WTdict[WTid]["peptide"]
+                mut_pos = (
+                    find_first_difference_index(
+                        row_mut["peptide"], best_pepmatch #WTdict[WTid]["peptide"]
+                    )
+                    + 1
+                )
 
                 neo_dict = {
                     "id": row_mut["Identity"]
@@ -461,7 +470,7 @@ def main(args):
                     "mutation_id": mutation_dict[row_mut["Identity"]],
                     "HLA_gene_id": row_mut["MHC"],
                     "sequence": row_mut["peptide"],
-                    "WT_sequence": best_pepmatch,  # WTdict[WTid]["peptide"],
+                    "WT_sequence": best_pepmatch ,#WTdict[WTid]["peptide"],
                     "mutated_position": mut_pos,
                     "Kd": float(row_mut["affinity"]),
                     "KdWT": float(WTdict[WTid]["affinity"]),
@@ -514,7 +523,7 @@ def makeID(maf_row):
         "Frame_shift_Del": "I-",
         "In_Frame_Ins": "If",
         "In_Frame_Del": "Id",
-        "Splice_Site": "Sp",
+        "Splice_Site": "Sp"
     }
 
     position = int(str(maf_row["Start_Position"])[0:2])
@@ -564,15 +573,26 @@ def makeID(maf_row):
         )
     else:
 
-        identifier_key = str(maf_row["Chromosome"]) + encoded_position + "_" + "SY" + Allele2code + "_M"
+        identifier_key = (
+            str(maf_row["Chromosome"])
+            + encoded_position
+            + "_"
+            + "SY"
+            + Allele2code
+            + "_M"
+        )
     return identifier_key
 
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Process input files and parameters")
     parser.add_argument("--maf_file", required=True, help="Path to the MAF file")
-    parser.add_argument("--summary_file", required=True, help="Path to the summary file")
-    parser.add_argument("--mutation_file", required=True, help="Path to the mutation file")
+    parser.add_argument(
+        "--summary_file", required=True, help="Path to the summary file"
+    )
+    parser.add_argument(
+        "--mutation_file", required=True, help="Path to the mutation file"
+    )
     parser.add_argument(
         "--tree_directory",
         required=True,
@@ -581,7 +601,9 @@ def parse_args():
     parser.add_argument("--id", required=True, help="ID")
     parser.add_argument("--patient_id", required=True, help="Patient ID")
     parser.add_argument("--cohort", required=True, help="Cohort")
-    parser.add_argument("--HLA_genes", required=True, help="Path to the file containing HLA genes")
+    parser.add_argument(
+        "--HLA_genes", required=True, help="Path to the file containing HLA genes"
+    )
     parser.add_argument(
         "--netMHCpan_MUT_input",
         required=True,
@@ -597,7 +619,9 @@ def parse_args():
         "--patient_data_file",
         help="Path to the optional file containing status, overall survival, and PFS",
     )
-    parser.add_argument("-v", "--version", action="version", version="%(prog)s {}".format(VERSION))
+    parser.add_argument(
+        "-v", "--version", action="version", version="%(prog)s {}".format(VERSION)
+    )
 
     return parser.parse_args()
 
