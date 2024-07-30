@@ -47,14 +47,20 @@ X  0 -1 -1 -1 -2 -1 -1 -1 -1 -1 -1 -1 -1 -1 -2  0  0 -2 -1 -1 -1 -1 -1 -4
 * -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4  1
 """
     amino_acids = "ACDEFGHIKLMNPQRSTVWY"
-    blosum62_mat_str_list = [l.split() for l in raw_blosum62_mat_str.strip().split("\n")]
+    blosum62_mat_str_list = [
+        l.split() for l in raw_blosum62_mat_str.strip().split("\n")
+    ]
     blosum_aa_order = [blosum62_mat_str_list[0].index(aa) for aa in amino_acids]
 
     blosum62_mat = np.zeros((len(amino_acids), len(amino_acids)))
     for i, bl_ind in enumerate(blosum_aa_order):
-        blosum62_mat[i] = np.array([int(x) for x in blosum62_mat_str_list[bl_ind + 1][1:]])[blosum_aa_order]
+        blosum62_mat[i] = np.array(
+            [int(x) for x in blosum62_mat_str_list[bl_ind + 1][1:]]
+        )[blosum_aa_order]
     blosum62 = {
-        (aaA, aaB): blosum62_mat[i, j] for i, aaA in enumerate(amino_acids) for j, aaB in enumerate(amino_acids)
+        (aaA, aaB): blosum62_mat[i, j]
+        for i, aaA in enumerate(amino_acids)
+        for j, aaB in enumerate(amino_acids)
     }
     return blosum62
 
@@ -226,7 +232,9 @@ if __name__ == "__main__":
         pjson = json.load(f)
     patient = pjson["patient"]
     neoantigens = pjson["neoantigens"]
-    peptides = set([("_".join(neo["id"].split("_")[:-1]), neo["sequence"]) for neo in neoantigens])
+    peptides = set(
+        [("_".join(neo["id"].split("_")[:-1]), neo["sequence"]) for neo in neoantigens]
+    )
     pepseq2pepid = defaultdict(set)
     for pep_id, pep_seq in peptides:
         pepseq2pepid[pep_seq].add(pep_id)
@@ -251,5 +259,7 @@ if __name__ == "__main__":
             "Alignment_score",
         ]
     else:
-        aln_data = pd.DataFrame(columns=["Peptide_ID", "Peptide", "Epitope_ID", "Alignment_score"])
+        aln_data = pd.DataFrame(
+            columns=["Peptide_ID", "Peptide", "Epitope_ID", "Alignment_score"]
+        )
     aln_data.to_csv("iedb_alignments_" + patient + ".txt", sep="\t", index=False)

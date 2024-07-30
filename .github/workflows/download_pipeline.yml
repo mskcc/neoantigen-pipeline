@@ -11,14 +11,14 @@ on:
         description: "The specific branch you wish to utilize for the test execution of nf-core download."
         required: true
         default: "dev"
-#  pull_request:
-#    types:
-#      - opened
-#    branches:
-#      - master
-#  pull_request_target:
-#    branches:
-#      - master
+  pull_request:
+    types:
+      - opened
+    branches:
+      - master
+  pull_request_target:
+    branches:
+      - master
 
 env:
   NXF_ANSI_LOG: false
