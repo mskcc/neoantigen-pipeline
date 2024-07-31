@@ -10,19 +10,17 @@ You will need to create a samplesheet with information about the samples you wou
 --input '[path to samplesheet file]'
 ```
 
-
 ```csv title="samplesheet.csv"
 sample	maf	facets_hisens_cncf	hla_file
 tumor_normal	temp_test_somatic_unfiltered.maf	facets_hisens.cncf.txt	winners.hla.txt
 ```
 
-
-| Column    | Description                                                                                                                                                                            |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sample`  | Custom sample name.  |
-| `maf` | The path to a maf output by the TEMPO pipeline.                                                             |
-| `facets_hisens_cncf` | The path to the hisens cncf file output by facets.  |
-| `hla_file` A hla file from polysolver  |                                                            |
+| Column                                | Description                                        |
+| ------------------------------------- | -------------------------------------------------- |
+| `sample`                              | Custom sample name.                                |
+| `maf`                                 | The path to a maf output by the TEMPO pipeline.    |
+| `facets_hisens_cncf`                  | The path to the hisens cncf file output by facets. |
+| `hla_file` A hla file from polysolver |                                                    |
 
 An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
 
@@ -37,7 +35,7 @@ nextflow run mskcc/neoantigenpipeline \
    --outdir <OUTDIR>
 ```
 
-This will launch the pipeline with the prod profile and either docker or singularity. 
+This will launch the pipeline with the prod profile and either docker or singularity.
 
 Note that the pipeline will create the following files in your working directory:
 
@@ -124,7 +122,8 @@ If `-profile` is not specified, the pipeline will run locally and expect all sof
   - A generic configuration profile to be used with [Docker](https://docker.com/)
 - `singularity`
   - A generic configuration profile to be used with [Singularity](https://sylabs.io/docs/)
-  - 
+  -
+
 ### `-resume`
 
 Specify this when restarting a pipeline. Nextflow will use cached results from any pipeline steps where the inputs are the same, continuing from where it got to previously. For input to be considered the same, not only the names must be identical but the files' contents as well. For more info about this parameter, see [this blog post](https://www.nextflow.io/blog/2019/demystifying-nextflow-resume.html).
