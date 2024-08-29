@@ -31,7 +31,7 @@
                 "type": "string",
                 "format": "file-path",
                 "exists": true,
-                "pattern": "winners.hla.txt$",
+                "pattern": "^\\S+.txt$",
                 "errorMessage": "HLA_file output by polysolver."
             }
         },
