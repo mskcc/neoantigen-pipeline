@@ -4,15 +4,15 @@
 
 ## Samplesheet input
 
-You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Use this parameter to specify its location. It has to be a tsv file with 4 columns, and a header row as shown in the examples below.
+You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Use this parameter to specify its location. It has to be a csv file with 4 columns, and a header row as shown in the examples below.
 
 ```bash
 --input '[path to samplesheet file]'
 ```
 
 ```csv title="samplesheet.csv"
-sample	maf	facets_hisens_cncf	hla_file
-tumor_normal	temp_test_somatic_unfiltered.maf	facets_hisens.cncf.txt	winners.hla.txt
+sample,maf,facets_hisens_cncf,hla_file
+tumor_normal,temp_test_somatic_unfiltered.maf,facets_hisens.cncf.txt,winners.hla.txt
 ```
 
 | Column                                | Description                                        |
@@ -20,7 +20,7 @@ tumor_normal	temp_test_somatic_unfiltered.maf	facets_hisens.cncf.txt	winners.hla
 | `sample`                              | Custom sample name.                                |
 | `maf`                                 | The path to a maf output by the TEMPO pipeline.    |
 | `facets_hisens_cncf`                  | The path to the hisens cncf file output by facets. |
-| `hla_file` A hla file from polysolver |                                                    |
+| `hla_file`                            | A hla file from polysolver                         |
 
 An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
 
