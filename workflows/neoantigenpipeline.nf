@@ -17,6 +17,7 @@ include { NETMHCSTABANDPAN } from '../subworkflows/msk/netmhcstabandpan/main'
 include { NETMHCPAN } from '../modules/msk/netmhcpan/main'
 include { NEOANTIGENUTILS_NEOANTIGENINPUT } from '../modules/msk/neoantigenutils/neoantigeninput'
 include { NEOANTIGEN_EDITING } from '../subworkflows/msk/neoantigen_editing'
+include { NEOANTIGENUTILS_CONVERTANNOTJSON } from '../modules/msk/neoantigenutils/convertannotjson'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -92,6 +93,10 @@ workflow NEOANTIGENPIPELINE {
 
     ch_versions = ch_versions.mix(NEOANTIGEN_EDITING.out.versions)
 
+    NEOANTIGENUTILS_CONVERTANNOTJSON(NEOANTIGEN_EDITING.out.annotated_output)
+
+    ch_versions = ch_versions.mix(NEOANTIGENUTILS_CONVERTANNOTJSON.out.versions)
+
     //
     // Collate and save software versions
     //
@@ -104,6 +109,7 @@ workflow NEOANTIGENPIPELINE {
     emit:
     versions         = ch_versions                 // channel: [ path(versions.yml) ]
     neo_out          = NEOANTIGEN_EDITING.out.annotated_output
+    tsv_out          = NEOANTIGENUTILS_CONVERTANNOTJSON.out.neoantigenTSV
 }
 
 def merge_for_input_generation(netMHCpan_input_ch, summ_ch, muts_ch, mutass_ch, netmhcpan_mut_tsv_ch, netmhcpan_wt_tsv_ch ) {
