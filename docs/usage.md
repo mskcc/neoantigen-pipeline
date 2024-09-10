@@ -15,12 +15,12 @@ sample,maf,facets_hisens_cncf,hla_file
 tumor_normal,temp_test_somatic_unfiltered.maf,facets_hisens.cncf.txt,winners.hla.txt
 ```
 
-| Column                                | Description                                        |
-| ------------------------------------- | -------------------------------------------------- |
-| `sample`                              | Custom sample name.                                |
-| `maf`                                 | The path to a maf output by the TEMPO pipeline.    |
-| `facets_hisens_cncf`                  | The path to the hisens cncf file output by facets. |
-| `hla_file`                            | A hla file from polysolver                         |
+| Column               | Description                                        |
+| -------------------- | -------------------------------------------------- |
+| `sample`             | Custom sample name.                                |
+| `maf`                | The path to a maf output by the TEMPO pipeline.    |
+| `facets_hisens_cncf` | The path to the hisens cncf file output by facets. |
+| `hla_file`           | A hla file from polysolver                         |
 
 An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
 
