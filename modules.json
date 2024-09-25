@@ -15,6 +15,11 @@
                         "git_sha": "1f65c2ecdc5010549055ff7f4e6b8bccee48d4ae",
                         "installed_by": ["neoantigen_editing"]
                     },
+                    "neoantigenutils/convertannotjson": {
+                        "branch": "main",
+                        "git_sha": "5ca84b1a3b6abc607e815c4b6cfdbec8339bc465",
+                        "installed_by": ["modules"]
+                    },
                     "neoantigenutils/formatnetmhcpan": {
                         "branch": "develop",
                         "git_sha": "c5d1252252e15555abcc82ea537cebeb281a1856",
