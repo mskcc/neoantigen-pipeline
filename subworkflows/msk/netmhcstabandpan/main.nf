@@ -1,6 +1,7 @@
 include { NEOANTIGENUTILS_GENERATEHLASTRING  } from '../../../modules/msk/neoantigenutils/generatehlastring/main'
 include { NEOANTIGENUTILS_GENERATEMUTFASTA  } from '../../../modules/msk/neoantigenutils/generatemutfasta/main'
 include { NETMHCPAN } from '../../../modules/msk/netmhcpan/main'
+include { NETMHC } from '../modules/msk/netmhc/main'
 include { NETMHCSTABPAN } from '../../../modules/msk/netmhcstabpan/main'
 include { NEOANTIGENUTILS_FORMATNETMHCPAN } from '../../../modules/msk/neoantigenutils/formatnetmhcpan/main'
 
@@ -42,15 +43,15 @@ workflow NETMHCSTABANDPAN {
                                         )
 
 
-    NETMHCPAN( ch_netmhcinput )
+    NETMHC( ch_netmhcinput )
 
-    ch_versions = ch_versions.mix(NETMHCPAN.out.versions)
+    ch_versions = ch_versions.mix(NETMHC.out.versions)
 
     NETMHCSTABPAN( ch_netmhcinput )
 
     ch_versions = ch_versions.mix(NETMHCSTABPAN.out.versions)
 
-    merged_pan_and_stab = NETMHCPAN.out.netmhcpanoutput.mix(NETMHCSTABPAN.out.netmhcstabpanoutput)
+    merged_pan_and_stab = NETMHC.out.netmhcpanoutput.mix(NETMHCSTABPAN.out.netmhcstabpanoutput)
 
     NEOANTIGENUTILS_FORMATNETMHCPAN( merged_pan_and_stab )
 
@@ -61,7 +62,7 @@ workflow NETMHCSTABANDPAN {
     emit:
 
     tsv        = NEOANTIGENUTILS_FORMATNETMHCPAN.out.netMHCpanreformatted     // channel: [ val(meta), [ tsv ] ]
-    xls        = NETMHCPAN.out.xls                                            // channel: [ val(meta), [ xls ] ]
+    xls        = NETMHC.out.xls                                            // channel: [ val(meta), [ xls ] ]
     mut_fasta  = NEOANTIGENUTILS_GENERATEMUTFASTA.out.mut_fasta               // channel: [ val(meta), [ *.MUT_sequences.fa ] ]
     wt_fasta   = NEOANTIGENUTILS_GENERATEMUTFASTA.out.wt_fasta                // channel: [ val(meta), [ *.WT_sequences.fa ] ]
     versions   = ch_versions                                                  // channel: [ versions.yml ]
