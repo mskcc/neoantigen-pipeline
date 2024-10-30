@@ -20,10 +20,12 @@ process NEOANTIGENUTILS_FORMATNETMHCPAN {
     def prefix = task.ext.prefix ?: "${meta.id}"
     def netmhcOutputType = meta.typeMut ? "--type_MUT": ""
     def netmhcOutputFrom = meta.fromStab ? "--from_STAB": ""
+    
     """
         format_netmhcpan_output.py \
             --netMHCpan_output ${netmhcPanOutput} \
             --id ${prefix} \
+            --from_NETMHC3 \
             ${netmhcOutputType} \
             ${netmhcOutputFrom}
 
