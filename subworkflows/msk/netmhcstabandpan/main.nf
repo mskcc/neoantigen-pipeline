@@ -1,7 +1,7 @@
 include { NEOANTIGENUTILS_GENERATEHLASTRING  } from '../../../modules/msk/neoantigenutils/generatehlastring/main'
 include { NEOANTIGENUTILS_GENERATEMUTFASTA  } from '../../../modules/msk/neoantigenutils/generatemutfasta/main'
 include { NETMHCPAN } from '../../../modules/msk/netmhcpan/main'
-include { NETMHC } from '../modules/msk/netmhc/main'
+include { NETMHC } from '../../../modules/msk/netmhc/main'
 include { NETMHCSTABPAN } from '../../../modules/msk/netmhcstabpan/main'
 include { NEOANTIGENUTILS_FORMATNETMHCPAN } from '../../../modules/msk/neoantigenutils/formatnetmhcpan/main'
 
