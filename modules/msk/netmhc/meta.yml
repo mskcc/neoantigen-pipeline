@@ -1,6 +1,6 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-name: "netmhcpan"
+name: "netmhc"
 description: write your description here
 keywords:
   - immune
