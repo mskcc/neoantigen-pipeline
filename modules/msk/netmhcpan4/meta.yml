@@ -7,7 +7,8 @@ keywords:
   - genomics
 tools:
   - "netmhcpan":
-      description: " Runs netMHCpan and outputs tsvs and STDout for mutated and wild
+      description:
+        " Runs netMHCpan and outputs tsvs and STDout for mutated and wild
         type neoantigens"
       homepage: "https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/"
       documentation: "https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/"
@@ -23,21 +24,25 @@ input:
           e.g. `[ id:'sample1', single_end:false ]`
     - inputFasta:
         type: file
-        description: Multifasta containing Mutated peptides or Wildtype peptides generated
+        description:
+          Multifasta containing Mutated peptides or Wildtype peptides generated
           from generatemutfasta
         pattern: "*.{fa}"
     - inputSVFasta:
         type: file
-        description: Multifasta containing Mutated peptides or Wildtype peptides from
+        description:
+          Multifasta containing Mutated peptides or Wildtype peptides from
           NeoSV
         pattern: "*.{fa}"
     - hlaString:
         type: string
-        description: HLA string formatted by generatehlastring.  Typically a comma separated
+        description:
+          HLA string formatted by generatehlastring.  Typically a comma separated
           string of HLAs.
     - inputType:
         type: string
-        description: Allows netmhcpan to run in parallel. Should be 'MUT' or 'WT', it
+        description:
+          Allows netmhcpan to run in parallel. Should be 'MUT' or 'WT', it
           will kick off two jobs. make a Channel.Of('MUT','WT') outside the module as
           an input. Running them in series is kicked off by putting in anything other
           than MUT or WT.
