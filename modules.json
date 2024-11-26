@@ -7,32 +7,32 @@
                 "msk": {
                     "neoantigenediting/aligntoiedb": {
                         "branch": "develop",
-                        "git_sha": "cac9c047e374ee259fb612ba5816e7e6aae6b86f",
+                        "git_sha": "34505c4c67eabebab927561d3a8fca87c9efe788",
                         "installed_by": ["modules", "neoantigen_editing"]
                     },
                     "neoantigenediting/computefitness": {
                         "branch": "develop",
-                        "git_sha": "1f65c2ecdc5010549055ff7f4e6b8bccee48d4ae",
+                        "git_sha": "05e49188ee9407e1b51dfb1a49d8b6133e9276bc",
                         "installed_by": ["modules", "neoantigen_editing"]
                     },
                     "neoantigenutils/convertannotjson": {
                         "branch": "develop",
-                        "git_sha": "5ca84b1a3b6abc607e815c4b6cfdbec8339bc465",
+                        "git_sha": "34505c4c67eabebab927561d3a8fca87c9efe788",
                         "installed_by": ["modules"]
                     },
                     "neoantigenutils/formatnetmhcpan": {
                         "branch": "develop",
-                        "git_sha": "c5d1252252e15555abcc82ea537cebeb281a1856",
+                        "git_sha": "e6bbb12a2dc237b9ea18163e96dbe9d780ddce5f",
                         "installed_by": ["modules", "netmhcstabandpan"]
                     },
                     "neoantigenutils/generatehlastring": {
                         "branch": "develop",
-                        "git_sha": "33f0bd33095fa15016ee24f4fb4d61e896dbb970",
+                        "git_sha": "34505c4c67eabebab927561d3a8fca87c9efe788",
                         "installed_by": ["modules", "netmhcstabandpan"]
                     },
                     "neoantigenutils/generatemutfasta": {
                         "branch": "develop",
-                        "git_sha": "bb7975c796ab9a2d7a45ef733a6a226a0f5ad74a",
+                        "git_sha": "e6bbb12a2dc237b9ea18163e96dbe9d780ddce5f",
                         "installed_by": ["modules", "netmhcstabandpan"]
                     },
                     "neoantigenutils/neoantigeninput": {
@@ -57,28 +57,28 @@
                     },
                     "netmhcstabpan": {
                         "branch": "develop",
-                        "git_sha": "c1a473f8bc08f778269a36ab62d5adf24357225f",
+                        "git_sha": "3c39dd8d3d0a92aa33fda4352749e35fc22d3e87",
                         "installed_by": ["modules", "netmhcstabandpan"]
                     },
                     "phylowgs/createinput": {
                         "branch": "develop",
-                        "git_sha": "b031249dcf4279606c25e626da2a628756e75e8a",
-                        "installed_by": ["modules", "phylowgs"]
+                        "git_sha": "05e49188ee9407e1b51dfb1a49d8b6133e9276bc",
+                        "installed_by": ["phylowgs"]
                     },
                     "phylowgs/multievolve": {
                         "branch": "develop",
-                        "git_sha": "535662d391a3533dea3b11c462c14799227e08b2",
-                        "installed_by": ["modules", "phylowgs"]
+                        "git_sha": "980c1328a92a6cc547834ccc361c5187d0927944",
+                        "installed_by": ["phylowgs"]
                     },
                     "phylowgs/parsecnvs": {
                         "branch": "develop",
-                        "git_sha": "8471691d7c29bc2f5f4fb92279c94fb2640b6c38",
-                        "installed_by": ["modules", "phylowgs"]
+                        "git_sha": "34505c4c67eabebab927561d3a8fca87c9efe788",
+                        "installed_by": ["phylowgs"]
                     },
                     "phylowgs/writeresults": {
                         "branch": "develop",
-                        "git_sha": "6d27f08bf649e8680ace321d3127dcdf0e210973",
-                        "installed_by": ["modules", "phylowgs"]
+                        "git_sha": "34505c4c67eabebab927561d3a8fca87c9efe788",
+                        "installed_by": ["phylowgs"]
                     }
                 }
             },
