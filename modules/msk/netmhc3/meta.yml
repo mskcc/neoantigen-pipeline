@@ -7,8 +7,7 @@ keywords:
   - genomics
 tools:
   - "netmhc3":
-      description:
-        "Runs netMHC and outputs tsvs and STDout for mutated and wild type
+      description: "Runs netMHC and outputs tsvs and STDout for mutated and wild type
         neoantigens"
       homepage: "https://services.healthtech.dtu.dk/services/netmhc-4.1/"
       documentation: "https://services.healthtech.dtu.dk/services/netmhc-4.1/"
@@ -24,25 +23,21 @@ input:
           e.g. `[ id:'sample1', single_end:false ]`
     - inputFasta:
         type: file
-        description:
-          Multifasta containing Mutated peptides or Wildtype peptides generated
+        description: Multifasta containing Mutated peptides or Wildtype peptides generated
           from generatemutfasta
         pattern: "*.{fa}"
     - inputSVFasta:
         type: file
-        description:
-          Multifasta containing Mutated peptides or Wildtype peptides from
+        description: Multifasta containing Mutated peptides or Wildtype peptides from
           NeoSV
         pattern: "*.{fa}"
     - hlaString:
         type: string
-        description:
-          HLA string formatted by generatehlastring.  Typically a comma separated
+        description: HLA string formatted by generatehlastring.  Typically a comma separated
           string of HLAs.
     - inputType:
         type: string
-        description:
-          Allows netmhc to run in parallel. Should be 'MUT' or 'WT', it
+        description: Allows netmhc to run in parallel. Should be 'MUT' or 'WT', it
           will kick off two jobs. make a Channel.Of('MUT','WT') outside the module as
           an input. Running them in series is kicked off by putting in anything other
           than MUT or WT.
@@ -57,8 +52,7 @@ output:
             e.g. `[ id:'sample1', single_end:false ]`
       - "*.netmhc.output":
           type: file
-          description:
-            STDOUT file of netMHCpan.  A poorly formated file of neoantigens.  This
+          description: STDOUT file of netMHCpan.  A poorly formated file of neoantigens.  This
             contains either the MUT or WT neoantigens. Neoantigenutils contains a parser
             for this file.
           pattern: "*.WT.netmhc.output,*.MUT.netmhc.output"
@@ -71,8 +65,7 @@ output:
             e.g. `[ id:'sample1', single_end:false ]`
       - "*.xls":
           type: file
-          description:
-            XLS file of netMHC. A poorly formated file of neoantigens. This
+          description: XLS file of netMHC. A poorly formated file of neoantigens. This
             contains the MUT or WT antigens
           pattern: "*.WT.xls,*.MUT.xls"
 
@@ -84,8 +77,7 @@ output:
             e.g. `[ id:'sample1', single_end:false ]`
       - "*.hla_*.txt":
           type: file
-          description:
-            STDOUT file of netMHC.  A poorly formated file of neoantigens.  This
+          description: STDOUT file of netMHC.  A poorly formated file of neoantigens.  This
             contains either the MUT or WT neoantigens. Neoantigenutils contains a parser
             for this file.
           pattern: "*.hla_accepted.txt,*.hla_rejected.txt"
