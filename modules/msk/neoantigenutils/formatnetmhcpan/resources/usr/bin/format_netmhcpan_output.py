@@ -31,10 +31,9 @@ STAB_PAN_HEADER = [
     "Thalf(h)",
     "%Rank_Stab",
 ]
-NETMHC3_HEADER = ["pos", "peptide", "score_el", "affinity", "Identity", "MHC"]
 
 
-def netMHCpan_out_reformat(netMHCpanoutput, mut, stab, netmhc3, prefix):
+def netMHCpan_out_reformat(netMHCpanoutput, mut, stab, prefix):
     file_li = []
     stab_prefix = ""
     type_prefix = "WT"
@@ -54,15 +53,13 @@ def netMHCpan_out_reformat(netMHCpanoutput, mut, stab, netmhc3, prefix):
             elif line[0].isdigit():
                 # Print or process the line as needed
                 match = (
-                    line.strip().replace(" <= WB", "").replace(" <= SB", "").replace(" WB ", " ").replace(" SB ", " ")
+                    line.strip().replace(" <= WB", "").replace(" <= SB", "")
                 )  # strip to remove leading/trailing whitespace
                 splititem = match.split()
                 tab_separated_line = "\t".join(splititem)
                 file_li.append(tab_separated_line)
     if stab:
         header = "\t".join(STAB_PAN_HEADER) + "\n"
-    elif netmhc3:
-        header = "\t".join(NETMHC3_HEADER) + "\n"
     else:
         header = "\t".join(PAN_HEADER) + "\n"
     with open(outfilename, "w") as file:
@@ -74,26 +71,27 @@ def netMHCpan_out_reformat(netMHCpanoutput, mut, stab, netmhc3, prefix):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Process input files and parameters")
-    parser.add_argument("--netMHCpan_output", required=True, help="Path to netMHC output")
+    parser.add_argument(
+        "--netMHCpan_output", required=True, help="Path to netMHC output"
+    )
     parser.add_argument("--type_MUT", action="store_true", help="Output is a MUT type")
     parser.add_argument(
         "--from_STAB",
         action="store_true",
         help="Output is from netmhcstab",
     )
-    parser.add_argument(
-        "--from_NETMHC3",
-        action="store_true",
-        help="Output is from the older netmhc version 3.4",
-    )
     parser.add_argument("--id", required=True, help="Prefix to label the output")
-    parser.add_argument("-v", "--version", action="version", version="%(prog)s {}".format(VERSION))
+    parser.add_argument(
+        "-v", "--version", action="version", version="%(prog)s {}".format(VERSION)
+    )
 
     return parser.parse_args()
 
 
 def main(args):
-    netMHCpan_out_reformat(args.netMHCpan_output, args.type_MUT, args.from_STAB, args.from_NETMHC3, args.id)
+    netMHCpan_out_reformat(
+        args.netMHCpan_output, args.type_MUT, args.from_STAB, args.id
+    )
 
 
 if __name__ == "__main__":
