@@ -37,6 +37,8 @@ workflow NEOANTIGENPIPELINE {
 
     ch_cds_and_cdna = Channel.value([file(params.cds), file(params.cdna)])
 
+    ch_sv_empty = Channel.value(meta,[])
+
     ch_samplesheet.map {
             meta, maf, facets_hisens_cncf, hla_file ->
                 [meta, maf, hla_file]
@@ -57,7 +59,7 @@ workflow NEOANTIGENPIPELINE {
 
     ch_versions = ch_versions.mix(PHYLOWGS.out.versions)
 
-    NETMHCSTABANDPAN(netMHCpan_input_ch,ch_cds_and_cdna,[])
+    NETMHCSTABANDPAN(netMHCpan_input_ch,ch_cds_and_cdna,ch_sv_empty)
 
     ch_versions = ch_versions.mix(NETMHCSTABANDPAN.out.versions)
 
