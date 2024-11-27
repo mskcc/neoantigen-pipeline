@@ -57,7 +57,7 @@ workflow NEOANTIGENPIPELINE {
 
     ch_versions = ch_versions.mix(PHYLOWGS.out.versions)
 
-    NETMHCSTABANDPAN(netMHCpan_input_ch,ch_cds_and_cdna)
+    NETMHCSTABANDPAN(netMHCpan_input_ch,ch_cds_and_cdna,[])
 
     ch_versions = ch_versions.mix(NETMHCSTABANDPAN.out.versions)
 
