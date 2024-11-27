@@ -37,8 +37,6 @@ workflow NEOANTIGENPIPELINE {
 
     ch_cds_and_cdna = Channel.value([file(params.cds), file(params.cdna)])
 
-    ch_sv_empty = Channel.value(meta,[])
-
     ch_samplesheet.map {
             meta, maf, facets_hisens_cncf, hla_file ->
                 [meta, maf, hla_file]
@@ -53,6 +51,13 @@ workflow NEOANTIGENPIPELINE {
 
         }
         .set { phylowgs_input_ch }
+
+    ch_samplesheet.map {
+            meta, maf, facets_hisens_cncf, hla_file ->
+                [meta, []]
+
+        }
+        .set { ch_sv_empty }
 
     // phylowgs workflow
     PHYLOWGS(phylowgs_input_ch)
