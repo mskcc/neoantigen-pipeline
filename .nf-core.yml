@@ -16,9 +16,7 @@ lint:
     - .github/ISSUE_TEMPLATE/bug_report.yml
   multiqc_config:
     - report_comment
-  nextflow_config:
-    - manifest.name
-    - manifest.homePage
+  nextflow_config: false
 repository_type: pipeline
 template:
   prefix: mskcc
