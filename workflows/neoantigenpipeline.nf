@@ -81,7 +81,7 @@ workflow NEOANTIGENPIPELINE {
 
     merged_netMHC_input = merged
             .map{
-                new Tuple(it[0], it[1], it[2])
+                new Tuple(it[0], it[1], [], it[2])
             }
     merged_phylo_output = merged
         .map{
@@ -89,7 +89,7 @@ workflow NEOANTIGENPIPELINE {
         }
     merged_netmhc_tsv = merged
         .map{
-            new Tuple(it[0], it[6], [], it[7])
+            new Tuple(it[0], it[6], it[7])
         }
 
     NEOANTIGENUTILS_NEOANTIGENINPUT(merged_netMHC_input,merged_phylo_output,merged_netmhc_tsv)
