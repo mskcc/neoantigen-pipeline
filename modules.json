@@ -36,8 +36,8 @@
                         "installed_by": ["modules", "netmhcstabandpan"]
                     },
                     "neoantigenutils/neoantigeninput": {
-                        "branch": "main",
-                        "git_sha": "d66d3e2c7d132efe8bbde0c7e8a072b0f974b085",
+                        "branch": "develop",
+                        "git_sha": "003587a171d6cfa80bc894950d212add9f206f88",
                         "installed_by": ["modules"]
                     },
                     "netmhc3": {
