@@ -54,7 +54,7 @@ workflow NEOANTIGENPIPELINE {
 
     ch_samplesheet.map {
             meta, maf, facets_hisens_cncf, hla_file ->
-                [meta, []]
+                [meta, [], []]
 
         }
         .set { ch_sv_empty }
