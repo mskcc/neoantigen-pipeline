@@ -169,7 +169,7 @@ nextflow_workflow {
             params {
                 monochrome_logs = true
                 test_data       = ''
-                outdir          = false
+                outdir          = 1
             }
             workflow {
                 """
