@@ -46,6 +46,10 @@ indent_size = unset
 indent_style = unset
 trim_trailing_whitespace = unset
 
+[/docs/usage.md]
+indent_style = unset
+trim_trailing_whitespace = unset
+
 # ignore python
 [*.{py,md}]
 indent_style = unset
