@@ -1,4 +1,4 @@
-process NETMHC {
+process NETMHC3 {
     tag "$meta.id"
     label 'process_medium'
 
@@ -8,12 +8,12 @@ process NETMHC {
         'docker.io/mskcc/netmhctools:1.1.0' }"
 
     input:
-    tuple val(meta),  path(inputFasta), val(hlaString), val(inputType)
+    tuple val(meta),  path(inputFasta), path(inputSVFasta, arity: '0..*'), val(hlaString), val(inputType)
 
     output:
     tuple val(output_meta),       path("*.xls"),               emit: xls
-    tuple val(output_meta),       path("*.netmhcpan.output"),  emit: netmhcpanoutput
-    tuple val(output_meta),       path("hla_*.txt"),           emit: netmhc_hla_files
+    tuple val(output_meta),       path("*.netmhc.output"),     emit: netmhcoutput
+    tuple val(output_meta),       path("*.hla_*.txt"),         emit: netmhc_hla_files
     path "versions.yml",                                       emit: versions
 
     when:
@@ -26,21 +26,33 @@ process NETMHC {
     output_meta = meta.clone()
     output_meta.typeMut = inputType == "MUT" ? true : false
     output_meta.fromStab = false
-    def NETMHCPAN_VERSION = "3.4"
+    output_meta.typePan = false
+    def NETMHC_VERSION = "3.4"
+    def tmpDir = "netmhc-tmp"
+    def tmpDirFullPath = "\$PWD/${tmpDir}/"  // must set full path to tmp directories for netMHC and netMHCpan to work; for some reason doesn't work with /scratch, so putting them in the process workspace
 
     """
+    export TMPDIR=${tmpDirFullPath}
+    mkdir -p ${tmpDir}
+    chmod 777 ${tmpDir}
+
     HLA_ACCEPTED=\$(trim_hla.py --hla ${hla})
+
+    cat ${inputSVFasta} >> ${inputFasta}
 
     /usr/local/bin/netMHC-3.4/netMHC \
     -a \$HLA_ACCEPTED \
     -s \
     -l 9 \
     --xls=${prefix}.${inputType}.xls \
-    ${inputFasta} > ${prefix}.${inputType}.netmhcpan.output
+    ${inputFasta} > ${prefix}.${inputType}.netmhc.output
+
+    mv hla_accepted.txt ${prefix}.hla_accepted.txt
+    mv hla_rejected.txt ${prefix}.hla_rejected.txt
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        netmhcpan: v${NETMHCPAN_VERSION}
+        netmhc: v${NETMHC_VERSION}
     END_VERSIONS
 
     """
@@ -48,17 +60,20 @@ process NETMHC {
     stub:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def NETMHCPAN_VERSION = "4.1"
+    def NETMHC_VERSION = "3.4"
     output_meta = meta.clone()
     output_meta.typeMut = inputType == "MUT" ? true : false
     output_meta.fromStab = false
+    output_meta.typePan = false
     """
-    touch ${prefix}.MUT.netmhcpan.output
+    touch ${prefix}.MUT.netmhc.output
     touch ${prefix}.MUT.xls
+    touch ${prefix}.hla_accepted.txt
+    touch ${prefix}.hla_rejected.txt
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        netmhcpan: v${NETMHCPAN_VERSION}
+        netmhc: v${NETMHC_VERSION}
     END_VERSIONS
     """
 }

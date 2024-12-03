@@ -1,4 +1,4 @@
-nf_core_version: 2.14.1
+bump_version: null
 lint:
   files_exist:
     - CODE_OF_CONDUCT.md
@@ -16,10 +16,18 @@ lint:
     - .github/ISSUE_TEMPLATE/bug_report.yml
   multiqc_config:
     - report_comment
-  nextflow_config:
-    - manifest.name
-    - manifest.homePage
+  nextflow_config: false
+nf_core_version: 3.0.2
+org_path: msk
 repository_type: pipeline
 template:
-  prefix: mskcc
-  skip: []
+  author: Nikhil Kumar
+  description: Pipeline for computing neoantigen qualities from DNA and RNA-Seq data
+  force: false
+  is_nfcore: false
+  name: neoantigenpipeline
+  org: mskcc
+  outdir: .
+  skip_features: []
+  version: 1.0.0
+update: null

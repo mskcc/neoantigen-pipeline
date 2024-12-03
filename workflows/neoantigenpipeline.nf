@@ -3,8 +3,7 @@
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-
-include { paramsSummaryMap       } from 'plugin/nf-validation'
+include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
@@ -52,12 +51,19 @@ workflow NEOANTIGENPIPELINE {
         }
         .set { phylowgs_input_ch }
 
+    ch_samplesheet.map {
+            meta, maf, facets_hisens_cncf, hla_file ->
+                [meta, [], []]
+
+        }
+        .set { ch_sv_empty }
+
     // phylowgs workflow
     PHYLOWGS(phylowgs_input_ch)
 
     ch_versions = ch_versions.mix(PHYLOWGS.out.versions)
 
-    NETMHCSTABANDPAN(netMHCpan_input_ch,ch_cds_and_cdna)
+    NETMHCSTABANDPAN(netMHCpan_input_ch,ch_cds_and_cdna,ch_sv_empty)
 
     ch_versions = ch_versions.mix(NETMHCSTABANDPAN.out.versions)
 
@@ -74,7 +80,7 @@ workflow NEOANTIGENPIPELINE {
 
     merged_netMHC_input = merged
             .map{
-                new Tuple(it[0], it[1], it[2])
+                new Tuple(it[0], it[1], [], it[2])
             }
     merged_phylo_output = merged
         .map{
@@ -101,8 +107,13 @@ workflow NEOANTIGENPIPELINE {
     // Collate and save software versions
     //
     softwareVersionsToYAML(ch_versions)
-        .collectFile(storeDir: "${params.outdir}/pipeline_info", name: 'nf_core_pipeline_software_mqc_versions.yml', sort: true, newLine: true)
-        .set { ch_collated_versions }
+        .collectFile(
+            storeDir: "${params.outdir}/pipeline_info",
+            name:  ''  + 'pipeline_software_' +  'mqc_'  + 'versions.yml',
+            sort: true,
+            newLine: true
+        ).set { ch_collated_versions }
+
 
 
 
