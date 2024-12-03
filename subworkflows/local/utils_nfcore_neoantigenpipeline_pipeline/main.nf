@@ -71,8 +71,9 @@ workflow PIPELINE_INITIALISATION {
     //
     // Create channel from input file provided through params.input
     //
+
     Channel
-        .fromSamplesheet("input")
+        .fromList(samplesheetToList(params.input, "${projectDir}/assets/schema_input.json"))
         .map {
             meta, maf, facets_gene, hla_file ->
                 [meta, maf, facets_gene, hla_file]
