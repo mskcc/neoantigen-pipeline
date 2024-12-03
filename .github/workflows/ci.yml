@@ -28,11 +28,7 @@ jobs:
     strategy:
       matrix:
         NXF_VER:
-<<<<<<< HEAD
           - "23.10.0"
-=======
-          - "24.04.2"
->>>>>>> TEMPLATE
           - "latest-everything"
         profile:
           - "conda"
