@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://raw.githubusercontent.com/mskcc/neoantigenpipeline/master/assets/schema_input.json",
     "title": "mskcc/neoantigenpipeline pipeline - params.input schema",
     "description": "Schema for the file provided with params.input",
@@ -31,7 +31,7 @@
                 "type": "string",
                 "format": "file-path",
                 "exists": true,
-                "pattern": "winners.hla.txt$",
+                "pattern": "^\\S+.txt$",
                 "errorMessage": "HLA_file output by polysolver."
             }
         },

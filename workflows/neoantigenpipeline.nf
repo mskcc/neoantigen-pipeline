@@ -3,8 +3,7 @@
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-
-include { paramsSummaryMap       } from 'plugin/nf-validation'
+include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
@@ -17,6 +16,7 @@ include { NETMHCSTABANDPAN } from '../subworkflows/msk/netmhcstabandpan/main'
 include { NETMHCPAN } from '../modules/msk/netmhcpan/main'
 include { NEOANTIGENUTILS_NEOANTIGENINPUT } from '../modules/msk/neoantigenutils/neoantigeninput'
 include { NEOANTIGEN_EDITING } from '../subworkflows/msk/neoantigen_editing'
+include { NEOANTIGENUTILS_CONVERTANNOTJSON } from '../modules/msk/neoantigenutils/convertannotjson'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -51,12 +51,19 @@ workflow NEOANTIGENPIPELINE {
         }
         .set { phylowgs_input_ch }
 
+    ch_samplesheet.map {
+            meta, maf, facets_hisens_cncf, hla_file ->
+                [meta, [], []]
+
+        }
+        .set { ch_sv_empty }
+
     // phylowgs workflow
     PHYLOWGS(phylowgs_input_ch)
 
     ch_versions = ch_versions.mix(PHYLOWGS.out.versions)
 
-    NETMHCSTABANDPAN(netMHCpan_input_ch,ch_cds_and_cdna)
+    NETMHCSTABANDPAN(netMHCpan_input_ch,ch_cds_and_cdna,ch_sv_empty)
 
     ch_versions = ch_versions.mix(NETMHCSTABANDPAN.out.versions)
 
@@ -73,7 +80,7 @@ workflow NEOANTIGENPIPELINE {
 
     merged_netMHC_input = merged
             .map{
-                new Tuple(it[0], it[1], it[2])
+                new Tuple(it[0], it[1], [], it[2])
             }
     merged_phylo_output = merged
         .map{
@@ -92,18 +99,28 @@ workflow NEOANTIGENPIPELINE {
 
     ch_versions = ch_versions.mix(NEOANTIGEN_EDITING.out.versions)
 
+    NEOANTIGENUTILS_CONVERTANNOTJSON(NEOANTIGEN_EDITING.out.annotated_output)
+
+    ch_versions = ch_versions.mix(NEOANTIGENUTILS_CONVERTANNOTJSON.out.versions)
+
     //
     // Collate and save software versions
     //
     softwareVersionsToYAML(ch_versions)
-        .collectFile(storeDir: "${params.outdir}/pipeline_info", name: 'nf_core_pipeline_software_mqc_versions.yml', sort: true, newLine: true)
-        .set { ch_collated_versions }
+        .collectFile(
+            storeDir: "${params.outdir}/pipeline_info",
+            name:  ''  + 'pipeline_software_' +  'mqc_'  + 'versions.yml',
+            sort: true,
+            newLine: true
+        ).set { ch_collated_versions }
+
 
 
 
     emit:
     versions         = ch_versions                 // channel: [ path(versions.yml) ]
     neo_out          = NEOANTIGEN_EDITING.out.annotated_output
+    tsv_out          = NEOANTIGENUTILS_CONVERTANNOTJSON.out.neoantigenTSV
 }
 
 def merge_for_input_generation(netMHCpan_input_ch, summ_ch, muts_ch, mutass_ch, netmhcpan_mut_tsv_ch, netmhcpan_wt_tsv_ch ) {
