@@ -53,3 +53,7 @@ trim_trailing_whitespace = unset
 # ignore python
 [*.{py,md}]
 indent_style = unset
+
+# ignore ro-crate metadata files
+[**/ro-crate-metadata.json]
+insert_final_newline = unset
