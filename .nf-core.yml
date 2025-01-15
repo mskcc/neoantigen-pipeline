@@ -18,7 +18,6 @@ lint:
   multiqc_config:
     - report_comment
   nextflow_config: false
-  included_configs: false
 nf_core_version: 3.0.2
 org_path: msk
 repository_type: pipeline
