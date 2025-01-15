@@ -14,11 +14,12 @@ lint:
     - docs/images/nf-core-neoantigenpipeline_logo_light.png
     - docs/images/nf-core-neoantigenpipeline_logo_dark.png
     - .github/ISSUE_TEMPLATE/bug_report.yml
+  included_configs: false
   multiqc_config:
     - report_comment
   nextflow_config: false
 nf_core_version: 3.0.2
-org_path: null
+org_path: msk
 repository_type: pipeline
 template:
   author: Nikhil Kumar
