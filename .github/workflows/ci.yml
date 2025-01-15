@@ -32,7 +32,6 @@ jobs:
           - "latest-everything"
         profile:
           - "docker"
-          - "singularity"
         test_name:
           - "test"
         isMaster:
