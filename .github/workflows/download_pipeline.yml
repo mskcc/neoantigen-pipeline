@@ -81,7 +81,8 @@ jobs:
           --compress "none" \
           --container-system 'singularity' \
           --container-library "quay.io" -l "docker.io" -l "community.wave.seqera.io/library/" \
-          --container-cache-utilisation 'amend'
+          --container-cache-utilisation 'amend' \
+          --download-configuration 'yes'
 
       - name: Inspect download
         run: tree ./${{ needs.configure.outputs.REPOTITLE_LOWERCASE }}
