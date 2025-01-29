@@ -1,4 +1,3 @@
-bump_version: null
 lint:
   files_exist:
     - CODE_OF_CONDUCT.md
@@ -14,12 +13,13 @@ lint:
     - docs/images/nf-core-neoantigenpipeline_logo_light.png
     - docs/images/nf-core-neoantigenpipeline_logo_dark.png
     - .github/ISSUE_TEMPLATE/bug_report.yml
+    - .github/workflows/download_pipeline.yml
+    - .prettierignore
+  included_configs: false
   multiqc_config:
     - report_comment
   nextflow_config: false
-  included_configs: false
-nf_core_version: 3.0.2
-org_path: msk
+nf_core_version: 3.1.2
 repository_type: pipeline
 template:
   author: Nikhil Kumar
@@ -31,4 +31,3 @@ template:
   outdir: .
   skip_features: []
   version: 1.0.0
-update: null

@@ -17,6 +17,8 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 3. Use [netMHCpanStab](https://services.healthtech.dtu.dk/services/NetMHCstabpan-1.0/) to calculate stability scores
 4. Use Luksza et al.'s neoantigen quality and fitness computations tool ([NeoantigenEditing](https://github.com/LukszaLab/NeoantigenEditing)) to evaluate peptides
 
+Additionally, we provide pipeline information with report metrics generated during the workflow execution
+
 ### PhyloWGS
 
 <details markdown="1">
