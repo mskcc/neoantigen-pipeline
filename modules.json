@@ -37,7 +37,7 @@
                     },
                     "neoantigenutils/neoantigeninput": {
                         "branch": "develop",
-                        "git_sha": "003587a171d6cfa80bc894950d212add9f206f88",
+                        "git_sha": "ba014f40a3aaccd6a78db44f62d697b77a790eb8",
                         "installed_by": ["modules"]
                     },
                     "netmhc3": {
@@ -107,7 +107,7 @@
                 "nf-core": {
                     "multiqc": {
                         "branch": "master",
-                        "git_sha": "f80914f78fb7fa1c00b14cfeb29575ee12240d9c",
+                        "git_sha": "81880787133db07d9b4c1febd152c090eb8325dc",
                         "installed_by": ["modules"]
                     }
                 }
