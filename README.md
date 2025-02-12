@@ -36,7 +36,6 @@ sample,maf,facets_hisens_cncf,hla_file
 tumor_normal,temp_test_somatic_unfiltered.maf,facets_hisens.cncf.txt,winners.hla.txt
 tumor_normal2,temp_test_somatic_unfiltered.maf,facets_hisens.cncf.txt,winners.hla.txt
 ```
--->
 
 Now, you can run the pipeline using:
 
