@@ -45,11 +45,6 @@
                         "git_sha": "0ccb264740ff8fe681f0e298133e52e51bf68994",
                         "installed_by": ["modules", "netmhcstabandpan"]
                     },
-                    "netmhcpan": {
-                        "branch": "main",
-                        "git_sha": "503abeb67260f060d8228221b07d743aa4180345",
-                        "installed_by": ["modules"]
-                    },
                     "netmhcpan4": {
                         "branch": "develop",
                         "git_sha": "9e23d0e98023dec8b7a9b0faa20eea2f1f9cee3f",
