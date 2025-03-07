@@ -37,7 +37,7 @@
                     },
                     "neoantigenutils/neoantigeninput": {
                         "branch": "develop",
-                        "git_sha": "e8ae6eb203cb5a49f98cacd4734090c182ad5f44",
+                        "git_sha": "8b8e8d28b628b6244f4539cc405f2561fd733967",
                         "installed_by": ["modules"]
                     },
                     "netmhc3": {
