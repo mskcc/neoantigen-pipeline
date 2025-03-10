@@ -13,7 +13,6 @@ include { PHYLOWGS_PARSECNVS } from '../modules/msk/phylowgs/parsecnvs/main'
 include { PHYLOWGS_WRITERESULTS } from '../modules/msk/phylowgs/writeresults/main'
 include { PHYLOWGS } from '../subworkflows/msk/phylowgs'
 include { NETMHCSTABANDPAN } from '../subworkflows/msk/netmhcstabandpan/main'
-include { NETMHCPAN } from '../modules/msk/netmhcpan/main'
 include { NEOANTIGENUTILS_NEOANTIGENINPUT } from '../modules/msk/neoantigenutils/neoantigeninput'
 include { NEOANTIGEN_EDITING } from '../subworkflows/msk/neoantigen_editing'
 include { NEOANTIGENUTILS_CONVERTANNOTJSON } from '../modules/msk/neoantigenutils/convertannotjson'
@@ -35,6 +34,8 @@ workflow NEOANTIGENPIPELINE {
     ch_versions = Channel.empty()
 
     ch_cds_and_cdna = Channel.value([file(params.cds), file(params.cdna)])
+
+    ch_gtf_and_cdna = Channel.value([file(params.gtf), file(params.cdna)])
 
     ch_samplesheet.map {
             meta, maf, facets_hisens_cncf, hla_file ->
@@ -91,7 +92,7 @@ workflow NEOANTIGENPIPELINE {
             new Tuple(it[0], it[6], it[7])
         }
 
-    NEOANTIGENUTILS_NEOANTIGENINPUT(merged_netMHC_input,merged_phylo_output,merged_netmhc_tsv)
+    NEOANTIGENUTILS_NEOANTIGENINPUT(merged_netMHC_input,merged_phylo_output,merged_netmhc_tsv,ch_gtf_and_cdna)
 
     ch_versions = ch_versions.mix(NEOANTIGENUTILS_NEOANTIGENINPUT.out.versions)
 
