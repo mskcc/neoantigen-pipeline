@@ -3,8 +3,8 @@ process PHYLOWGS_PARSECNVS {
     label 'process_low'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://mskcc/phylowgs:v1.5-msk':
-        'docker.io/mskcc/phylowgs:v1.5-msk' }"
+        'docker://ghcr.io/mskcc/neoantigen-pipeline/phylowgs:v1.5-msk':
+        'ghcr.io/mskcc/neoantigen-pipeline/phylowgs:v1.5-msk' }"
 
     input:
     tuple val(meta), path(facetsgenelevel)

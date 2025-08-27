@@ -3,8 +3,8 @@ process PHYLOWGS_WRITERESULTS {
     label 'process_medium'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://mskcc/phylowgs:v1.5-msk':
-        'docker.io/mskcc/phylowgs:v1.5-msk' }"
+        'docker://ghcr.io/mskcc/neoantigen-pipeline/phylowgs:v1.5-msk':
+        'ghcr.io/mskcc/neoantigen-pipeline/phylowgs:v1.5-msk' }"
 
     input:
     tuple val(meta), path(trees)
@@ -24,7 +24,7 @@ process PHYLOWGS_WRITERESULTS {
 
     """
     python2 \\
-        /usr/bin/write_results.py \\
+        /usr/bin/phylowgs/write_results.py \\
         ${args} \\
         --include-ssm-names \\
         ${prefix} \\
