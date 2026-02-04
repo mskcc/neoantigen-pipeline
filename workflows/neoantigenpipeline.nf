@@ -16,6 +16,7 @@ include { NETMHCSTABANDPAN } from '../subworkflows/msk/netmhcstabandpan/main'
 include { NEOANTIGENUTILS_NEOANTIGENINPUT } from '../modules/msk/neoantigenutils/neoantigeninput'
 include { NEOANTIGEN_EDITING } from '../subworkflows/msk/neoantigen_editing'
 include { NEOANTIGENUTILS_CONVERTANNOTJSON } from '../modules/msk/neoantigenutils/convertannotjson'
+include { PHYLOWGS_STUB } from '../modules/local/phylowgs_stub'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,10 +60,20 @@ workflow NEOANTIGENPIPELINE {
         }
         .set { ch_sv_empty }
 
-    // phylowgs workflow
-    PHYLOWGS(phylowgs_input_ch)
-
-    ch_versions = ch_versions.mix(PHYLOWGS.out.versions)
+    // phylowgs workflow (optional)
+    if ( params.run_phylowgs ) {
+        PHYLOWGS(phylowgs_input_ch)
+        ch_versions = ch_versions.mix(PHYLOWGS.out.versions)
+        phylowgs_summ   = PHYLOWGS.out.summ
+        phylowgs_muts   = PHYLOWGS.out.muts
+        phylowgs_mutass = PHYLOWGS.out.mutass
+    } else {
+        PHYLOWGS_STUB(phylowgs_input_ch)
+        ch_versions = ch_versions.mix(PHYLOWGS_STUB.out.versions)
+        phylowgs_summ   = PHYLOWGS_STUB.out.summ
+        phylowgs_muts   = PHYLOWGS_STUB.out.muts
+        phylowgs_mutass = PHYLOWGS_STUB.out.mutass
+    }
 
     NETMHCSTABANDPAN(netMHCpan_input_ch,ch_cds_and_cdna,ch_sv_empty)
 
@@ -77,7 +88,7 @@ workflow NEOANTIGENPIPELINE {
     stabnetMHCpanWT = NETMHCSTABANDPAN.out.tsv
                         .filter{ it[0].typeMut == false && it[0].fromStab == true }
 
-    merged = merge_for_input_generation(netMHCpan_input_ch, PHYLOWGS.out.summ, PHYLOWGS.out.muts, PHYLOWGS.out.mutass, netMHCpanMut, netMHCpanWT)
+    merged = merge_for_input_generation(netMHCpan_input_ch, phylowgs_summ, phylowgs_muts, phylowgs_mutass, netMHCpanMut, netMHCpanWT)
 
     merged_netMHC_input = merged
             .map{

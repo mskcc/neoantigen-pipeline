@@ -12,7 +12,7 @@
                     },
                     "neoantigenediting/computefitness": {
                         "branch": "develop",
-                        "git_sha": "6aee6083154c666798e779c0aeb305614f4dcdd3",
+                        "git_sha": "4ab15a02919a5e24dbe0c74e36f6293e3d87ffee",
                         "installed_by": ["modules", "neoantigen_editing"]
                     },
                     "neoantigenutils/convertannotjson": {
