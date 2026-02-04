@@ -130,6 +130,21 @@
                 }
             }
         },
+        "pipeline_options": {
+            "title": "Pipeline options",
+            "type": "object",
+            "fa_icon": "fas fa-cogs",
+            "description": "Options to control pipeline behavior.",
+            "properties": {
+                "run_phylowgs": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Run PhyloWGS for tumor phylogeny inference.",
+                    "help_text": "Set to false to skip PhyloWGS and use stub outputs. When skipped, sample_trees will be empty and Effective_N will be 0.",
+                    "fa_icon": "fas fa-sitemap"
+                }
+            }
+        },
         "generic_options": {
             "title": "Generic options",
             "type": "object",
@@ -241,6 +256,9 @@
         },
         {
             "$ref": "#/$defs/reference_genome_options"
+        },
+        {
+            "$ref": "#/$defs/pipeline_options"
         },
         {
             "$ref": "#/$defs/institutional_config_options"
