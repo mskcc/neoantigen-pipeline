@@ -7,8 +7,6 @@
 ----------------------------------------------------------------------------------------
 */
 
-nextflow.enable.dsl = 2
-
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     IMPORT FUNCTIONS / MODULES / SUBWORKFLOWS / WORKFLOWS
@@ -18,7 +16,6 @@ nextflow.enable.dsl = 2
 include { NEOANTIGENPIPELINE  } from './workflows/neoantigenpipeline'
 include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
 include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
-
 include { getGenomeAttribute      } from './subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
 
 /*
@@ -54,10 +51,8 @@ workflow MSKCC_NEOANTIGENPIPELINE {
     NEOANTIGENPIPELINE (
         samplesheet
     )
-
     emit:
     multiqc_report = NEOANTIGENPIPELINE.out.multiqc_report // channel: /path/to/multiqc_report.html
-
 }
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,18 +63,19 @@ workflow MSKCC_NEOANTIGENPIPELINE {
 workflow {
 
     main:
-
     //
     // SUBWORKFLOW: Run initialisation tasks
     //
     PIPELINE_INITIALISATION (
         params.version,
-        params.help,
         params.validate_params,
         params.monochrome_logs,
         args,
         params.outdir,
-        params.input
+        params.input,
+        params.help,
+        params.help_full,
+        params.show_hidden
     )
 
     //
@@ -88,7 +84,6 @@ workflow {
     MSKCC_NEOANTIGENPIPELINE (
         PIPELINE_INITIALISATION.out.samplesheet
     )
-
     //
     // SUBWORKFLOW: Run completion tasks
     //
