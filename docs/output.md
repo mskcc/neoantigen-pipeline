@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document describes the output produced by the neoantigen pipeline.
+This document describes the output produced by the pipeline. Most of the plots are taken from the MultiQC report, which summarises results at the end of the pipeline.
 
 The directories listed below will be created in the results directory after the pipeline has finished. All paths are relative to the top-level results directory.
 
@@ -12,97 +12,38 @@ The directories listed below will be created in the results directory after the 
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
-1. Create phylogenetic trees using [PhyloWGS](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0602-8)
-2. Use [netMHCpan-4](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/) to calculate binding affinities
-3. Use [netMHCpanStab](https://services.healthtech.dtu.dk/services/NetMHCstabpan-1.0/) to calculate stability scores
-4. Use Luksza et al.'s neoantigen quality and fitness computations tool ([NeoantigenEditing](https://github.com/LukszaLab/NeoantigenEditing)) to evaluate peptides
+- [FastQC](#fastqc) - Raw read QC
+- [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
+- [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
-Additionally, we provide pipeline information with report metrics generated during the workflow execution
-
-### PhyloWGS
+### FastQC
 
 <details markdown="1">
 <summary>Output files</summary>
 
-- `phylowgs/`
-  - `*_.summ.json.gz`: Output file for JSON-formatted tree summaries
-  - `*.muts.json.gz`: Output file for JSON-formatted list of mutations
-  - `*.muts.json.gz`: Output file for JSON-formatted list of mutations
-  - `*.muts.json.gz`: Output zipped folder for JSON-formatted list of SSMs and CNVs
+- `fastqc/`
+  - `*_fastqc.html`: FastQC report containing quality metrics.
+  - `*_fastqc.zip`: Zip archive containing the FastQC report, tab-delimited data file and plot images.
 
 </details>
 
-### netMHCpan
+[FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) gives general quality metrics about your sequenced reads. It provides information about the quality score distribution across your reads, per base sequence content (%A/T/G/C), adapter contamination and overrepresented sequences. For further reading and documentation see the [FastQC help pages](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/).
+
+### MultiQC
 
 <details markdown="1">
 <summary>Output files</summary>
 
-- `netmhcpan/`
-  - `*.xls`: TSV/XLS file of netMHCpan. This contains the MUT or WT antigens
-  - `*.WT.netmhcpan.output,*.MUT.netmhcpan.output`: STDOUT file of netMHCpan. A uniquely formated file of neoantigens. This contains either the MUT or WT neoantigens. Neoantigenutils contains a parser for this file.
+- `multiqc/`
+  - `multiqc_report.html`: a standalone HTML file that can be viewed in your web browser.
+  - `multiqc_data/`: directory containing parsed statistics from the different tools used in the pipeline.
+  - `multiqc_plots/`: directory containing static images from the report in various formats.
 
 </details>
 
-### netMHCstabpan
+[MultiQC](http://multiqc.info) is a visualization tool that generates a single HTML report summarising all samples in your project. Most of the pipeline QC results are visualised in the report and further statistics are available in the report data directory.
 
-<details markdown="1">
-<summary>Output files</summary>
-
-- `netmhcstabpan/`
-  - `*.xls`: TSV/XLS file of netMHCpan. This contains the MUT or WT antigens
-  - `*.WT.netmhcpan.output,*.MUT.netmhcpan.output`: STDOUT file of netMHCpan. A uniquely formated file of neoantigens. This contains either the MUT or WT neoantigens. Neoantigenutils contains a parser for this file.
-
-</details>
-
-### Neoantigen Ediitng Final Output
-
-<details markdown="1">
-<summary>Output files</summary>
-
-- `neoantigenediting/`
-
-  - `*._annotated.json`: The final output of the pipeline. This file is an annotated version of the tree output from phyloWGS with an extra property titled 'neoantigens'. Each entry in 'neoantigens' is a property with properties describing the neoantigen. These neoantigen properities are described below
-
-    "id": "XSYI_MG_M_9_C1203_11",
-
-    "mutation_id": "X_72667534_C_G",
-
-    "HLA_gene_id": "HLA-C\*12:03",
-
-    "sequence": "ASRSRHSPY",
-
-    "WT_sequence": "PSRSRHSPY",
-
-    "mutated_position": 1,
-
-    "Kd": 192.03,
-
-    "KdWT": 4582.17,
-
-    "R": 0.8911371281207195,
-
-    "logC": 2.263955023939215,
-
-    "logA": 3.1722763542054815,
-
-    "quality": 2.645601185190205
-
-  The above is an example output from a run. Each neoantigenic mutation will have an output like this.
-
-  - id: This is a unique id that combines an id created from the mutation, HLA allele, and window.
-  - mutation_id : ID containing the chromosome, position, ref and alt allele. I and D denote insertions and deletions respectively.
-  - HLA_gene_id : The HLA gene this neoantigen binds to
-  - sequence : Mutated sequence
-  - WT_sequence : The wild type sequence
-  - mutated_position : The position of the first difference
-  - Kd: Binding affinity in nM from netMHCpan for the mutated peptide
-  - kdWT : Binding affinity in nM from netMHCpan for the wild type peptide
-  - R : Similarity of mutated peptide to IEDB peptides
-  - logC : the log of the cross-reactivity
-  - logA : Log of the amplitude. This is a function of kd/kdWT and a constant
-  - quality: The final output of the pipeline and neoantigen editing. A higher quality is a better neoantigen. This is decribed in the Luksza et al. paper and is visualized below
-
-</details>
+Results generated by MultiQC collate pipeline QC from supported tools e.g. FastQC. The pipeline has special steps which also allow the software versions to be reported in the MultiQC output for future traceability. For more information about how to use MultiQC reports, see <http://multiqc.info>.
 
 ### Pipeline information
 
