@@ -130,6 +130,83 @@
                 }
             }
         },
+        "pipeline_options": {
+            "title": "Pipeline options",
+            "type": "object",
+            "fa_icon": "fas fa-cogs",
+            "description": "Parameters controlling neoantigen pipeline behavior.",
+            "properties": {
+                "phylo_burnin_samples": {
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "Number of burn-in samples for PhyloWGS MCMC.",
+                    "fa_icon": "fas fa-fire"
+                },
+                "phylo_mcmc_samples": {
+                    "type": "integer",
+                    "default": 2500,
+                    "description": "Number of MCMC samples for PhyloWGS.",
+                    "fa_icon": "fas fa-random"
+                },
+                "phylo_num_chains": {
+                    "type": "integer",
+                    "default": 15,
+                    "description": "Number of MCMC chains for PhyloWGS.",
+                    "fa_icon": "fas fa-link"
+                },
+                "kd_cutoff": {
+                    "type": "number",
+                    "default": 500,
+                    "description": "Binding affinity cutoff in nM for neoantigen filtering.",
+                    "help_text": "Peptides with predicted binding affinity (Kd) above this threshold are excluded from neoantigen analysis.",
+                    "fa_icon": "fas fa-filter"
+                },
+                "netmhc3": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use netMHC 3-column output format.",
+                    "fa_icon": "fas fa-columns"
+                },
+                "compute_fitness_a": {
+                    "type": "number",
+                    "default": 22.897590714815188,
+                    "description": "Sigmoid shift parameter (a) for the R component of neoantigen quality.",
+                    "fa_icon": "fas fa-sliders-h"
+                },
+                "compute_fitness_k": {
+                    "type": "number",
+                    "default": 1,
+                    "description": "Sigmoid slope parameter (k) for the R component of neoantigen quality.",
+                    "fa_icon": "fas fa-sliders-h"
+                },
+                "compute_fitness_w": {
+                    "type": "number",
+                    "default": 0.22402192838740312,
+                    "description": "Weight parameter (w) balancing logC and logA in quality score.",
+                    "fa_icon": "fas fa-balance-scale"
+                },
+                "iedbfasta": {
+                    "type": "string",
+                    "description": "Path or URL to IEDB FASTA file for epitope alignment.",
+                    "fa_icon": "fas fa-file-alt"
+                },
+                "cds": {
+                    "type": "string",
+                    "description": "Path or URL to CDS FASTA file.",
+                    "fa_icon": "fas fa-dna"
+                },
+                "cdna": {
+                    "type": "string",
+                    "description": "Path or URL to cDNA FASTA file.",
+                    "fa_icon": "fas fa-dna"
+                },
+                "gtf": {
+                    "type": "string",
+                    "description": "Path or URL to GTF annotation file.",
+                    "fa_icon": "fas fa-file-code"
+                }
+            }
+        },
         "generic_options": {
             "title": "Generic options",
             "type": "object",
@@ -244,6 +321,9 @@
         },
         {
             "$ref": "#/$defs/institutional_config_options"
+        },
+        {
+            "$ref": "#/$defs/pipeline_options"
         },
         {
             "$ref": "#/$defs/generic_options"
