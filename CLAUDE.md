@@ -38,15 +38,18 @@ pre-commit run --all-files
 The main workflow is in `workflows/neoantigenpipeline.nf`. Data flows through four major stages:
 
 1. **PhyloWGS** — Reconstructs subclonal composition from MAF + Facets copy number data
+
    - `parsecnvs` → `createinput` → `multievolve` → `writeresults`
    - Outputs: summary JSON, mutations JSON, mutation assignments
 
 2. **netMHCstabandpan** — Predicts MHC peptide binding (subworkflow combines two tools)
+
    - Generates mutant FASTA from MAF + CDS/cDNA references
    - Runs netMHCpan-4.1 for binding affinity (Kd) and netMHCstabpan for stability
    - Produces MUT and WT predictions, filtered by `meta.typeMut` and `meta.fromStab` flags
 
 3. **NeoantigenInput** — Merges PhyloWGS tree with netMHCpan results
+
    - `neoantigenutils/neoantigeninput` joins all channels by sample ID using `merge_for_input_generation()`
    - Applies `kd_cutoff` parameter to filter weak binders
 
@@ -80,12 +83,12 @@ The workflow uses a custom `merge_for_input_generation()` function that joins si
 
 ### Key Parameters
 
-| Parameter | Purpose |
-|-----------|---------|
-| `phylo_burnin_samples`, `phylo_mcmc_samples`, `phylo_num_chains` | PhyloWGS MCMC settings |
-| `kd_cutoff` | Binding affinity threshold (default: 500 nM) |
-| `compute_fitness_a`, `compute_fitness_k`, `compute_fitness_w` | Fitness model parameters |
-| `iedbfasta`, `cds`, `cdna`, `gtf` | Reference data URLs |
+| Parameter                                                        | Purpose                                      |
+| ---------------------------------------------------------------- | -------------------------------------------- |
+| `phylo_burnin_samples`, `phylo_mcmc_samples`, `phylo_num_chains` | PhyloWGS MCMC settings                       |
+| `kd_cutoff`                                                      | Binding affinity threshold (default: 500 nM) |
+| `compute_fitness_a`, `compute_fitness_k`, `compute_fitness_w`    | Fitness model parameters                     |
+| `iedbfasta`, `cds`, `cdna`, `gtf`                                | Reference data URLs                          |
 
 ### Input Samplesheet Format
 
