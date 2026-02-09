@@ -12,8 +12,7 @@ include { PHYLOWGS_MULTIEVOLVE } from '../modules/msk/phylowgs/multievolve/main'
 include { PHYLOWGS_PARSECNVS } from '../modules/msk/phylowgs/parsecnvs/main'
 include { PHYLOWGS_WRITERESULTS } from '../modules/msk/phylowgs/writeresults/main'
 include { PHYLOWGS } from '../subworkflows/msk/phylowgs'
-include { NEOANTIGENUTILS_GENERATEHLASTRING } from '../modules/msk/neoantigenutils/generatehlastring/main'
-include { NEOANTIGENUTILS_GENERATEMUTFASTA } from '../modules/msk/neoantigenutils/generatemutfasta/main'
+include { GENERATE_MUTATED_PEPTIDES } from '../subworkflows/msk/generate_mutated_peptides/main'
 include { NETMHCSTABANDPAN } from '../subworkflows/msk/netmhcstabandpan/main'
 include { NEOANTIGENUTILS_NEOANTIGENINPUT } from '../modules/msk/neoantigenutils/neoantigeninput'
 include { NEOANTIGEN_EDITING } from '../subworkflows/msk/neoantigen_editing'
@@ -36,9 +35,25 @@ workflow NEOANTIGENPIPELINE {
 
     ch_versions = Channel.empty()
 
-    ch_cds_and_cdna = Channel.value([file(params.cds), file(params.cdna)])
-
     ch_gtf_and_cdna = Channel.value([file(params.gtf), file(params.cdna)])
+
+    // Generate mutated peptides (MUTALYZER_RETRIEVER + GENERATEMUTFASTA + GENERATEHLASTRING + NEOSV)
+    ch_maf_hla_sv = ch_samplesheet.map { meta, maf, facets_hisens_cncf, hla_file ->
+        [meta, maf, hla_file, null]  // null sv = no structural variants
+    }
+
+    GENERATE_MUTATED_PEPTIDES(
+        ch_maf_hla_sv,
+        Channel.value(file(params.reference_fasta)),
+        Channel.value(file(params.reference_gff3)),
+        Channel.value(file(params.gtf)),
+        Channel.value(file(params.cdna))
+    )
+    ch_versions = ch_versions.mix(GENERATE_MUTATED_PEPTIDES.out.versions)
+
+    ch_fasta_and_hla = GENERATE_MUTATED_PEPTIDES.out.mut_fasta
+        .join(GENERATE_MUTATED_PEPTIDES.out.wt_fasta)
+        .join(GENERATE_MUTATED_PEPTIDES.out.hla_string)
 
     ch_samplesheet.map {
             meta, maf, facets_hisens_cncf, hla_file ->
@@ -76,22 +91,6 @@ workflow NEOANTIGENPIPELINE {
         phylowgs_muts   = PHYLOWGS_STUB.out.muts
         phylowgs_mutass = PHYLOWGS_STUB.out.mutass
     }
-
-    // Generate HLA string from HLA file
-    ch_hla = ch_samplesheet.map { meta, maf, facets_hisens_cncf, hla_file -> [meta, hla_file] }
-    NEOANTIGENUTILS_GENERATEHLASTRING( ch_hla )
-    ch_versions = ch_versions.mix(NEOANTIGENUTILS_GENERATEHLASTRING.out.versions)
-
-    // Generate mutant and wildtype FASTA from MAF + reference sequences
-    ch_maf = ch_samplesheet.map { meta, maf, facets_hisens_cncf, hla_file -> [meta, maf] }
-    NEOANTIGENUTILS_GENERATEMUTFASTA( ch_maf, ch_cds_and_cdna )
-    ch_versions = ch_versions.mix(NEOANTIGENUTILS_GENERATEMUTFASTA.out.versions)
-
-    // Combine FASTA outputs and HLA string into the format expected by NETMHCSTABANDPAN
-    // channel: [ val(meta), mut_fasta, wt_fasta, hla(str) ]
-    ch_fasta_and_hla = NEOANTIGENUTILS_GENERATEMUTFASTA.out.mut_fasta
-        .join(NEOANTIGENUTILS_GENERATEMUTFASTA.out.wt_fasta)
-        .join(NEOANTIGENUTILS_GENERATEHLASTRING.out.hlastring)
 
     NETMHCSTABANDPAN(ch_fasta_and_hla, ch_sv_empty)
 

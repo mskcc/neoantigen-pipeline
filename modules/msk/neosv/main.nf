@@ -1,0 +1,62 @@
+process NEOSV {
+    tag "$meta.id"
+    label 'process_medium'
+
+    conda "${moduleDir}/environment.yml"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'docker://ghcr.io/mskcc-omics-workflows/neoantigen-utils-base:1.4.0':
+        'ghcr.io/mskcc-omics-workflows/neoantigen-utils-base:1.4.0' }"
+
+    input:
+    tuple val(meta),  path(inputBedpe), val(hlaString)
+    tuple path(gtf),  path(cdna)
+
+    output:
+    tuple val(meta),       path("*.SV.MUT.fa"),           emit: mutOut
+    tuple val(meta),       path("*.SV.WT.fa"),            emit: wtOut
+    path "versions.yml",                                  emit: versions
+
+    when:
+    task.ext.when == null || task.ext.when
+
+    script:
+    def args = task.ext.args ?: ''
+    def prefix = task.ext.prefix ?: "${meta.id}"
+
+    """
+
+    echo '${hlaString}' | tr ',' '\\n' | sed 's/^[ \\t]*//;s/[ \\t]*\$//' > hla.txt
+    awk 'NF {print substr(\$0,1,5)"*"substr(\$0,6)}' hla.txt > temp_file && mv temp_file hla.txt
+
+    neosv --sv-file ${inputBedpe} \\
+    --out ./ \\
+    --hla-file hla.txt \\
+    --gtf-file ${gtf} \\
+    --cdna-file ${cdna} \\
+    --pyensembl-cache-dir ./ \\
+    --prefix ${prefix}
+
+    mv ${prefix}.net.in.txt ${prefix}.SV.MUT.fa
+    mv ${prefix}.WT.net.in.txt ${prefix}.SV.WT.fa
+
+
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        NEOSV: \$NEOSV_TAG
+    END_VERSIONS
+
+    """
+
+    stub:
+    def args = task.ext.args ?: ''
+    def prefix = task.ext.prefix ?: "${meta.id}"
+    """
+    touch ${prefix}.SV.WT.fa
+    touch ${prefix}.SV.MUT.fa
+
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        NEOSV: \$NEOSV_TAG
+    END_VERSIONS
+    """
+}

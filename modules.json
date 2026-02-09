@@ -5,94 +5,153 @@
         "git@github.com:mskcc-omics-workflows/modules.git": {
             "modules": {
                 "msk": {
+                    "generatemutfasta/1.2": {
+                        "branch": "develop",
+                        "git_sha": "f88e1cc1c56730553a7ee00ad07f05657b8cd858",
+                        "installed_by": [
+                            "generate_mutated_peptides",
+                            "modules"
+                        ]
+                    },
+                    "mutalyzer/retriever": {
+                        "branch": "main",
+                        "git_sha": "b70d754cb2ad530530dd3197527bf736d9760ef2",
+                        "installed_by": [
+                            "generate_mutated_peptides",
+                            "modules"
+                        ]
+                    },
+                    "neosv": {
+                        "branch": "main",
+                        "git_sha": "b70d754cb2ad530530dd3197527bf736d9760ef2",
+                        "installed_by": [
+                            "generate_mutated_peptides"
+                        ]
+                    },
                     "neoantigenediting/aligntoiedb": {
                         "branch": "main",
                         "git_sha": "1b691007a7b5ebc2bdfd1905ed72fd10abc7548f",
-                        "installed_by": ["neoantigen_editing"]
+                        "installed_by": [
+                            "neoantigen_editing"
+                        ]
                     },
                     "neoantigenediting/computefitness": {
                         "branch": "main",
                         "git_sha": "4ab15a02919a5e24dbe0c74e36f6293e3d87ffee",
-                        "installed_by": ["neoantigen_editing"]
+                        "installed_by": [
+                            "neoantigen_editing"
+                        ]
                     },
                     "neoantigenutils/convertannotjson": {
                         "branch": "main",
                         "git_sha": "1b691007a7b5ebc2bdfd1905ed72fd10abc7548f",
-                        "installed_by": ["modules"]
+                        "installed_by": [
+                            "modules"
+                        ]
                     },
                     "neoantigenutils/formatnetmhcpan": {
                         "branch": "main",
                         "git_sha": "1b691007a7b5ebc2bdfd1905ed72fd10abc7548f",
-                        "installed_by": ["netmhcstabandpan"]
+                        "installed_by": [
+                            "netmhcstabandpan"
+                        ]
                     },
                     "neoantigenutils/generatehlastring": {
                         "branch": "main",
                         "git_sha": "1b691007a7b5ebc2bdfd1905ed72fd10abc7548f",
-                        "installed_by": ["modules", "netmhcstabandpan"]
-                    },
-                    "neoantigenutils/generatemutfasta": {
-                        "branch": "main",
-                        "git_sha": "e8ae6eb203cb5a49f98cacd4734090c182ad5f44",
-                        "installed_by": ["modules", "netmhcstabandpan"]
+                        "installed_by": [
+                            "generate_mutated_peptides",
+                            "modules",
+                            "netmhcstabandpan"
+                        ]
                     },
                     "neoantigenutils/neoantigeninput": {
                         "branch": "main",
                         "git_sha": "d4314df4393b27eedb1a0f1cf3fb65aa85f338c6",
-                        "installed_by": ["modules"]
+                        "installed_by": [
+                            "modules"
+                        ]
                     },
                     "netmhc3": {
                         "branch": "main",
                         "git_sha": "58e46d9dad3e93d8ad7e759ab6f43dfcf0b85ab9",
-                        "installed_by": ["netmhcstabandpan"]
+                        "installed_by": [
+                            "netmhcstabandpan"
+                        ]
                     },
                     "netmhcpan4": {
                         "branch": "main",
                         "git_sha": "58e46d9dad3e93d8ad7e759ab6f43dfcf0b85ab9",
-                        "installed_by": ["netmhcstabandpan"]
+                        "installed_by": [
+                            "netmhcstabandpan"
+                        ]
                     },
                     "netmhcstabpan": {
                         "branch": "main",
                         "git_sha": "58e46d9dad3e93d8ad7e759ab6f43dfcf0b85ab9",
-                        "installed_by": ["netmhcstabandpan"]
+                        "installed_by": [
+                            "netmhcstabandpan"
+                        ]
                     },
                     "phylowgs/createinput": {
                         "branch": "main",
                         "git_sha": "1b691007a7b5ebc2bdfd1905ed72fd10abc7548f",
-                        "installed_by": ["phylowgs"]
+                        "installed_by": [
+                            "phylowgs"
+                        ]
                     },
                     "phylowgs/multievolve": {
                         "branch": "main",
                         "git_sha": "1b691007a7b5ebc2bdfd1905ed72fd10abc7548f",
-                        "installed_by": ["phylowgs"]
+                        "installed_by": [
+                            "phylowgs"
+                        ]
                     },
                     "phylowgs/parsecnvs": {
                         "branch": "main",
                         "git_sha": "1b691007a7b5ebc2bdfd1905ed72fd10abc7548f",
-                        "installed_by": ["phylowgs"]
+                        "installed_by": [
+                            "phylowgs"
+                        ]
                     },
                     "phylowgs/writeresults": {
                         "branch": "main",
                         "git_sha": "1b691007a7b5ebc2bdfd1905ed72fd10abc7548f",
-                        "installed_by": ["phylowgs"]
+                        "installed_by": [
+                            "phylowgs"
+                        ]
                     }
                 }
             },
             "subworkflows": {
                 "msk": {
+                    "generate_mutated_peptides": {
+                        "branch": "main",
+                        "git_sha": "b70d754cb2ad530530dd3197527bf736d9760ef2",
+                        "installed_by": [
+                            "subworkflows"
+                        ]
+                    },
                     "neoantigen_editing": {
                         "branch": "main",
                         "git_sha": "3284d77f55f0ef756d9ccd0519826fd7edd7d2ec",
-                        "installed_by": ["subworkflows"]
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     },
                     "netmhcstabandpan": {
                         "branch": "main",
                         "git_sha": "0c3e71d07a79588bb375624b34fba93345c6ff5e",
-                        "installed_by": ["subworkflows"]
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     },
                     "phylowgs": {
                         "branch": "main",
                         "git_sha": "a5d61394af346f21ee2eb7ecfd97ab25bdbd1d0e",
-                        "installed_by": ["subworkflows"]
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     }
                 }
             }
@@ -103,7 +162,9 @@
                     "multiqc": {
                         "branch": "master",
                         "git_sha": "575e1a4b51a9bad7a8cd1316a88fb85684ef7c7b",
-                        "installed_by": ["modules"]
+                        "installed_by": [
+                            "modules"
+                        ]
                     }
                 }
             },
@@ -112,17 +173,23 @@
                     "utils_nextflow_pipeline": {
                         "branch": "master",
                         "git_sha": "c2b22d85f30a706a3073387f30380704fcae013b",
-                        "installed_by": ["subworkflows"]
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     },
                     "utils_nfcore_pipeline": {
                         "branch": "master",
                         "git_sha": "51ae5406a030d4da1e49e4dab49756844fdd6c7a",
-                        "installed_by": ["subworkflows"]
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     },
                     "utils_nfschema_plugin": {
                         "branch": "master",
                         "git_sha": "2fd2cd6d0e7b273747f32e465fdc6bcc3ae0814e",
-                        "installed_by": ["subworkflows"]
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     }
                 }
             }
