@@ -211,6 +211,7 @@
                     "type": "string",
                     "description": "Path or URL to GTF annotation file.",
                     "fa_icon": "fas fa-file-code"
+                }
         },
         "generic_options": {
             "title": "Generic options",
