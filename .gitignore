@@ -7,4 +7,4 @@ testing/
 testing*
 *.pyc
 null/
-assets/test_somatic_trimmed.maf
+test_results/
