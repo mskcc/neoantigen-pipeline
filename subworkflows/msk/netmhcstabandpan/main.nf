@@ -43,7 +43,7 @@ workflow NETMHCSTABANDPAN {
                                         NEOANTIGENUTILS_GENERATEHLASTRING.out.hlastring,
                                         ch_neosv_out
                                         )
-    
+
     NETMHCSTABPAN( ch_netmhcinput )
 
     ch_versions = ch_versions.mix(NETMHCSTABPAN.out.versions)
@@ -51,7 +51,7 @@ workflow NETMHCSTABANDPAN {
     merged_pan_and_stab = Channel.empty()
 
     if ( params.netmhc3 ) {
-        
+
         NETMHC3( ch_netmhcinput )
         ch_versions = ch_versions.mix(NETMHC3.out.versions)
         merged_pan_and_stab = NETMHC3.out.netmhcoutput.mix(NETMHCSTABPAN.out.netmhcstabpanoutput)
@@ -61,7 +61,7 @@ workflow NETMHCSTABANDPAN {
         NETMHCPAN4( ch_netmhcinput )
         ch_versions = ch_versions.mix(NETMHCPAN4.out.versions)
         merged_pan_and_stab = NETMHCPAN4.out.netmhcpanoutput.mix(NETMHCSTABPAN.out.netmhcstabpanoutput)
-    }    
+    }
 
     NEOANTIGENUTILS_FORMATNETMHCPAN( merged_pan_and_stab )
 

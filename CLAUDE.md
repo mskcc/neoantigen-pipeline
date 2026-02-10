@@ -38,18 +38,15 @@ pre-commit run --all-files
 The main workflow is in `workflows/neoantigenpipeline.nf`. Data flows through four major stages:
 
 1. **PhyloWGS** — Reconstructs subclonal composition from MAF + Facets copy number data
-
    - `parsecnvs` → `createinput` → `multievolve` → `writeresults`
    - Outputs: summary JSON, mutations JSON, mutation assignments
 
 2. **netMHCstabandpan** — Predicts MHC peptide binding (subworkflow combines two tools)
-
    - Generates mutant FASTA from MAF + CDS/cDNA references
    - Runs netMHCpan-4.1 for binding affinity (Kd) and netMHCstabpan for stability
    - Produces MUT and WT predictions, filtered by `meta.typeMut` and `meta.fromStab` flags
 
 3. **NeoantigenInput** — Merges PhyloWGS tree with netMHCpan results
-
    - `neoantigenutils/neoantigeninput` joins all channels by sample ID using `merge_for_input_generation()`
    - Applies `kd_cutoff` parameter to filter weak binders
 
