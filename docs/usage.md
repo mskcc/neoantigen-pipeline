@@ -50,35 +50,35 @@ work                # Directory containing the nextflow working files
 
 ### PhyloWGS options
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `--phylo_burnin_samples` | `1000` | Number of burn-in samples for PhyloWGS MCMC |
-| `--phylo_mcmc_samples` | `2500` | Number of MCMC samples for PhyloWGS |
-| `--phylo_num_chains` | `15` | Number of MCMC chains for PhyloWGS |
+| Parameter                | Default | Description                                 |
+| ------------------------ | ------- | ------------------------------------------- |
+| `--phylo_burnin_samples` | `1000`  | Number of burn-in samples for PhyloWGS MCMC |
+| `--phylo_mcmc_samples`   | `2500`  | Number of MCMC samples for PhyloWGS         |
+| `--phylo_num_chains`     | `15`    | Number of MCMC chains for PhyloWGS          |
 
 ### Neoantigen filtering
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `--kd_cutoff` | `500` | Binding affinity cutoff in nM. Peptides with Kd above this are excluded. |
-| `--netmhc3` | `true` | Use netMHC 3-column output format |
+| Parameter     | Default | Description                                                              |
+| ------------- | ------- | ------------------------------------------------------------------------ |
+| `--kd_cutoff` | `500`   | Binding affinity cutoff in nM. Peptides with Kd above this are excluded. |
+| `--netmhc3`   | `true`  | Use netMHC 3-column output format                                        |
 
 ### Fitness model parameters
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `--compute_fitness_a` | `22.8976` | Sigmoid shift parameter (a) for R component |
-| `--compute_fitness_k` | `1` | Sigmoid slope parameter (k) for R component |
-| `--compute_fitness_w` | `0.2240` | Weight parameter (w) balancing logC and logA |
+| Parameter             | Default   | Description                                  |
+| --------------------- | --------- | -------------------------------------------- |
+| `--compute_fitness_a` | `22.8976` | Sigmoid shift parameter (a) for R component  |
+| `--compute_fitness_k` | `1`       | Sigmoid slope parameter (k) for R component  |
+| `--compute_fitness_w` | `0.2240`  | Weight parameter (w) balancing logC and logA |
 
 ### Reference files
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `--iedbfasta` | — | Path or URL to IEDB FASTA file |
-| `--cds` | — | Path or URL to CDS FASTA file |
-| `--cdna` | — | Path or URL to cDNA FASTA file |
-| `--gtf` | — | Path or URL to GTF annotation file |
+| Parameter     | Default | Description                        |
+| ------------- | ------- | ---------------------------------- |
+| `--iedbfasta` | —       | Path or URL to IEDB FASTA file     |
+| `--cds`       | —       | Path or URL to CDS FASTA file      |
+| `--cdna`      | —       | Path or URL to cDNA FASTA file     |
+| `--gtf`       | —       | Path or URL to GTF annotation file |
 
 > [!NOTE]
 > These reference files are set in the `test` and `prod` profiles. Override them only if using custom references.
