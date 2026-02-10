@@ -29,7 +29,7 @@ process NETMHCSTABPAN {
 
     def NETMHCPAN_VERSION = "4.1"
     def NETMHCSTABPAN_VERSION = "1.0"
-    
+
     def tmpDir = "netmhc-tmp"
     def tmpDirFullPath = "\$PWD/${tmpDir}/"  // must set full path to tmp directories for netMHC and netMHCpan to work; for some reason doesn't work with /scratch, so putting them in the process workspace
 
@@ -37,7 +37,7 @@ process NETMHCSTABPAN {
     export TMPDIR=${tmpDirFullPath}
     mkdir -p ${tmpDir}
     chmod 777 ${tmpDir}
-    
+
     cat ${inputSVFasta} >> ${inputFasta}
 
     /usr/local/bin/netMHCstabpan-${NETMHCSTABPAN_VERSION}/netMHCstabpan \

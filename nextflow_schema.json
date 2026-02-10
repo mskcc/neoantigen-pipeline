@@ -136,6 +136,13 @@
             "fa_icon": "fas fa-cogs",
             "description": "Parameters controlling neoantigen pipeline behavior.",
             "properties": {
+                 "run_phylowgs": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Run PhyloWGS for tumor phylogeny inference.",
+                    "help_text": "Set to false to skip PhyloWGS and use stub outputs. When skipped, sample_trees will be empty and Effective_N will be 0.",
+                    "fa_icon": "fas fa-sitemap"
+                },
                 "phylo_burnin_samples": {
                     "type": "integer",
                     "default": 1000,
@@ -204,8 +211,6 @@
                     "type": "string",
                     "description": "Path or URL to GTF annotation file.",
                     "fa_icon": "fas fa-file-code"
-                }
-            }
         },
         "generic_options": {
             "title": "Generic options",
@@ -308,6 +313,18 @@
                     "fa_icon": "far calendar",
                     "description": "Suffix to add to the trace report filename. Default is the date and time in the format yyyy-MM-dd_HH-mm-ss.",
                     "hidden": true
+                },
+                "help": {
+                    "type": ["boolean", "string"],
+                    "description": "Display the help message."
+                },
+                "help_full": {
+                    "type": "boolean",
+                    "description": "Display the full detailed help message."
+                },
+                "show_hidden": {
+                    "type": "boolean",
+                    "description": "Display hidden parameters in the help message (only works when --help or --help_full are provided)."
                 }
             }
         }
@@ -318,6 +335,9 @@
         },
         {
             "$ref": "#/$defs/reference_genome_options"
+        },
+        {
+            "$ref": "#/$defs/pipeline_options"
         },
         {
             "$ref": "#/$defs/institutional_config_options"

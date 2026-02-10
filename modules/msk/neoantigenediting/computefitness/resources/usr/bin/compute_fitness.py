@@ -159,9 +159,12 @@ def compute_effective_sample_size(sample_json):
         for clone_muts, X in zip(clone_muts_list, freqs):
             for mid in clone_muts:
                 mut_freqs[mid].append(X)
-    avev = np.mean(
-        [np.var(mut_freqs[mid]) if mut_freqs[mid] else 0 for mid in mut_freqs]
-    )
+    variances = [np.var(mut_freqs[mid]) if mut_freqs[mid] else 0 for mid in mut_freqs]
+    if not variances:
+        return 0
+    avev = np.mean(variances)
+    if avev == 0 or np.isnan(avev):
+        return 0
     n = 1 / avev
     return n
 
@@ -291,7 +294,7 @@ if __name__ == "__main__":
     parser.add_argument("--a_param", help="weight corresponding to a", default = 22.897590714815188)
     parser.add_argument("--k_param", help="weight corresponding to k", default = 1)
     parser.add_argument("--w_param", help="weight corresponding to w", default = 0.22402192838740312)
-    
+
     args = parser.parse_args()
 
     alignment_file = args.alignment
@@ -300,8 +303,8 @@ if __name__ == "__main__":
     a = float(args.a_param)
     k = float(args.k_param)
     w = float(args.w_param)
-    
-    
+
+
     epidist = EpitopeDistance()
 
     sample_file = patient_file

@@ -57,7 +57,6 @@ Additionally, we provide pipeline information with report metrics generated duri
 <summary>Output files</summary>
 
 - `neoantigenediting/`
-
   - `*._annotated.json`: The final output of the pipeline. This file is an annotated version of the tree output from phyloWGS with an extra property titled 'neoantigens'. Each entry in 'neoantigens' is a property with properties describing the neoantigen. These neoantigen properities are described below
 
     "id": "XSYI_MG_M_9_C1203_11",
@@ -85,7 +84,6 @@ Additionally, we provide pipeline information with report metrics generated duri
     "quality": 2.645601185190205
 
   The above is an example output from a run. Each neoantigenic mutation will have an output like this.
-
   - id: This is a unique id that combines an id created from the mutation, HLA allele, and window.
   - mutation_id : ID containing the chromosome, position, ref and alt allele. I and D denote insertions and deletions respectively.
   - HLA_gene_id : The HLA gene this neoantigen binds to

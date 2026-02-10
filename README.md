@@ -1,10 +1,12 @@
 # mskcc/neoantigenpipeline
 
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open_In_GitHub_Codespaces-black?labelColor=grey&logo=github)](https://github.com/codespaces/new/mskcc/neoantigenpipeline)
 [![GitHub Actions CI Status](https://github.com/mskcc/neoantigenpipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/mskcc/neoantigenpipeline/actions/workflows/ci.yml)
 [![GitHub Actions Linting Status](https://github.com/mskcc/neoantigenpipeline/actions/workflows/linting.yml/badge.svg)](https://github.com/mskcc/neoantigenpipeline/actions/workflows/linting.yml)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.XXXXXXX-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.XXXXXXX)
 [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
 
-[![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A524.04.0-23aa62.svg)](https://www.nextflow.io/)
+[![Nextflow](https://img.shields.io/badge/version-%E2%89%A525.04.0-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)
+[![nf-core template version](https://img.shields.io/badge/nf--core_template-3.5.2-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/3.5.2)
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
@@ -16,10 +18,9 @@
 
 ![Workflow Diagram](assets/workflow_diagram.png)
 
-
 1. Create phylogenetic trees using [PhyloWGS](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0602-8)
-2. Use [netMHCpan-4](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/) to calculate binding affinities 
-3. Use [netMHCpanStab](https://services.healthtech.dtu.dk/services/NetMHCstabpan-1.0/) to calculate stability scores 
+2. Use [netMHCpan-4](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/) to calculate binding affinities
+3. Use [netMHCpanStab](https://services.healthtech.dtu.dk/services/NetMHCstabpan-1.0/) to calculate stability scores
 4. Use Luksza et al.'s neoantigen quality and fitness computations tool ([NeoantigenEditing](https://github.com/LukszaLab/NeoantigenEditing)) to evaluate peptides
 
 ## Usage
@@ -53,12 +54,11 @@ nextflow run mskcc/neoantigenpipeline \
 
 We thank the following people for their extensive assistance in the development of this pipeline:
 
- - Nikhil ([@nikhil](https://github.com/nikhil))
- - John ([@johnoooh](https://github.com/johnoooh))
- - Alex ([@pintoa1-mskcc](https://github.com/pintoa1-mskcc))
- - Martina ([@BradicM](https://github.com/BradicM))
- - Allison ([@arichards2564](https://github.com/arichards2564))
-
+- Nikhil ([@nikhil](https://github.com/nikhil))
+- John ([@johnoooh](https://github.com/johnoooh))
+- Alex ([@pintoa1-mskcc](https://github.com/pintoa1-mskcc))
+- Martina ([@BradicM](https://github.com/BradicM))
+- Allison ([@arichards2564](https://github.com/arichards2564))
 
 ## Contributions and Support
 
@@ -66,12 +66,10 @@ If you would like to contribute to this pipeline, please see the [contributing g
 
 ## Citations
 
-
 - Deshwar, A. G., Vembu, S., Yung, C. K., Jang, G. H., Stein, L., & Morris, Q. (2015). PhyloWGS: reconstructing subclonal composition and evolution from whole-genome sequencing of tumors. Genome biology, 16(1), 35. https://doi.org/10.1186/s13059-015-0602-8
 - Jurtz, V., Paul, S., Andreatta, M., Marcatili, P., Peters, B., & Nielsen, M. (2017). NetMHCpan-4.0: Improved Peptide-MHC Class I Interaction Predictions Integrating Eluted Ligand and Peptide Binding Affinity Data. Journal of immunology (Baltimore, Md. : 1950), 199(9), 3360–3368. https://doi.org/10.4049/jimmunol.1700893
 - Łuksza, M., Sethna, Z.M., Rojas, L.A. et al. Neoantigen quality predicts immunoediting in survivors of pancreatic cancer. Nature 606, 389–395 (2022). https://doi.org/10.1038/s41586-022-04735-9
 - Rasmussen, M., Fenoy, E., Harndahl, M., Kristensen, A. B., Nielsen, I. K., Nielsen, M., & Buus, S. (2016). Pan-Specific Prediction of Peptide-MHC Class I Complex Stability, a Correlate of T Cell Immunogenicity. Journal of immunology (Baltimore, Md. : 1950), 197(4), 1517–1524. https://doi.org/10.4049/jimmunol.1600582
-
 
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 
