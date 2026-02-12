@@ -65,6 +65,26 @@
                     "help_text": "This parameter is *mandatory* if `--genome` is not specified. If you don't have a BWA index available this will be generated for you automatically. Combine with `--save_reference` to save BWA index for future runs.",
                     "fa_icon": "far fa-file-code"
                 },
+                "reference_fasta": {
+                    "type": "string",
+                    "description": "Path to reference FASTA for Mutalyzer.",
+                    "fa_icon": "far fa-file-code"
+                },
+                "reference_gff3": {
+                    "type": "string",
+                    "description": "Path to reference GFF3 annotation for Mutalyzer.",
+                    "fa_icon": "far fa-file-code"
+                },
+                "cdna": {
+                    "type": "string",
+                    "description": "Path to cDNA FASTA for peptide generation.",
+                    "fa_icon": "far fa-file-code"
+                },
+                "gtf": {
+                    "type": "string",
+                    "description": "Path to GTF annotation file.",
+                    "fa_icon": "far fa-file-code"
+                },
                 "igenomes_ignore": {
                     "type": "boolean",
                     "description": "Do not load the iGenomes reference config.",
@@ -142,6 +162,60 @@
                     "description": "Run PhyloWGS for tumor phylogeny inference.",
                     "help_text": "Set to false to skip PhyloWGS and use stub outputs. When skipped, sample_trees will be empty and Effective_N will be 0.",
                     "fa_icon": "fas fa-sitemap"
+                },
+                "netmhc3": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Run netMHC3 in addition to netMHCpan.",
+                    "fa_icon": "fas fa-flask"
+                },
+                "kd_cutoff": {
+                    "type": "number",
+                    "default": 500,
+                    "description": "Binding affinity cutoff in nM for neoantigen filtering.",
+                    "help_text": "Peptides with predicted binding affinity (Kd) above this threshold are excluded from neoantigen analysis.",
+                    "fa_icon": "fas fa-filter"
+                },
+                "iedbfasta": {
+                    "type": "string",
+                    "description": "Path to IEDB FASTA file for neoantigen editing alignment.",
+                    "fa_icon": "far fa-file-code"
+                },
+                "compute_fitness_a": {
+                    "type": "number",
+                    "default": 22.897590714815188,
+                    "description": "Fitness model parameter a.",
+                    "fa_icon": "fas fa-calculator"
+                },
+                "compute_fitness_k": {
+                    "type": "number",
+                    "default": 1,
+                    "description": "Fitness model parameter k.",
+                    "fa_icon": "fas fa-calculator"
+                },
+                "compute_fitness_w": {
+                    "type": "number",
+                    "default": 0.22402192838740312,
+                    "description": "Fitness model parameter w.",
+                    "fa_icon": "fas fa-calculator"
+                },
+                "phylo_burnin_samples": {
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "Number of PhyloWGS burn-in MCMC samples.",
+                    "fa_icon": "fas fa-chart-line"
+                },
+                "phylo_mcmc_samples": {
+                    "type": "integer",
+                    "default": 2500,
+                    "description": "Number of PhyloWGS MCMC samples.",
+                    "fa_icon": "fas fa-chart-line"
+                },
+                "phylo_num_chains": {
+                    "type": "integer",
+                    "default": 15,
+                    "description": "Number of PhyloWGS MCMC chains.",
+                    "fa_icon": "fas fa-chart-line"
                 }
             }
         },
