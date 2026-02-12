@@ -5,7 +5,7 @@
         "git@github.com:mskcc-omics-workflows/modules.git": {
             "modules": {
                 "msk": {
-                    "generatemutfasta/1.2": {
+                    "generatemutfasta": {
                         "branch": "develop",
                         "git_sha": "f88e1cc1c56730553a7ee00ad07f05657b8cd858",
                         "installed_by": ["generate_mutated_peptides", "modules"]
@@ -14,11 +14,6 @@
                         "branch": "main",
                         "git_sha": "b70d754cb2ad530530dd3197527bf736d9760ef2",
                         "installed_by": ["generate_mutated_peptides", "modules"]
-                    },
-                    "neosv": {
-                        "branch": "main",
-                        "git_sha": "b70d754cb2ad530530dd3197527bf736d9760ef2",
-                        "installed_by": ["generate_mutated_peptides"]
                     },
                     "neoantigenediting/aligntoiedb": {
                         "branch": "main",
@@ -53,6 +48,11 @@
                         "branch": "main",
                         "git_sha": "d4314df4393b27eedb1a0f1cf3fb65aa85f338c6",
                         "installed_by": ["modules"]
+                    },
+                    "neosv": {
+                        "branch": "main",
+                        "git_sha": "b70d754cb2ad530530dd3197527bf736d9760ef2",
+                        "installed_by": ["generate_mutated_peptides"]
                     },
                     "netmhc3": {
                         "branch": "main",
