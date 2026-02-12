@@ -4,6 +4,24 @@
     "title": "mskcc/neoantigenpipeline pipeline parameters",
     "description": "Pipeline for computing neoantigen qualities from DNA and RNA-Seq data",
     "type": "object",
+    "properties": {},
+    "allOf": [
+        {
+            "$ref": "#/$defs/input_output_options"
+        },
+        {
+            "$ref": "#/$defs/reference_genome_options"
+        },
+        {
+            "$ref": "#/$defs/pipeline_options"
+        },
+        {
+            "$ref": "#/$defs/institutional_config_options"
+        },
+        {
+            "$ref": "#/$defs/generic_options"
+        }
+    ],
     "$defs": {
         "input_output_options": {
             "title": "Input/output options",
@@ -67,23 +85,13 @@
                 },
                 "reference_fasta": {
                     "type": "string",
-                    "description": "Path to reference FASTA for Mutalyzer.",
-                    "fa_icon": "far fa-file-code"
+                    "description": "Path or URL to reference FASTA (bgzipped) for Mutalyzer.",
+                    "fa_icon": "fas fa-dna"
                 },
                 "reference_gff3": {
                     "type": "string",
-                    "description": "Path to reference GFF3 annotation for Mutalyzer.",
-                    "fa_icon": "far fa-file-code"
-                },
-                "cdna": {
-                    "type": "string",
-                    "description": "Path to cDNA FASTA for peptide generation.",
-                    "fa_icon": "far fa-file-code"
-                },
-                "gtf": {
-                    "type": "string",
-                    "description": "Path to GTF annotation file.",
-                    "fa_icon": "far fa-file-code"
+                    "description": "Path or URL to reference GFF3 annotation for Mutalyzer.",
+                    "fa_icon": "fas fa-dna"
                 },
                 "igenomes_ignore": {
                     "type": "boolean",
@@ -154,7 +162,7 @@
             "title": "Pipeline options",
             "type": "object",
             "fa_icon": "fas fa-cogs",
-            "description": "Options to control pipeline behavior.",
+            "description": "Parameters controlling neoantigen pipeline behavior.",
             "properties": {
                 "run_phylowgs": {
                     "type": "boolean",
@@ -163,11 +171,23 @@
                     "help_text": "Set to false to skip PhyloWGS and use stub outputs. When skipped, sample_trees will be empty and Effective_N will be 0.",
                     "fa_icon": "fas fa-sitemap"
                 },
-                "netmhc3": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Run netMHC3 in addition to netMHCpan.",
-                    "fa_icon": "fas fa-flask"
+                "phylo_burnin_samples": {
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "Number of burn-in samples for PhyloWGS MCMC.",
+                    "fa_icon": "fas fa-fire"
+                },
+                "phylo_mcmc_samples": {
+                    "type": "integer",
+                    "default": 2500,
+                    "description": "Number of MCMC samples for PhyloWGS.",
+                    "fa_icon": "fas fa-random"
+                },
+                "phylo_num_chains": {
+                    "type": "integer",
+                    "default": 15,
+                    "description": "Number of MCMC chains for PhyloWGS.",
+                    "fa_icon": "fas fa-link"
                 },
                 "kd_cutoff": {
                     "type": "number",
@@ -176,46 +196,49 @@
                     "help_text": "Peptides with predicted binding affinity (Kd) above this threshold are excluded from neoantigen analysis.",
                     "fa_icon": "fas fa-filter"
                 },
-                "iedbfasta": {
-                    "type": "string",
-                    "description": "Path to IEDB FASTA file for neoantigen editing alignment.",
-                    "fa_icon": "far fa-file-code"
+                "netmhc3": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use netMHC 3-column output format.",
+                    "fa_icon": "fas fa-columns"
                 },
                 "compute_fitness_a": {
                     "type": "number",
                     "default": 22.897590714815188,
-                    "description": "Fitness model parameter a.",
-                    "fa_icon": "fas fa-calculator"
+                    "description": "Sigmoid shift parameter (a) for the R component of neoantigen quality.",
+                    "fa_icon": "fas fa-sliders-h"
                 },
                 "compute_fitness_k": {
                     "type": "number",
                     "default": 1,
-                    "description": "Fitness model parameter k.",
-                    "fa_icon": "fas fa-calculator"
+                    "description": "Sigmoid slope parameter (k) for the R component of neoantigen quality.",
+                    "fa_icon": "fas fa-sliders-h"
                 },
                 "compute_fitness_w": {
                     "type": "number",
                     "default": 0.22402192838740312,
-                    "description": "Fitness model parameter w.",
-                    "fa_icon": "fas fa-calculator"
+                    "description": "Weight parameter (w) balancing logC and logA in quality score.",
+                    "fa_icon": "fas fa-balance-scale"
                 },
-                "phylo_burnin_samples": {
-                    "type": "integer",
-                    "default": 1000,
-                    "description": "Number of PhyloWGS burn-in MCMC samples.",
-                    "fa_icon": "fas fa-chart-line"
+                "iedbfasta": {
+                    "type": "string",
+                    "description": "Path or URL to IEDB FASTA file for epitope alignment.",
+                    "fa_icon": "fas fa-file-alt"
                 },
-                "phylo_mcmc_samples": {
-                    "type": "integer",
-                    "default": 2500,
-                    "description": "Number of PhyloWGS MCMC samples.",
-                    "fa_icon": "fas fa-chart-line"
+                "cds": {
+                    "type": "string",
+                    "description": "Path or URL to CDS FASTA file.",
+                    "fa_icon": "fas fa-dna"
                 },
-                "phylo_num_chains": {
-                    "type": "integer",
-                    "default": 15,
-                    "description": "Number of PhyloWGS MCMC chains.",
-                    "fa_icon": "fas fa-chart-line"
+                "cdna": {
+                    "type": "string",
+                    "description": "Path or URL to cDNA FASTA file.",
+                    "fa_icon": "fas fa-dna"
+                },
+                "gtf": {
+                    "type": "string",
+                    "description": "Path or URL to GTF annotation file.",
+                    "fa_icon": "fas fa-file-code"
                 }
             }
         },
@@ -335,22 +358,5 @@
                 }
             }
         }
-    },
-    "allOf": [
-        {
-            "$ref": "#/$defs/input_output_options"
-        },
-        {
-            "$ref": "#/$defs/reference_genome_options"
-        },
-        {
-            "$ref": "#/$defs/pipeline_options"
-        },
-        {
-            "$ref": "#/$defs/institutional_config_options"
-        },
-        {
-            "$ref": "#/$defs/generic_options"
-        }
-    ]
+    }
 }
