@@ -23,8 +23,6 @@ process PHYLOWGS_CREATEINPUT {
         --cnvs S1=${cnv} \\
         ${args} \\
         --vcf-type S1=maf S1=${unfilteredmaf}
-
-
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         phylowgs: \$PHYLOWGS_TAG
@@ -37,7 +35,6 @@ process PHYLOWGS_CREATEINPUT {
     """
     touch cnv_data.txt
     touch ssm_data.txt
-
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         phylowgs: \$PHYLOWGS_TAG
