@@ -2,7 +2,7 @@
     "name": "mskcc/neoantigenpipeline",
     "homePage": "https://github.com/mskcc/neoantigenpipeline",
     "repos": {
-        "git@github.com:mskcc-omics-workflows/modules.git": {
+        "https://github.com/mskcc-omics-workflows/modules.git": {
             "modules": {
                 "msk": {
                     "generatemutfasta": {
