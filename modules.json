@@ -7,37 +7,37 @@
                 "msk": {
                     "generatemutfasta": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["generate_mutated_peptides"]
                     },
                     "mutalyzer/retriever": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["generate_mutated_peptides"]
                     },
                     "neoantigenediting/aligntoiedb": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["neoantigen_editing"]
                     },
                     "neoantigenediting/computefitness": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["neoantigen_editing"]
                     },
                     "neoantigenutils/convertannotjson": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["modules"]
                     },
                     "neoantigenutils/formatnetmhcpan": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["netmhcstabandpan"]
                     },
                     "neoantigenutils/generatehlastring": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": [
                             "generate_mutated_peptides",
                             "netmhcstabandpan"
@@ -45,47 +45,47 @@
                     },
                     "neoantigenutils/neoantigeninput": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["modules"]
                     },
                     "neosv": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["generate_mutated_peptides"]
                     },
                     "netmhc3": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["netmhcstabandpan"]
                     },
                     "netmhcpan4": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["netmhcstabandpan"]
                     },
                     "netmhcstabpan": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["netmhcstabandpan"]
                     },
                     "phylowgs/createinput": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["phylowgs"]
                     },
                     "phylowgs/multievolve": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["phylowgs"]
                     },
                     "phylowgs/parsecnvs": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["phylowgs"]
                     },
                     "phylowgs/writeresults": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["phylowgs"]
                     }
                 }
@@ -94,22 +94,22 @@
                 "msk": {
                     "generate_mutated_peptides": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["subworkflows"]
                     },
                     "neoantigen_editing": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["subworkflows"]
                     },
                     "netmhcstabandpan": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["subworkflows"]
                     },
                     "phylowgs": {
                         "branch": "fix/nf-25-heredoc-whitespace",
-                        "git_sha": "918a91cc39bd7983eb231f69f509587021a77426",
+                        "git_sha": "25f4081755993ba74ea6aa4ca509692bc7323709",
                         "installed_by": ["subworkflows"]
                     }
                 }
