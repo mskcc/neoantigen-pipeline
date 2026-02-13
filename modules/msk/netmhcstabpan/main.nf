@@ -37,22 +37,22 @@ process NETMHCSTABPAN {
     export TMPDIR=${tmpDirFullPath}
     mkdir -p ${tmpDir}
     chmod 777 ${tmpDir}
-    
+
     cat ${inputSVFasta} >> ${inputFasta}
-    
+
     /usr/local/bin/netMHCstabpan-${NETMHCSTABPAN_VERSION}/netMHCstabpan \
     -s -1 \
     -f ${inputFasta} \
     -a ${hla} \
     -l 9,10 \
     -inptype 0 > ${prefix}.${inputType}.netmhcstabpan.output
-    
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         netmhcpan: v${NETMHCPAN_VERSION}
         netmhcstabpan: v${NETMHCSTABPAN_VERSION}
     END_VERSIONS
-    
+
     """
 
     stub:
@@ -67,8 +67,8 @@ process NETMHCSTABPAN {
 
     """
     touch ${prefix}.${inputType}.netmhcstabpan.output
-    
-    
+
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         netmhcpan: v${NETMHCPAN_VERSION}

@@ -25,7 +25,7 @@ process PHYLOWGS_MULTIEVOLVE {
         ${args} \\
         --ssms ${ssm_data} \\
         --cnvs ${cnv_data}
-    
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         phylowgs: \$PHYLOWGS_TAG
@@ -38,7 +38,7 @@ process PHYLOWGS_MULTIEVOLVE {
     """
     mkdir chains
     touch chains/trees.zip
-    
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         phylowgs: \$PHYLOWGS_TAG

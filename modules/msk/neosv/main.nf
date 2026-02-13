@@ -24,10 +24,10 @@ process NEOSV {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    
+
     echo '${hlaString}' | tr ',' '\\n' | sed 's/^[ \\t]*//;s/[ \\t]*\$//' > hla.txt
     awk 'NF {print substr(\$0,1,5)"*"substr(\$0,6)}' hla.txt > temp_file && mv temp_file hla.txt
-    
+
     neosv --sv-file ${inputBedpe} \\
     --out ./ \\
     --hla-file hla.txt \\
@@ -35,16 +35,16 @@ process NEOSV {
     --cdna-file ${cdna} \\
     --pyensembl-cache-dir ./ \\
     --prefix ${prefix}
-    
+
     mv ${prefix}.net.in.txt ${prefix}.SV.MUT.fa
     mv ${prefix}.WT.net.in.txt ${prefix}.SV.WT.fa
-    
-    
+
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         NEOSV: \$NEOSV_TAG
     END_VERSIONS
-    
+
     """
 
     stub:
@@ -53,7 +53,7 @@ process NEOSV {
     """
     touch ${prefix}.SV.WT.fa
     touch ${prefix}.SV.MUT.fa
-    
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         NEOSV: \$NEOSV_TAG

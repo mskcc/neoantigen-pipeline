@@ -21,8 +21,8 @@ process NEOANTIGENUTILS_GENERATEHLASTRING {
 
     """
     generateHLAString.sh -f ${inputHLA}
-    
-    
+
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         generateHLAstring: \$(echo \$(generateHLAString.sh -v))
