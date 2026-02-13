@@ -9,3 +9,5 @@ testing*
 null/
 assets/test_somatic_trimmed.maf
 test_results/
+.nf-test/
+.nf-test.log

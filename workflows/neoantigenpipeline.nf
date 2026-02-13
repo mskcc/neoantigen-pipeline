@@ -169,31 +169,31 @@ workflow NEOANTIGENPIPELINE {
 }
 
 def merge_for_input_generation(netMHCpan_input_ch, summ_ch, muts_ch, mutass_ch, netmhcpan_mut_tsv_ch, netmhcpan_wt_tsv_ch ) {
-    netMHCpan_input = netMHCpan_input_ch
+    def netMHCpan_input = netMHCpan_input_ch
         .map{
             new Tuple(it[0].id,it)
             }
-    summ = summ_ch
+    def summ = summ_ch
         .map{
             new Tuple(it[0].id,it)
             }
-    muts = muts_ch
+    def muts = muts_ch
         .map{
             new Tuple(it[0].id,it)
             }
-    mutass = mutass_ch
+    def mutass = mutass_ch
         .map{
             new Tuple(it[0].id,it)
             }
-    netmhcpan_mut_tsv = netmhcpan_mut_tsv_ch
+    def netmhcpan_mut_tsv = netmhcpan_mut_tsv_ch
         .map{
             new Tuple(it[0].id,it)
             }
-    netmhcpan_wt_tsv = netmhcpan_wt_tsv_ch
+    def netmhcpan_wt_tsv = netmhcpan_wt_tsv_ch
         .map{
             new Tuple(it[0].id,it)
             }
-    merged = netMHCpan_input
+    def merged = netMHCpan_input
                 .join(summ)
                 .join(muts)
                 .join(mutass)

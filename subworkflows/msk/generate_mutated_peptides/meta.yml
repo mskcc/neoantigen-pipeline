@@ -9,7 +9,6 @@ keywords:
 components:
   - mutalyzer/retriever
   - generatemutfasta
-  - neoantigenutils/generatemutfasta
 input:
   - ch_maf_hla_sv:
       type: object

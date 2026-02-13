@@ -39,10 +39,10 @@ process GENERATEMUTFASTA {
     --maf_file ${inputMaf}
 
     cat <<-END_VERSIONS > versions.yml
-	"${task.process}":
-	    generateMutFasta: \$(echo \$(generateMutFasta.py -v))
-	    mutalyzer: \$(echo \$(mutalyzer_normalizer -v | tr '\n' ' ' | awk '{print \$3}'))
-	END_VERSIONS
+    "${task.process}":
+        generateMutFasta: \$(echo \$(generateMutFasta.py -v))
+        mutalyzer: \$(echo \$(mutalyzer_normalizer -v | tr '\n' ' ' | awk '{print \$3}'))
+    END_VERSIONS
     """
 
     stub:
@@ -50,14 +50,14 @@ process GENERATEMUTFASTA {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    mkdir ${prefix}_out
-    touch ${prefix}_out/${prefix}.MUT.sequences.fa
-    touch ${prefix}_out/${prefix}.WT.sequences.fa
-    touch ${prefix}_out/${prefix}_generate_mut_fasta.log
-    cat <<-END_VERSIONS > versions.yml
-	"${task.process}":
-	    generateMutFasta: \$(echo \$(generateMutFasta.py -v))
-	    mutalyzer: \$(echo \$(mutalyzer_normalizer -v | tr '\n' ' ' | awk '{print \$3}'))
-	END_VERSIONS
+        mkdir ${prefix}_out
+        touch ${prefix}_out/${prefix}.MUT.sequences.fa
+        touch ${prefix}_out/${prefix}.WT.sequences.fa
+        touch ${prefix}_out/${prefix}_generate_mut_fasta.log
+        cat <<-END_VERSIONS > versions.yml
+        "${task.process}":
+            generateMutFasta: \$(echo \$(generateMutFasta.py -v))
+            mutalyzer: \$(echo \$(mutalyzer_normalizer -v | tr '\n' ' ' | awk '{print \$3}'))
+        END_VERSIONS
     """
 }
