@@ -29,9 +29,9 @@ process NEOANTIGENUTILS_NEOANTIGENINPUT {
         unzip ${phyloWGSfolder} -d \$tree_folder_name
         gzip -d -c ${phyloWGSsumm} > ${id}.summ.json
         gzip -d -c ${phyloWGSmut} > ${id}.mut.json
-
-
-
+        
+        
+        
         generate_input.py --maf_file ${inputMaf} \
         ${bedpe} \
         --summary_file ${id}.summ.json \
@@ -44,7 +44,7 @@ process NEOANTIGENUTILS_NEOANTIGENINPUT {
         --gtf-file ${gtf} \
         --cdna-file ${cdna} \
         ${args}
-
+        
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
             neoantigeninput: \$(echo \$(generate_input.py -v))
@@ -57,9 +57,9 @@ process NEOANTIGENUTILS_NEOANTIGENINPUT {
     def patientid =task.ext.cohort ?: "${meta.id}_patient"
     def cohort =task.ext.cohort ?: "${meta.id}_cohort"
     """
-
+        
         touch ${patientid}_${id}_input.json
-
+        
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
             neoantigeninput: \$(echo \$(generate_input.py -v))

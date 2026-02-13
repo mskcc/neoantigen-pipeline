@@ -29,7 +29,7 @@ process NEOANTIGENUTILS_FORMATNETMHCPAN {
             ${netmhcOutputPan} \
             ${netmhcOutputType} \
             ${netmhcOutputFrom}
-
+        
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
             formatNetmhcpanOutput: \$(echo \$(format_netmhcpan_output.py -v))

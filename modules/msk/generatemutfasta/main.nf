@@ -22,20 +22,20 @@ process GENERATEMUTFASTA {
 
     """
     # Setup cache
-
+    
     mkdir -p \$(pwd)/mutalyzer_cache
-
+    
     tar -xzf ${mutalyzer_cache} -C \$(pwd)/mutalyzer_cache
-
+    
     echo MUTALYZER_CACHE_DIR = \$(pwd)/mutalyzer_cache/cache >> \$(pwd)/config.txt
     echo MUTALYZER_FILE_CACHE_ADD = false >> \$(pwd)/config.txt
-
+    
     mkdir ${prefix}_out
-
+    
     MUTALYZER_SETTINGS="\$(pwd)/config.txt" generateMutFasta.py --sample_id ${prefix} \
     --output_dir ${prefix}_out \
     --maf_file ${inputMaf}
-
+    
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         generateMutFasta: \$(echo \$(generateMutFasta.py -v))

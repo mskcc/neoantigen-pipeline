@@ -44,7 +44,7 @@ process PHYLOWGS_WRITERESULTS {
     touch ${prefix}.summ.json.gz
     touch ${prefix}.muts.json.gz
     touch ${prefix}.mutass.zip
-
+    
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         phylowgs: \$PHYLOWGS_TAG

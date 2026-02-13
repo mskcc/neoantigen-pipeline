@@ -109,15 +109,15 @@ workflow NEOANTIGENPIPELINE {
 
     merged_netMHC_input = merged
             .map{
-                new Tuple(it[0], it[1], [], it[2])
+                [it[0], it[1], [], it[2]]
             }
     merged_phylo_output = merged
         .map{
-            new Tuple(it[0], it[3], it[4], it[5])
+            [it[0], it[3], it[4], it[5]]
         }
     merged_netmhc_tsv = merged
         .map{
-            new Tuple(it[0], it[6], it[7])
+            [it[0], it[6], it[7]]
         }
 
     NEOANTIGENUTILS_NEOANTIGENINPUT(merged_netMHC_input,merged_phylo_output,merged_netmhc_tsv,ch_gtf_and_cdna)
@@ -171,27 +171,27 @@ workflow NEOANTIGENPIPELINE {
 def merge_for_input_generation(netMHCpan_input_ch, summ_ch, muts_ch, mutass_ch, netmhcpan_mut_tsv_ch, netmhcpan_wt_tsv_ch ) {
     def netMHCpan_input = netMHCpan_input_ch
         .map{
-            new Tuple(it[0].id,it)
+            [it[0].id,it]
             }
     def summ = summ_ch
         .map{
-            new Tuple(it[0].id,it)
+            [it[0].id,it]
             }
     def muts = muts_ch
         .map{
-            new Tuple(it[0].id,it)
+            [it[0].id,it]
             }
     def mutass = mutass_ch
         .map{
-            new Tuple(it[0].id,it)
+            [it[0].id,it]
             }
     def netmhcpan_mut_tsv = netmhcpan_mut_tsv_ch
         .map{
-            new Tuple(it[0].id,it)
+            [it[0].id,it]
             }
     def netmhcpan_wt_tsv = netmhcpan_wt_tsv_ch
         .map{
-            new Tuple(it[0].id,it)
+            [it[0].id,it]
             }
     def merged = netMHCpan_input
                 .join(summ)
@@ -200,7 +200,7 @@ def merge_for_input_generation(netMHCpan_input_ch, summ_ch, muts_ch, mutass_ch, 
                 .join(netmhcpan_mut_tsv)
                 .join(netmhcpan_wt_tsv)
                 .map{
-                    new Tuple(it[1][0], it[1][1], it[1][2], it[2][1], it[3][1], it[4][1], it[5][1], it[6][1])
+                    [it[1][0], it[1][1], it[1][2], it[2][1], it[3][1], it[4][1], it[5][1], it[6][1]]
                 }
     return merged
 }
