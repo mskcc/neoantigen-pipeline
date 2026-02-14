@@ -34,6 +34,8 @@ process NETMHCPAN4 {
     export TMPDIR=${tmpDirFullPath}
     mkdir -p ${tmpDir}
     chmod 777 ${tmpDir}
+
+
     cat ${inputSVFasta} >> ${inputFasta}
     /usr/local/bin/netMHCpan-${NETMHCPAN_VERSION}/netMHCpan \
     -s 0 \
@@ -46,10 +48,13 @@ process NETMHCPAN4 {
     ${args} \
     -xlsfile \
     ${prefix}.${inputType}.xls > ${prefix}.${inputType}.netmhcpan.output
+
+
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        netmhcpan: v${NETMHCPAN_VERSION}
-    END_VERSIONS
+	"${task.process}":
+	    netmhcpan: v${NETMHCPAN_VERSION}
+	END_VERSIONS
+
     """
 
     stub:
@@ -63,9 +68,10 @@ process NETMHCPAN4 {
     """
     touch ${prefix}.${inputType}.xls
     touch ${prefix}.${inputType}.netmhcpan.output
+
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        netmhcpan: v${NETMHCPAN_VERSION}
-    END_VERSIONS
+	"${task.process}":
+	    netmhcpan: v${NETMHCPAN_VERSION}
+	END_VERSIONS
     """
 }

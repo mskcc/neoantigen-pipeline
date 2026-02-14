@@ -23,10 +23,11 @@ process PHYLOWGS_PARSECNVS {
     parse_cnvs.py \\
         ${args} \\
         ${facetsgenelevel}
+
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        phylowgs: \$PHYLOWGS_TAG
-    END_VERSIONS
+	"${task.process}":
+	    phylowgs: \$PHYLOWGS_TAG
+	END_VERSIONS
     """
 
     stub:
@@ -34,9 +35,10 @@ process PHYLOWGS_PARSECNVS {
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     touch cnvs.txt
+
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        phylowgs: \$PHYLOWGS_TAG
-    END_VERSIONS
+	"${task.process}":
+	    phylowgs: \$PHYLOWGS_TAG
+	END_VERSIONS
     """
 }

@@ -29,10 +29,11 @@ process NEOANTIGENUTILS_FORMATNETMHCPAN {
             ${netmhcOutputPan} \
             ${netmhcOutputType} \
             ${netmhcOutputFrom}
+
         cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            formatNetmhcpanOutput: \$(echo \$(format_netmhcpan_output.py -v))
-        END_VERSIONS
+	"${task.process}":
+	    formatNetmhcpanOutput: \$(echo \$(format_netmhcpan_output.py -v))
+	END_VERSIONS
     """
 
     stub:
@@ -43,8 +44,8 @@ process NEOANTIGENUTILS_FORMATNETMHCPAN {
     """
         touch ${prefix}.${netmhcOutputType}.${netmhcOutputFrom}.tsv
         cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            formatNetmhcpanOutput: \$(echo \$(format_netmhcpan_output.py -v))
-        END_VERSIONS
+	"${task.process}":
+	    formatNetmhcpanOutput: \$(echo \$(format_netmhcpan_output.py -v))
+	END_VERSIONS
     """
 }

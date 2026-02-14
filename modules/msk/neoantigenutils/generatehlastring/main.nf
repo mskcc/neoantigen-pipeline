@@ -21,10 +21,12 @@ process NEOANTIGENUTILS_GENERATEHLASTRING {
 
     """
     generateHLAString.sh -f ${inputHLA}
+
+
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        generateHLAstring: \$(echo \$(generateHLAString.sh -v))
-    END_VERSIONS
+	"${task.process}":
+	    generateHLAstring: \$(echo \$(generateHLAString.sh -v))
+	END_VERSIONS
     """
 
     stub:
@@ -34,8 +36,8 @@ process NEOANTIGENUTILS_GENERATEHLASTRING {
     """
         echo "HLA-test:01,HLA-test2:02"
         cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            generateHLAstring: \$(echo \$(generateHLAString.sh -v))
-        END_VERSIONS
+	"${task.process}":
+	    generateHLAstring: \$(echo \$(generateHLAString.sh -v))
+	END_VERSIONS
     """
 }

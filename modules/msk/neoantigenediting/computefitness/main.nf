@@ -25,20 +25,23 @@ process NEOANTIGENEDITING_COMPUTEFITNESS {
         --alignment ${alignment_file} \\
         --input ${patient_data} \\
         ${args}
+
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        neoantigenEditing: \$NEOANTIGEN_EDITING_TAG
-    END_VERSIONS
+	"${task.process}":
+	    neoantigenEditing: \$NEOANTIGEN_EDITING_TAG
+	END_VERSIONS
     """
 
     stub:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
+
     touch patient_data_annotated.json
+
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        neoantigenEditing: \$NEOANTIGEN_EDITING_TAG
-    END_VERSIONS
+	"${task.process}":
+	    neoantigenEditing: \$NEOANTIGEN_EDITING_TAG
+	END_VERSIONS
     """
 }

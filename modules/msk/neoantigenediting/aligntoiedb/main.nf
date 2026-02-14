@@ -25,20 +25,25 @@ process NEOANTIGENEDITING_ALIGNTOIEDB {
     align_neoantigens_to_IEDB.py \\
         --fasta ${iedb_fasta} \\
         --input ${patient_data}
+
+
+
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        neoantigenEditing: \$NEOANTIGEN_EDITING_TAG
-    END_VERSIONS
+	"${task.process}":
+	    neoantigenEditing: \$NEOANTIGEN_EDITING_TAG
+	END_VERSIONS
     """
 
     stub:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
+
     touch iedb_alignments_example.txt
+
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        neoantigenEditing: \$NEOANTIGEN_EDITING_TAG
-    END_VERSIONS
+	"${task.process}":
+	    neoantigenEditing: \$NEOANTIGEN_EDITING_TAG
+	END_VERSIONS
     """
 }

@@ -35,20 +35,26 @@ process NETMHC3 {
     export TMPDIR=${tmpDirFullPath}
     mkdir -p ${tmpDir}
     chmod 777 ${tmpDir}
+
     HLA_ACCEPTED=\$(trim_hla.py --hla ${hla})
+
     cat ${inputSVFasta} >> ${inputFasta}
+
     /usr/local/bin/netMHC-3.4/netMHC \
     -a \$HLA_ACCEPTED \
     -s \
     -l 9 \
     --xls=${prefix}.${inputType}.xls \
     ${inputFasta} > ${prefix}.${inputType}.netmhc.output
+
     mv hla_accepted.txt ${prefix}.hla_accepted.txt
     mv hla_rejected.txt ${prefix}.hla_rejected.txt
+
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        netmhc: v${NETMHC_VERSION}
-    END_VERSIONS
+	"${task.process}":
+	    netmhc: v${NETMHC_VERSION}
+	END_VERSIONS
+
     """
 
     stub:
@@ -64,9 +70,10 @@ process NETMHC3 {
     touch ${prefix}.${inputType}.xls
     touch ${prefix}.hla_accepted.txt
     touch ${prefix}.hla_rejected.txt
+
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        netmhc: v${NETMHC_VERSION}
-    END_VERSIONS
+	"${task.process}":
+	    netmhc: v${NETMHC_VERSION}
+	END_VERSIONS
     """
 }

@@ -21,11 +21,14 @@ process MUTALYZER_RETRIEVER {
     if ! bgzip --reindex ${fasta} > /dev/null 2>&1
     then
         # Re-compress fasta with bgzip
+
         mv ${fasta} ${fasta.baseName}.tmp.gzip
         gunzip -c ${fasta.baseName}.tmp.gzip | bgzip -c > ${fasta}
         bgzip --reindex ${fasta}
     fi
+
     # Build cache
+
     mutalyzer_retriever \
         --split --output cache \
         from_file \
@@ -33,13 +36,17 @@ process MUTALYZER_RETRIEVER {
         --paths \
         ${gff3} \
         ${fasta}
+
     # Compress cache
+
     sleep 15 # ensure all file handles are closed
+
     tar -zcf ${prefix}.tar.gz cache/
+
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        mutalyzer: \$(echo \$(mutalyzer_normalizer -v | tr '\n' ' ' | awk '{print \$3}'))
-    END_VERSIONS
+	"${task.process}":
+	    mutalyzer: \$(echo \$(mutalyzer_normalizer -v | tr '\n' ' ' | awk '{print \$3}'))
+	END_VERSIONS
     """
 
     stub:
@@ -49,8 +56,8 @@ process MUTALYZER_RETRIEVER {
     """
     touch ${prefix}.tar.gz
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        mutalyzer: \$(echo \$(mutalyzer_normalizer -v | tr '\n' ' ' | awk '{print \$3}'))
-    END_VERSIONS
+	"${task.process}":
+	    mutalyzer: \$(echo \$(mutalyzer_normalizer -v | tr '\n' ' ' | awk '{print \$3}'))
+	END_VERSIONS
     """
 }
