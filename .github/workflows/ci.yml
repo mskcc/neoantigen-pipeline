@@ -34,7 +34,7 @@ jobs:
           - "docker"
           - "singularity"
         test_name:
-          - "test"
+          - "test_full"
           - "test_no_phylowgs"
         isMaster:
           - ${{ github.base_ref == 'master' }}
