@@ -220,6 +220,12 @@
                     "description": "Weight parameter (w) balancing logC and logA in quality score.",
                     "fa_icon": "fas fa-balance-scale"
                 },
+                "mutalyzer_cache_dir": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "description": "Directory to use for caching Mutalyzer results.",
+                    "fa_icon": "fas fa-database"
+                },
                 "iedbfasta": {
                     "type": "string",
                     "description": "Path or URL to IEDB FASTA file for epitope alignment.",
