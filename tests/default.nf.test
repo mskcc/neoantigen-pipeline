@@ -6,6 +6,8 @@ nextflow_pipeline {
 
     test("-profile test") {
 
+        config "../conf/test.config"
+
         when {
             params {
                 outdir = "$outputDir"
@@ -33,9 +35,12 @@ nextflow_pipeline {
 
     test("-profile test_full") {
 
+        config "../conf/test_full.config"
+
         when {
             params {
                 outdir = "$outputDir"
+
             }
         }
 
