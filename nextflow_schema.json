@@ -83,6 +83,16 @@
                     "help_text": "This parameter is *mandatory* if `--genome` is not specified. If you don't have a BWA index available this will be generated for you automatically. Combine with `--save_reference` to save BWA index for future runs.",
                     "fa_icon": "far fa-file-code"
                 },
+                "reference_fasta": {
+                    "type": "string",
+                    "description": "Path or URL to reference FASTA (bgzipped) for Mutalyzer.",
+                    "fa_icon": "fas fa-dna"
+                },
+                "reference_gff3": {
+                    "type": "string",
+                    "description": "Path or URL to reference GFF3 annotation for Mutalyzer.",
+                    "fa_icon": "fas fa-dna"
+                },
                 "igenomes_ignore": {
                     "type": "boolean",
                     "description": "Do not load the iGenomes reference config.",
@@ -209,6 +219,12 @@
                     "default": 0.22402192838740312,
                     "description": "Weight parameter (w) balancing logC and logA in quality score.",
                     "fa_icon": "fas fa-balance-scale"
+                },
+                "mutalyzer_cache_dir": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "description": "Directory to use for caching Mutalyzer results.",
+                    "fa_icon": "fas fa-database"
                 },
                 "iedbfasta": {
                     "type": "string",

@@ -27,7 +27,7 @@ template:
   force: false
   is_nfcore: false
   name: neoantigenpipeline
-  org: mskcc
+  org: msk
   outdir: .
   skip_features: []
   version: 1.0.0

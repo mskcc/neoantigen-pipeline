@@ -2,8 +2,8 @@ process NEOANTIGENUTILS_CONVERTANNOTJSON {
     tag "$meta.id"
     label 'process_single'
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://mskcc/neoantigen-utils-base:1.3.0':
-        'docker.io/mskcc/neoantigen-utils-base:1.3.0' }"
+        'docker://ghcr.io/mskcc-omics-workflows/neoantigen-utils-base:1.4.0':
+        'ghcr.io/mskcc-omics-workflows/neoantigen-utils-base:1.4.0' }"
 
     input:
     tuple val(meta),  path(annotatedJSON)
@@ -24,9 +24,9 @@ process NEOANTIGENUTILS_CONVERTANNOTJSON {
             --output_file ${prefix}_neoantigens.tsv
 
         cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            convertannotjson: \$(echo \$(convertannotjson.py -v))
-        END_VERSIONS
+	"${task.process}":
+	    convertannotjson: \$(echo \$(convertannotjson.py -v))
+	END_VERSIONS
     """
 
     stub:
@@ -37,8 +37,8 @@ process NEOANTIGENUTILS_CONVERTANNOTJSON {
         touch ${prefix}_neoantigens.tsv
 
         cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            convertannotjson: \$(echo \$(convertannotjson.py -v))
-        END_VERSIONS
+	"${task.process}":
+	    convertannotjson: \$(echo \$(convertannotjson.py -v))
+	END_VERSIONS
     """
 }

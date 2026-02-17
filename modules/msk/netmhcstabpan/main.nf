@@ -4,8 +4,8 @@ process NETMHCSTABPAN {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://mskcc/netmhctools:1.1.0':
-        'docker.io/mskcc/netmhctools:1.1.0' }"
+        'docker://ghcr.io/mskcc-omics-workflows/netmhctools:1.1.1':
+        'ghcr.io/mskcc-omics-workflows/netmhctools:1.1.1' }"
 
     input:
     tuple val(meta),  path(inputFasta), path(inputSVFasta, arity: '0..*'), val(hlaString), val(inputType)
@@ -48,10 +48,10 @@ process NETMHCSTABPAN {
     -inptype 0 > ${prefix}.${inputType}.netmhcstabpan.output
 
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        netmhcpan: v${NETMHCPAN_VERSION}
-        netmhcstabpan: v${NETMHCSTABPAN_VERSION}
-    END_VERSIONS
+	"${task.process}":
+	    netmhcpan: v${NETMHCPAN_VERSION}
+	    netmhcstabpan: v${NETMHCSTABPAN_VERSION}
+	END_VERSIONS
 
     """
 
@@ -66,13 +66,13 @@ process NETMHCSTABPAN {
     def NETMHCSTABPAN_VERSION = "1.0"
 
     """
-    touch ${prefix}.MUT.netmhcstabpan.output
+    touch ${prefix}.${inputType}.netmhcstabpan.output
 
 
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        netmhcpan: v${NETMHCPAN_VERSION}
-        netmhcstabpan: v${NETMHCSTABPAN_VERSION}
-    END_VERSIONS
+	"${task.process}":
+	    netmhcpan: v${NETMHCPAN_VERSION}
+	    netmhcstabpan: v${NETMHCSTABPAN_VERSION}
+	END_VERSIONS
     """
 }

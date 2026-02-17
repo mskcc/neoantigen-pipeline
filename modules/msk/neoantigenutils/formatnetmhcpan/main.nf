@@ -2,8 +2,8 @@ process NEOANTIGENUTILS_FORMATNETMHCPAN {
     tag "$meta.id"
     label 'process_single'
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://mskcc/neoantigen-utils-base:1.3.0':
-        'docker.io/mskcc/neoantigen-utils-base:1.3.0' }"
+        'docker://ghcr.io/mskcc-omics-workflows/neoantigen-utils-base:1.4.0':
+        'ghcr.io/mskcc-omics-workflows/neoantigen-utils-base:1.4.0' }"
 
     input:
     tuple val(meta),  path(netmhcPanOutput)
@@ -31,9 +31,9 @@ process NEOANTIGENUTILS_FORMATNETMHCPAN {
             ${netmhcOutputFrom}
 
         cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            formatNetmhcpanOutput: \$(echo \$(format_netmhcpan_output.py -v))
-        END_VERSIONS
+	"${task.process}":
+	    formatNetmhcpanOutput: \$(echo \$(format_netmhcpan_output.py -v))
+	END_VERSIONS
     """
 
     stub:
@@ -44,8 +44,8 @@ process NEOANTIGENUTILS_FORMATNETMHCPAN {
     """
         touch ${prefix}.${netmhcOutputType}.${netmhcOutputFrom}.tsv
         cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            formatNetmhcpanOutput: \$(echo \$(format_netmhcpan_output.py -v))
-        END_VERSIONS
+	"${task.process}":
+	    formatNetmhcpanOutput: \$(echo \$(format_netmhcpan_output.py -v))
+	END_VERSIONS
     """
 }

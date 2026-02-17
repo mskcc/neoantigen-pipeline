@@ -17,10 +17,9 @@ process PHYLOWGS_STUB {
     echo '{"trees": {}, "params": {}, "dataset_name": "", "tree_densities": {}}' | gzip > ${id}.summ.json.gz
     echo '{"ssms": {}}' | gzip > ${id}.muts.json.gz
     mkdir empty_tree_dir && zip -r ${id}.mutass.zip empty_tree_dir
-
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        phylowgs_stub: "1.0"
-    END_VERSIONS
+	"${task.process}":
+	    phylowgs_stub: "1.0"
+	END_VERSIONS
     """
 }

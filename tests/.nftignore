@@ -10,3 +10,19 @@ multiqc/multiqc_plots/{svg,pdf,png}/*.{svg,pdf,png}
 multiqc/multiqc_report.html
 fastqc/*_fastqc.{html,zip}
 pipeline_info/*.{html,json,txt,yml}
+# Mutalyzer cache tar.gz includes timestamps
+**/*.tar.gz
+# Log files contain timestamps
+**/*_generate_mut_fasta.log
+# PhyloWGS MCMC outputs are stochastic
+**/trees.zip
+**/*.mutass.zip
+**/*.muts.json.gz
+**/*.summ.json.gz
+# netMHC raw outputs vary across platforms
+**/*.netmhc.output
+**/*.netmhcstabpan.output
+**/*.xls
+# Neoantigen JSON outputs depend on stochastic PhyloWGS results
+**/*_input.json
+**/*_annotated.json
