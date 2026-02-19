@@ -47,8 +47,8 @@
                     },
                     "neosv": {
                         "branch": "neoantigen",
-                        "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["generate_mutated_peptides"]
+                        "git_sha": "8c7332d5c096ffa0720b5805a5ad1c9247ef1676",
+                        "installed_by": ["generate_mutated_peptides", "modules"]
                     },
                     "netmhc3": {
                         "branch": "neoantigen",
