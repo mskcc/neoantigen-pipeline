@@ -1,0 +1,2 @@
+sample,maf,facets_hisens_cncf,hla_file,kallisto_abundance
+tumor_normal,https://raw.githubusercontent.com/mskcc-omics-workflows/test-datasets/neoantigen/neoantigen/small_test_chr2and16/somatic_filtered.chr2_16.maf,https://raw.githubusercontent.com/mskcc-omics-workflows/test-datasets/neoantigen/neoantigen/small_test_chr2and16/facets_hisens.cncf.chr2_16.txt,https://raw.githubusercontent.com/mskcc-omics-workflows/test-datasets/neoantigen/neoantigen/winners.hla.txt,tests/data/test_abundance.tsv

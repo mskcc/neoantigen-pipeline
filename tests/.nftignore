@@ -26,3 +26,5 @@ pipeline_info/*.{html,json,txt,yml}
 # Neoantigen JSON outputs depend on stochastic PhyloWGS results
 **/*_input.json
 **/*_annotated.json
+# RNA annotation outputs depend on upstream stochastic results
+**/*_rna_report.tsv
