@@ -30,6 +30,11 @@
                         "git_sha": "0f0660088fa0502742c9e27ee312f254501e3c32",
                         "installed_by": ["modules"]
                     },
+                    "neoantigenutils/fusionprepare": {
+                        "branch": "feature/rna-integration",
+                        "git_sha": "eb76512e707419d0816f2bc6abd0f21698e320f3",
+                        "installed_by": ["modules"]
+                    },
                     "neoantigenutils/formatnetmhcpan": {
                         "branch": "neoantigen",
                         "git_sha": "0f0660088fa0502742c9e27ee312f254501e3c32",
@@ -46,6 +51,11 @@
                     "neoantigenutils/neoantigeninput": {
                         "branch": "neoantigen",
                         "git_sha": "0f0660088fa0502742c9e27ee312f254501e3c32",
+                        "installed_by": ["modules"]
+                    },
+                    "neoantigenutils/rnaannotate": {
+                        "branch": "feature/rna-integration",
+                        "git_sha": "eb76512e707419d0816f2bc6abd0f21698e320f3",
                         "installed_by": ["modules"]
                     },
                     "neosv": {

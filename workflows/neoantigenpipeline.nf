@@ -17,6 +17,8 @@ include { NETMHCSTABANDPAN } from '../subworkflows/msk/netmhcstabandpan/main'
 include { NEOANTIGENUTILS_NEOANTIGENINPUT } from '../modules/msk/neoantigenutils/neoantigeninput'
 include { NEOANTIGEN_EDITING } from '../subworkflows/msk/neoantigen_editing'
 include { NEOANTIGENUTILS_CONVERTANNOTJSON } from '../modules/msk/neoantigenutils/convertannotjson'
+include { NEOANTIGENUTILS_RNAANNOTATE } from '../modules/msk/neoantigenutils/rnaannotate'
+include { NEOANTIGENUTILS_FUSIONPREPARE } from '../modules/msk/neoantigenutils/fusionprepare'
 include { PHYLOWGS_STUB } from '../modules/local/phylowgs/stub/main'
 
 /*
@@ -38,7 +40,7 @@ workflow NEOANTIGENPIPELINE {
     ch_gtf_and_cdna = Channel.value([file(params.gtf), file(params.cdna)])
 
     // Generate mutated peptides (MUTALYZER_RETRIEVER + GENERATEMUTFASTA + GENERATEHLASTRING + NEOSV)
-    ch_maf_hla_sv = ch_samplesheet.map { meta, maf, facets_hisens_cncf, hla_file ->
+    ch_maf_hla_sv = ch_samplesheet.map { meta, maf, facets_hisens_cncf, hla_file, kallisto, agfusion ->
         [meta, maf, hla_file, null]  // null sv = no structural variants
     }
 
@@ -56,7 +58,7 @@ workflow NEOANTIGENPIPELINE {
         .join(GENERATE_MUTATED_PEPTIDES.out.hla_string)
 
     ch_samplesheet.map {
-            meta, maf, facets_hisens_cncf, hla_file ->
+            meta, maf, facets_hisens_cncf, hla_file, kallisto, agfusion ->
                 [meta, maf, hla_file]
 
         }
@@ -64,18 +66,31 @@ workflow NEOANTIGENPIPELINE {
 
 
     ch_samplesheet.map {
-            meta, maf, facets_hisens_cncf, hla_file ->
+            meta, maf, facets_hisens_cncf, hla_file, kallisto, agfusion ->
                 [meta, maf, facets_hisens_cncf]
 
         }
         .set { phylowgs_input_ch }
 
     ch_samplesheet.map {
-            meta, maf, facets_hisens_cncf, hla_file ->
+            meta, maf, facets_hisens_cncf, hla_file, kallisto, agfusion ->
                 [meta, [], []]
 
         }
         .set { ch_sv_empty }
+
+    // Optional RNA channels
+    ch_maf_for_rna = ch_samplesheet.map { meta, maf, facets_hisens_cncf, hla_file, kallisto, agfusion ->
+        [meta, maf]
+    }
+
+    ch_kallisto = ch_samplesheet.map { meta, maf, facets_hisens_cncf, hla_file, kallisto, agfusion ->
+        [meta, kallisto]
+    }
+
+    ch_agfusion = ch_samplesheet.map { meta, maf, facets_hisens_cncf, hla_file, kallisto, agfusion ->
+        agfusion ? [meta, agfusion] : null
+    }.filter { it != null }
 
     // phylowgs workflow (optional)
     if ( params.run_phylowgs ) {
@@ -132,6 +147,23 @@ workflow NEOANTIGENPIPELINE {
 
     ch_versions = ch_versions.mix(NEOANTIGENUTILS_CONVERTANNOTJSON.out.versions)
 
+    // Optional RNA annotation
+    if (params.run_rna_annotation) {
+        NEOANTIGENUTILS_RNAANNOTATE(
+            NEOANTIGENUTILS_CONVERTANNOTJSON.out.neoantigenTSV,
+            ch_maf_for_rna,
+            ch_kallisto,
+            Channel.value(file(params.gtf))
+        )
+        ch_versions = ch_versions.mix(NEOANTIGENUTILS_RNAANNOTATE.out.versions)
+    }
+
+    // Optional fusion neoantigen prediction
+    if (params.run_fusion_neoantigens) {
+        NEOANTIGENUTILS_FUSIONPREPARE(ch_agfusion)
+        ch_versions = ch_versions.mix(NEOANTIGENUTILS_FUSIONPREPARE.out.versions)
+    }
+
     //
     // Collate and save software versions
     //
@@ -166,6 +198,10 @@ workflow NEOANTIGENPIPELINE {
     versions         = ch_versions                 // channel: [ path(versions.yml) ]
     neo_out          = NEOANTIGEN_EDITING.out.annotated_output
     tsv_out          = NEOANTIGENUTILS_CONVERTANNOTJSON.out.neoantigenTSV
+    rna_annotated    = params.run_rna_annotation ? NEOANTIGENUTILS_RNAANNOTATE.out.annotated_tsv : Channel.empty()
+    rna_report       = params.run_rna_annotation ? NEOANTIGENUTILS_RNAANNOTATE.out.rna_report : Channel.empty()
+    fusion_mut_fasta = params.run_fusion_neoantigens ? NEOANTIGENUTILS_FUSIONPREPARE.out.mut_fasta : Channel.empty()
+    fusion_wt_fasta  = params.run_fusion_neoantigens ? NEOANTIGENUTILS_FUSIONPREPARE.out.wt_fasta : Channel.empty()
 }
 
 def merge_for_input_generation(netMHCpan_input_ch, summ_ch, muts_ch, mutass_ch, netmhcpan_mut_tsv_ch, netmhcpan_wt_tsv_ch ) {

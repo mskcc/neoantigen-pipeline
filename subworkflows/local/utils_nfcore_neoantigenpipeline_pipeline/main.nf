@@ -87,8 +87,10 @@ workflow PIPELINE_INITIALISATION {
     Channel
         .fromList(samplesheetToList(params.input, "${projectDir}/assets/schema_input.json"))
         .map {
-            meta, maf, facets_gene, hla_file ->
-                [meta, maf, facets_gene, hla_file]
+            meta, maf, facets_gene, hla_file, kallisto_abundance, agfusion_dir ->
+                def kallisto = kallisto_abundance ? file(kallisto_abundance) : []
+                def agfusion = agfusion_dir ? file(agfusion_dir) : []
+                [meta, maf, facets_gene, hla_file, kallisto, agfusion]
 
         }
         .set { ch_samplesheet }

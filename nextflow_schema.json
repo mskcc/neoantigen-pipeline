@@ -239,6 +239,27 @@
                     "type": "string",
                     "description": "Path or URL to GTF annotation file.",
                     "fa_icon": "fas fa-file-code"
+                },
+                "run_rna_annotation": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable RNA annotation of neoantigens using FORTE outputs.",
+                    "help_text": "When enabled, adds RNA expression (TPM) and RNA VAF columns to the neoantigen TSV output. Requires kallisto_abundance in samplesheet or rna_* columns in the input MAF.",
+                    "fa_icon": "fas fa-flask"
+                },
+                "run_fusion_neoantigens": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable fusion neoantigen prediction from AGFusion output.",
+                    "help_text": "When enabled, processes AGFusion output from FORTE to predict fusion-derived neoantigens. Requires agfusion_dir in samplesheet.",
+                    "fa_icon": "fas fa-link"
+                },
+                "rna_tpm_threshold": {
+                    "type": "number",
+                    "default": 1.0,
+                    "description": "TPM threshold for classifying a gene as expressed.",
+                    "help_text": "Genes with TPM above this threshold (from Kallisto) are classified as expressed in the rna_expressed column.",
+                    "fa_icon": "fas fa-filter"
                 }
             }
         },

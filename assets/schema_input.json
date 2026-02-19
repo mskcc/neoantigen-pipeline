@@ -33,6 +33,17 @@
                 "exists": true,
                 "pattern": "^\\S+.txt$",
                 "errorMessage": "HLA_file output by polysolver."
+            },
+            "kallisto_abundance": {
+                "type": "string",
+                "format": "file-path",
+                "pattern": "^\\S+\\.tsv$",
+                "errorMessage": "Kallisto abundance.tsv from FORTE pipeline (optional)"
+            },
+            "agfusion_dir": {
+                "type": "string",
+                "format": "directory-path",
+                "errorMessage": "AGFusion output directory from FORTE pipeline (optional)"
             }
         },
         "required": ["sample", "maf", "facets_hisens_cncf", "hla_file"]
