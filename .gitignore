@@ -9,6 +9,7 @@ testing*
 *.pyc
 null/
 assets/test_somatic_trimmed.maf
+assets/samplesheet_rna_resolved.csv
 test_results/
 .nf-test/
 .nf-test.log

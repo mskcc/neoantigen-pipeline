@@ -4,7 +4,7 @@ nextflow_pipeline {
     script "../main.nf"
     tag "pipeline"
     tag "rna_annotation"
-    profile "test_rna"
+    profile "test_rna,docker"
 
     test("-profile test_rna") {
 
