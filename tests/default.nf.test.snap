@@ -189,7 +189,7 @@
                     "phylowgs": "v1.5-msk"
                 },
                 "Workflow": {
-                    "mskcc/neoantigenpipeline": "v1.3.1"
+                    "mskcc/neoantigenpipeline": "v1.4.0"
                 }
             },
             [
