@@ -38,7 +38,7 @@
                     "phylowgs_stub": "1.0"
                 },
                 "Workflow": {
-                    "mskcc/neoantigenpipeline": "v1.3.1"
+                    "mskcc/neoantigenpipeline": "v1.4.0"
                 }
             },
             [
