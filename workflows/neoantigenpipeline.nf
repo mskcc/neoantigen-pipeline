@@ -70,12 +70,8 @@ workflow NEOANTIGENPIPELINE {
         }
         .set { phylowgs_input_ch }
 
-    ch_samplesheet.map {
-            meta, maf, facets_hisens_cncf, hla_file ->
-                [meta, [], []]
-
-        }
-        .set { ch_sv_empty }
+    ch_sv = GENERATE_MUTATED_PEPTIDES.out.sv_mut_fasta
+        .join(GENERATE_MUTATED_PEPTIDES.out.sv_wt_fasta)
 
     // phylowgs workflow (optional)
     if ( params.run_phylowgs ) {
@@ -92,7 +88,7 @@ workflow NEOANTIGENPIPELINE {
         phylowgs_mutass = PHYLOWGS_STUB.out.mutass
     }
 
-    NETMHCSTABANDPAN(ch_fasta_and_hla, ch_sv_empty)
+    NETMHCSTABANDPAN(ch_fasta_and_hla, ch_sv)
 
     ch_versions = ch_versions.mix(NETMHCSTABANDPAN.out.versions)
 
