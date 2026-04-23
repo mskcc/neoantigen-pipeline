@@ -12,7 +12,7 @@
                     },
                     "mutalyzer/retriever": {
                         "branch": "neoantigen",
-                        "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
+                        "git_sha": "95c8dfe446e8be8340f70571fcdd52c918446be3",
                         "installed_by": ["generate_mutated_peptides"]
                     },
                     "neoantigenediting/aligntoiedb": {
@@ -117,7 +117,7 @@
                 "nf-core": {
                     "multiqc": {
                         "branch": "master",
-                        "git_sha": "575e1a4b51a9bad7a8cd1316a88fb85684ef7c7b",
+                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
                         "installed_by": ["modules"]
                     }
                 }
