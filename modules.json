@@ -91,7 +91,7 @@
                 "msk": {
                     "generate_mutated_peptides": {
                         "branch": "neoantigen",
-                        "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
+                        "git_sha": "98439a9b98f9a49c6bb66126b9151da0da309bc1",
                         "installed_by": ["subworkflows"]
                     },
                     "neoantigen_editing": {
