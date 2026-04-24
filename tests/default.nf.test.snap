@@ -9,30 +9,8 @@
                 "MUTALYZER_RETRIEVER": {
                     "mutalyzer": "3.1.1"
                 },
-                "NEOANTIGENEDITING_ALIGNTOIEDB": {
-                    "neoantigenEditing": 1.3
-                },
-                "NEOANTIGENEDITING_COMPUTEFITNESS": {
-                    "neoantigenEditing": 1.3
-                },
-                "NEOANTIGENUTILS_CONVERTANNOTJSON": {
-                    "convertannotjson": "v1.1"
-                },
-                "NEOANTIGENUTILS_FORMATNETMHCPAN": {
-                    "formatNetmhcpanOutput": "format_netmhcpan_output.py 1.0"
-                },
                 "NEOANTIGENUTILS_GENERATEHLASTRING": {
                     "generateHLAstring": "1.0.0"
-                },
-                "NEOANTIGENUTILS_NEOANTIGENINPUT": {
-                    "neoantigeninput": "generate_input.py 1.9"
-                },
-                "NETMHC3": {
-                    "netmhc": "v3.4"
-                },
-                "NETMHCSTABPAN": {
-                    "netmhcpan": "v4.1",
-                    "netmhcstabpan": "v1.0"
                 },
                 "PHYLOWGS_STUB": {
                     "phylowgs_stub": "1.0"
@@ -56,26 +34,7 @@
                 "tumor_normal/generatemutfasta/tumor_normal_out/tumor_normal.MUT.sequences.fa",
                 "tumor_normal/generatemutfasta/tumor_normal_out/tumor_normal.WT.sequences.fa",
                 "tumor_normal/generatemutfasta/tumor_normal_out/tumor_normal_generate_mut_fasta.log",
-                "tumor_normal/neoantigenediting",
-                "tumor_normal/neoantigenediting/iedb_alignments_tumor_normal_patient.txt",
-                "tumor_normal/neoantigenediting/tumor_normal_patient_tumor_normal_input_annotated.json",
                 "tumor_normal/neoantigenutils",
-                "tumor_normal/neoantigenutils/tumor_normal_neoantigens.tsv",
-                "tumor_normal/neoantigenutils/tumor_normal_netmhc.output.MUT.tsv",
-                "tumor_normal/neoantigenutils/tumor_normal_netmhc.output.WT.tsv",
-                "tumor_normal/neoantigenutils/tumor_normal_netmhcstabpan.output.MUT.tsv",
-                "tumor_normal/neoantigenutils/tumor_normal_netmhcstabpan.output.WT.tsv",
-                "tumor_normal/neoantigenutils/tumor_normal_patient_tumor_normal_input.json",
-                "tumor_normal/netmhc3",
-                "tumor_normal/netmhc3/tumor_normal.MUT.netmhc.output",
-                "tumor_normal/netmhc3/tumor_normal.MUT.xls",
-                "tumor_normal/netmhc3/tumor_normal.WT.netmhc.output",
-                "tumor_normal/netmhc3/tumor_normal.WT.xls",
-                "tumor_normal/netmhc3/tumor_normal.hla_accepted.txt",
-                "tumor_normal/netmhc3/tumor_normal.hla_rejected.txt",
-                "tumor_normal/netmhcstabpan",
-                "tumor_normal/netmhcstabpan/tumor_normal.MUT.netmhcstabpan.output",
-                "tumor_normal/netmhcstabpan/tumor_normal.WT.netmhcstabpan.output",
                 "tumor_normal/phylowgs",
                 "tumor_normal/phylowgs/tumor_normal.mutass.zip",
                 "tumor_normal/phylowgs/tumor_normal.muts.json.gz",
@@ -86,26 +45,7 @@
                 "tumor_normal2/generatemutfasta/tumor_normal2_out/tumor_normal2.MUT.sequences.fa",
                 "tumor_normal2/generatemutfasta/tumor_normal2_out/tumor_normal2.WT.sequences.fa",
                 "tumor_normal2/generatemutfasta/tumor_normal2_out/tumor_normal2_generate_mut_fasta.log",
-                "tumor_normal2/neoantigenediting",
-                "tumor_normal2/neoantigenediting/iedb_alignments_tumor_normal2_patient.txt",
-                "tumor_normal2/neoantigenediting/tumor_normal2_patient_tumor_normal2_input_annotated.json",
                 "tumor_normal2/neoantigenutils",
-                "tumor_normal2/neoantigenutils/tumor_normal2_neoantigens.tsv",
-                "tumor_normal2/neoantigenutils/tumor_normal2_netmhc.output.MUT.tsv",
-                "tumor_normal2/neoantigenutils/tumor_normal2_netmhc.output.WT.tsv",
-                "tumor_normal2/neoantigenutils/tumor_normal2_netmhcstabpan.output.MUT.tsv",
-                "tumor_normal2/neoantigenutils/tumor_normal2_netmhcstabpan.output.WT.tsv",
-                "tumor_normal2/neoantigenutils/tumor_normal2_patient_tumor_normal2_input.json",
-                "tumor_normal2/netmhc3",
-                "tumor_normal2/netmhc3/tumor_normal2.MUT.netmhc.output",
-                "tumor_normal2/netmhc3/tumor_normal2.MUT.xls",
-                "tumor_normal2/netmhc3/tumor_normal2.WT.netmhc.output",
-                "tumor_normal2/netmhc3/tumor_normal2.WT.xls",
-                "tumor_normal2/netmhc3/tumor_normal2.hla_accepted.txt",
-                "tumor_normal2/netmhc3/tumor_normal2.hla_rejected.txt",
-                "tumor_normal2/netmhcstabpan",
-                "tumor_normal2/netmhcstabpan/tumor_normal2.MUT.netmhcstabpan.output",
-                "tumor_normal2/netmhcstabpan/tumor_normal2.WT.netmhcstabpan.output",
                 "tumor_normal2/phylowgs",
                 "tumor_normal2/phylowgs/tumor_normal2.mutass.zip",
                 "tumor_normal2/phylowgs/tumor_normal2.muts.json.gz",
@@ -115,31 +55,15 @@
                 "versions.yml:md5,88999809ef25538868f353fda1c397f1",
                 "tumor_normal.MUT.sequences.fa:md5,3d2ff66590a4329f9a24e03bdf84e0ab",
                 "tumor_normal.WT.sequences.fa:md5,4bfcfc4d29d01ddc4108f39350936228",
-                "iedb_alignments_tumor_normal_patient.txt:md5,30b3edf8705b335a360ba428501388da",
-                "tumor_normal_neoantigens.tsv:md5,8565ba43904eb5ee0732875ce1bcf565",
-                "tumor_normal_netmhc.output.MUT.tsv:md5,3bb2e5167ae1211f7872650c53c7f816",
-                "tumor_normal_netmhc.output.WT.tsv:md5,f0fbd063b1bb18a8be0c1716e7500bb8",
-                "tumor_normal_netmhcstabpan.output.MUT.tsv:md5,3405a5776e2dbb95906ca97a0cabfddf",
-                "tumor_normal_netmhcstabpan.output.WT.tsv:md5,98d97fc3e16b4bcccfbacb056b6ab5a4",
-                "tumor_normal.hla_accepted.txt:md5,ccc4b3e5c2a2c7cad3581bfc72ef8106",
-                "tumor_normal.hla_rejected.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "tumor_normal2.MUT.sequences.fa:md5,3d2ff66590a4329f9a24e03bdf84e0ab",
-                "tumor_normal2.WT.sequences.fa:md5,4bfcfc4d29d01ddc4108f39350936228",
-                "iedb_alignments_tumor_normal2_patient.txt:md5,30b3edf8705b335a360ba428501388da",
-                "tumor_normal2_neoantigens.tsv:md5,8565ba43904eb5ee0732875ce1bcf565",
-                "tumor_normal2_netmhc.output.MUT.tsv:md5,3bb2e5167ae1211f7872650c53c7f816",
-                "tumor_normal2_netmhc.output.WT.tsv:md5,f0fbd063b1bb18a8be0c1716e7500bb8",
-                "tumor_normal2_netmhcstabpan.output.MUT.tsv:md5,3405a5776e2dbb95906ca97a0cabfddf",
-                "tumor_normal2_netmhcstabpan.output.WT.tsv:md5,98d97fc3e16b4bcccfbacb056b6ab5a4",
-                "tumor_normal2.hla_accepted.txt:md5,ccc4b3e5c2a2c7cad3581bfc72ef8106",
-                "tumor_normal2.hla_rejected.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                "tumor_normal2.WT.sequences.fa:md5,4bfcfc4d29d01ddc4108f39350936228"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "25.10.2"
+            "nextflow": "25.10.4"
         },
-        "timestamp": "2026-02-16T17:09:20.585937555"
+        "timestamp": "2026-04-24T12:49:38.529887705"
     },
     "-profile test_full": {
         "content": [
@@ -151,30 +75,8 @@
                 "MUTALYZER_RETRIEVER": {
                     "mutalyzer": "3.1.1"
                 },
-                "NEOANTIGENEDITING_ALIGNTOIEDB": {
-                    "neoantigenEditing": 1.3
-                },
-                "NEOANTIGENEDITING_COMPUTEFITNESS": {
-                    "neoantigenEditing": 1.3
-                },
-                "NEOANTIGENUTILS_CONVERTANNOTJSON": {
-                    "convertannotjson": "v1.1"
-                },
-                "NEOANTIGENUTILS_FORMATNETMHCPAN": {
-                    "formatNetmhcpanOutput": "format_netmhcpan_output.py 1.0"
-                },
                 "NEOANTIGENUTILS_GENERATEHLASTRING": {
                     "generateHLAstring": "1.0.0"
-                },
-                "NEOANTIGENUTILS_NEOANTIGENINPUT": {
-                    "neoantigeninput": "generate_input.py 1.9"
-                },
-                "NETMHC3": {
-                    "netmhc": "v3.4"
-                },
-                "NETMHCSTABPAN": {
-                    "netmhcpan": "v4.1",
-                    "netmhcstabpan": "v1.0"
                 },
                 "PHYLOWGS_CREATEINPUT": {
                     "phylowgs": "v1.5-msk"
@@ -207,26 +109,7 @@
                 "tumor_normal/generatemutfasta/tumor_normal_out/tumor_normal.MUT.sequences.fa",
                 "tumor_normal/generatemutfasta/tumor_normal_out/tumor_normal.WT.sequences.fa",
                 "tumor_normal/generatemutfasta/tumor_normal_out/tumor_normal_generate_mut_fasta.log",
-                "tumor_normal/neoantigenediting",
-                "tumor_normal/neoantigenediting/iedb_alignments_tumor_normal_patient.txt",
-                "tumor_normal/neoantigenediting/tumor_normal_patient_tumor_normal_input_annotated.json",
                 "tumor_normal/neoantigenutils",
-                "tumor_normal/neoantigenutils/tumor_normal_neoantigens.tsv",
-                "tumor_normal/neoantigenutils/tumor_normal_netmhc.output.MUT.tsv",
-                "tumor_normal/neoantigenutils/tumor_normal_netmhc.output.WT.tsv",
-                "tumor_normal/neoantigenutils/tumor_normal_netmhcstabpan.output.MUT.tsv",
-                "tumor_normal/neoantigenutils/tumor_normal_netmhcstabpan.output.WT.tsv",
-                "tumor_normal/neoantigenutils/tumor_normal_patient_tumor_normal_input.json",
-                "tumor_normal/netmhc3",
-                "tumor_normal/netmhc3/tumor_normal.MUT.netmhc.output",
-                "tumor_normal/netmhc3/tumor_normal.MUT.xls",
-                "tumor_normal/netmhc3/tumor_normal.WT.netmhc.output",
-                "tumor_normal/netmhc3/tumor_normal.WT.xls",
-                "tumor_normal/netmhc3/tumor_normal.hla_accepted.txt",
-                "tumor_normal/netmhc3/tumor_normal.hla_rejected.txt",
-                "tumor_normal/netmhcstabpan",
-                "tumor_normal/netmhcstabpan/tumor_normal.MUT.netmhcstabpan.output",
-                "tumor_normal/netmhcstabpan/tumor_normal.WT.netmhcstabpan.output",
                 "tumor_normal/phylowgs",
                 "tumor_normal/phylowgs/chains",
                 "tumor_normal/phylowgs/chains/trees.zip",
@@ -242,26 +125,7 @@
                 "tumor_normal2/generatemutfasta/tumor_normal2_out/tumor_normal2.MUT.sequences.fa",
                 "tumor_normal2/generatemutfasta/tumor_normal2_out/tumor_normal2.WT.sequences.fa",
                 "tumor_normal2/generatemutfasta/tumor_normal2_out/tumor_normal2_generate_mut_fasta.log",
-                "tumor_normal2/neoantigenediting",
-                "tumor_normal2/neoantigenediting/iedb_alignments_tumor_normal2_patient.txt",
-                "tumor_normal2/neoantigenediting/tumor_normal2_patient_tumor_normal2_input_annotated.json",
                 "tumor_normal2/neoantigenutils",
-                "tumor_normal2/neoantigenutils/tumor_normal2_neoantigens.tsv",
-                "tumor_normal2/neoantigenutils/tumor_normal2_netmhc.output.MUT.tsv",
-                "tumor_normal2/neoantigenutils/tumor_normal2_netmhc.output.WT.tsv",
-                "tumor_normal2/neoantigenutils/tumor_normal2_netmhcstabpan.output.MUT.tsv",
-                "tumor_normal2/neoantigenutils/tumor_normal2_netmhcstabpan.output.WT.tsv",
-                "tumor_normal2/neoantigenutils/tumor_normal2_patient_tumor_normal2_input.json",
-                "tumor_normal2/netmhc3",
-                "tumor_normal2/netmhc3/tumor_normal2.MUT.netmhc.output",
-                "tumor_normal2/netmhc3/tumor_normal2.MUT.xls",
-                "tumor_normal2/netmhc3/tumor_normal2.WT.netmhc.output",
-                "tumor_normal2/netmhc3/tumor_normal2.WT.xls",
-                "tumor_normal2/netmhc3/tumor_normal2.hla_accepted.txt",
-                "tumor_normal2/netmhc3/tumor_normal2.hla_rejected.txt",
-                "tumor_normal2/netmhcstabpan",
-                "tumor_normal2/netmhcstabpan/tumor_normal2.MUT.netmhcstabpan.output",
-                "tumor_normal2/netmhcstabpan/tumor_normal2.WT.netmhcstabpan.output",
                 "tumor_normal2/phylowgs",
                 "tumor_normal2/phylowgs/chains",
                 "tumor_normal2/phylowgs/chains/trees.zip",
@@ -276,27 +140,11 @@
                 "versions.yml:md5,88999809ef25538868f353fda1c397f1",
                 "tumor_normal.MUT.sequences.fa:md5,3d2ff66590a4329f9a24e03bdf84e0ab",
                 "tumor_normal.WT.sequences.fa:md5,4bfcfc4d29d01ddc4108f39350936228",
-                "iedb_alignments_tumor_normal_patient.txt:md5,30b3edf8705b335a360ba428501388da",
-                "tumor_normal_neoantigens.tsv:md5,8565ba43904eb5ee0732875ce1bcf565",
-                "tumor_normal_netmhc.output.MUT.tsv:md5,3bb2e5167ae1211f7872650c53c7f816",
-                "tumor_normal_netmhc.output.WT.tsv:md5,f0fbd063b1bb18a8be0c1716e7500bb8",
-                "tumor_normal_netmhcstabpan.output.MUT.tsv:md5,3405a5776e2dbb95906ca97a0cabfddf",
-                "tumor_normal_netmhcstabpan.output.WT.tsv:md5,98d97fc3e16b4bcccfbacb056b6ab5a4",
-                "tumor_normal.hla_accepted.txt:md5,ccc4b3e5c2a2c7cad3581bfc72ef8106",
-                "tumor_normal.hla_rejected.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "cnv_data.txt:md5,ac0eef7efce9b76adc381891f9156850",
                 "cnvs.txt:md5,9c7f21a42d5a2225b1224deec3f77a24",
                 "ssm_data.txt:md5,23ef29d9231d13586b5ef42c1b90e330",
                 "tumor_normal2.MUT.sequences.fa:md5,3d2ff66590a4329f9a24e03bdf84e0ab",
                 "tumor_normal2.WT.sequences.fa:md5,4bfcfc4d29d01ddc4108f39350936228",
-                "iedb_alignments_tumor_normal2_patient.txt:md5,30b3edf8705b335a360ba428501388da",
-                "tumor_normal2_neoantigens.tsv:md5,8565ba43904eb5ee0732875ce1bcf565",
-                "tumor_normal2_netmhc.output.MUT.tsv:md5,3bb2e5167ae1211f7872650c53c7f816",
-                "tumor_normal2_netmhc.output.WT.tsv:md5,f0fbd063b1bb18a8be0c1716e7500bb8",
-                "tumor_normal2_netmhcstabpan.output.MUT.tsv:md5,3405a5776e2dbb95906ca97a0cabfddf",
-                "tumor_normal2_netmhcstabpan.output.WT.tsv:md5,98d97fc3e16b4bcccfbacb056b6ab5a4",
-                "tumor_normal2.hla_accepted.txt:md5,ccc4b3e5c2a2c7cad3581bfc72ef8106",
-                "tumor_normal2.hla_rejected.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "cnv_data.txt:md5,ac0eef7efce9b76adc381891f9156850",
                 "cnvs.txt:md5,9c7f21a42d5a2225b1224deec3f77a24",
                 "ssm_data.txt:md5,23ef29d9231d13586b5ef42c1b90e330"
@@ -304,8 +152,8 @@
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "25.10.2"
+            "nextflow": "25.10.4"
         },
-        "timestamp": "2026-02-16T17:41:01.659141648"
+        "timestamp": "2026-04-24T12:52:00.2956958"
     }
 }
