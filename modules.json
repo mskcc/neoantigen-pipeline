@@ -22,7 +22,7 @@
                     },
                     "neoantigenediting/computefitness": {
                         "branch": "neoantigen",
-                        "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
+                        "git_sha": "f7d4cda4510eb352a4ac5cddbf6b6d1096af193f",
                         "installed_by": ["neoantigen_editing"]
                     },
                     "neoantigenutils/convertannotjson": {
@@ -42,7 +42,7 @@
                     },
                     "neoantigenutils/neoantigeninput": {
                         "branch": "neoantigen",
-                        "git_sha": "895fc759070665ba6a84e7ac334286080c0cd7f7",
+                        "git_sha": "f7d4cda4510eb352a4ac5cddbf6b6d1096af193f",
                         "installed_by": ["modules"]
                     },
                     "neosv": {
@@ -117,7 +117,7 @@
                 "nf-core": {
                     "multiqc": {
                         "branch": "master",
-                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "git_sha": "008f9d3e61209bf995edac3ba531f54e269e1215",
                         "installed_by": ["modules"]
                     }
                 }
