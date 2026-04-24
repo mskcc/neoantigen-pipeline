@@ -42,15 +42,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Module / Tool       | Change                          |
-| ------------------- | ------------------------------- |
-| `mutalyzer`         | Added (new module)              |
-| `neosv`             | Added (new module)              |
-| `generatemutfasta`  | Relocated; script updated       |
-| `multiqc`           | Updated to nf-core latest       |
-| `nf-schema`         | v2.3.0 (via nf-core template)   |
-| Nextflow            | Minimum version bumped          |
-| nf-core template    | Synced 3.2.0 → 3.5.2            |
+| Module / Tool      | Change                        |
+| ------------------ | ----------------------------- |
+| `mutalyzer`        | Added (new module)            |
+| `neosv`            | Added (new module)            |
+| `generatemutfasta` | Relocated; script updated     |
+| `multiqc`          | Updated to nf-core latest     |
+| `nf-schema`        | v2.3.0 (via nf-core template) |
+| Nextflow           | Minimum version bumped        |
+| nf-core template   | Synced 3.2.0 → 3.5.2          |
 
 ### `Deprecated`
 
@@ -73,9 +73,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Module / Tool          | Change                        |
-| ---------------------- | ----------------------------- |
-| `neoantigeninput`      | Script updated (v1.9)         |
+| Module / Tool     | Change                |
+| ----------------- | --------------------- |
+| `neoantigeninput` | Script updated (v1.9) |
 
 ---
 
@@ -97,15 +97,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Module / Tool          | Change                                       |
-| ---------------------- | -------------------------------------------- |
-| `netmhcpan`            | Removed as standalone module                 |
-| `neoantigeninput`      | Updated with pyensembl transcript annotation |
-| `computefitness`       | Updated                                      |
-| `convertannotjson`     | Updated                                      |
-| `formatnetmhcpan`      | Updated                                      |
-| `generatehlastring`    | Updated                                      |
-| `generatemutfasta`     | Updated                                      |
+| Module / Tool       | Change                                       |
+| ------------------- | -------------------------------------------- |
+| `netmhcpan`         | Removed as standalone module                 |
+| `neoantigeninput`   | Updated with pyensembl transcript annotation |
+| `computefitness`    | Updated                                      |
+| `convertannotjson`  | Updated                                      |
+| `formatnetmhcpan`   | Updated                                      |
+| `generatehlastring` | Updated                                      |
+| `generatemutfasta`  | Updated                                      |
 
 ---
 
@@ -121,11 +121,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Module / Tool          | Change                                      |
-| ---------------------- | ------------------------------------------- |
-| `neoantigeninput`      | Script fix (v1.8 → v1.9)                   |
-| `multiqc`              | Updated to nf-core latest                   |
-| nf-core template       | Synced to 3.2.0                             |
+| Module / Tool     | Change                    |
+| ----------------- | ------------------------- |
+| `neoantigeninput` | Script fix (v1.8 → v1.9)  |
+| `multiqc`         | Updated to nf-core latest |
+| nf-core template  | Synced to 3.2.0           |
 
 ---
 
@@ -144,9 +144,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Module / Tool     | Change                                       |
-| ----------------- | -------------------------------------------- |
-| nf-core template  | Synced through 3.1.2                         |
+| Module / Tool    | Change               |
+| ---------------- | -------------------- |
+| nf-core template | Synced through 3.1.2 |
 
 ---
 
@@ -176,11 +176,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Module / Tool          | Change                             |
-| ---------------------- | ---------------------------------- |
-| `convertannotjson`     | Added (new module)                 |
-| `nf-schema`            | Replaces `nf-validation`           |
-| nf-core template       | Synced through 3.1.x               |
+| Module / Tool      | Change                   |
+| ------------------ | ------------------------ |
+| `convertannotjson` | Added (new module)       |
+| `nf-schema`        | Replaces `nf-validation` |
+| nf-core template   | Synced through 3.1.x     |
 
 ---
 
