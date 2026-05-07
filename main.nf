@@ -49,7 +49,6 @@ workflow MSKCC_NEOANTIGENPIPELINE {
         samplesheet,
         params.outdir
     )
-
     emit:
     out = NEOANTIGENPIPELINE.out.neo_out
     tsv = NEOANTIGENPIPELINE.out.tsv_out
