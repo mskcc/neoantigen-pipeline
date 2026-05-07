@@ -1,13 +1,11 @@
 #!/usr/bin/env nextflow
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    mskcc/neoantigenpipeline
+    msk/neoantigenpipeline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Github : https://github.com/mskcc/neoantigenpipeline
+    Github : https://github.com/msk/neoantigenpipeline
 ----------------------------------------------------------------------------------------
 */
-
-nextflow.enable.dsl = 2
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -18,7 +16,6 @@ nextflow.enable.dsl = 2
 include { NEOANTIGENPIPELINE  } from './workflows/neoantigenpipeline'
 include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
 include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
-
 include { getGenomeAttribute      } from './subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
 
 /*
@@ -41,7 +38,7 @@ params.fasta = getGenomeAttribute('fasta')
 //
 // WORKFLOW: Run main analysis pipeline depending on type of input
 //
-workflow MSKCC_NEOANTIGENPIPELINE {
+workflow MSK_NEOANTIGENPIPELINE {
 
     take:
     samplesheet // channel: samplesheet read in from --input
@@ -52,12 +49,14 @@ workflow MSKCC_NEOANTIGENPIPELINE {
     // WORKFLOW: Run pipeline
     //
     NEOANTIGENPIPELINE (
-        samplesheet
+        samplesheet,
+        params.multiqc_config,
+        params.multiqc_logo,
+        params.multiqc_methods_description,
+        params.outdir,
     )
-
     emit:
     multiqc_report = NEOANTIGENPIPELINE.out.multiqc_report // channel: /path/to/multiqc_report.html
-
 }
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,27 +67,27 @@ workflow MSKCC_NEOANTIGENPIPELINE {
 workflow {
 
     main:
-
     //
     // SUBWORKFLOW: Run initialisation tasks
     //
     PIPELINE_INITIALISATION (
         params.version,
-        params.help,
         params.validate_params,
         params.monochrome_logs,
         args,
         params.outdir,
-        params.input
+        params.input,
+        params.help,
+        params.help_full,
+        params.show_hidden
     )
 
     //
     // WORKFLOW: Run main workflow
     //
-    MSKCC_NEOANTIGENPIPELINE (
+    MSK_NEOANTIGENPIPELINE (
         PIPELINE_INITIALISATION.out.samplesheet
     )
-
     //
     // SUBWORKFLOW: Run completion tasks
     //
@@ -98,8 +97,7 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        params.hook_url,
-        MSKCC_NEOANTIGENPIPELINE.out.multiqc_report
+        MSK_NEOANTIGENPIPELINE.out.multiqc_report
     )
 }
 
