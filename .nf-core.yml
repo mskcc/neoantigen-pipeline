@@ -15,9 +15,6 @@ lint:
     - .github/ISSUE_TEMPLATE/bug_report.yml
     - .github/workflows/download_pipeline.yml
     - .prettierignore
-  included_configs: false
-  multiqc_config:
-    - report_comment
   nextflow_config: false
 nf_core_version: 4.0.2
 repository_type: pipeline
