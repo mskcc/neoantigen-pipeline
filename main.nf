@@ -46,8 +46,10 @@ workflow MSKCC_NEOANTIGENPIPELINE {
     // WORKFLOW: Run pipeline
     //
     NEOANTIGENPIPELINE (
-        samplesheet
+        samplesheet,
+        params.outdir
     )
+
     emit:
     out = NEOANTIGENPIPELINE.out.neo_out
     tsv = NEOANTIGENPIPELINE.out.tsv_out
@@ -92,7 +94,6 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        params.hook_url,
         MSKCC_NEOANTIGENPIPELINE.out.out
     )
 }

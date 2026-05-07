@@ -19,7 +19,7 @@ lint:
   multiqc_config:
     - report_comment
   nextflow_config: false
-nf_core_version: 3.5.2
+nf_core_version: 4.0.2
 repository_type: pipeline
 template:
   author: Nikhil Kumar
@@ -27,7 +27,7 @@ template:
   force: false
   is_nfcore: false
   name: neoantigenpipeline
-  org: msk
+  org: mskcc
   outdir: .
   skip_features: []
   version: 1.0.0
