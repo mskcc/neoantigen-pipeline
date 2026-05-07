@@ -10,7 +10,10 @@
             "type": "object",
             "fa_icon": "fas fa-terminal",
             "description": "Define where the pipeline should find input data and save output data.",
-            "required": ["input", "outdir"],
+            "required": [
+                "input",
+                "outdir"
+            ],
             "properties": {
                 "input": {
                     "type": "string",
@@ -40,6 +43,73 @@
                     "type": "string",
                     "description": "MultiQC report title. Printed as page header, used for filename if not otherwise specified.",
                     "fa_icon": "fas fa-file-signature"
+                }
+            }
+        },
+        "pipeline_options": {
+            "title": "Pipeline options",
+            "type": "object",
+            "fa_icon": "fas fa-cogs",
+            "description": "Neoantigen pipeline-specific parameters.",
+            "properties": {
+                "kd_cutoff": {
+                    "type": "number",
+                    "default": 500,
+                    "description": "Binding affinity (Kd) cutoff in nM for neoantigen prediction.",
+                    "fa_icon": "fas fa-filter"
+                },
+                "netmhc3": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use NetMHC 3 for binding prediction.",
+                    "fa_icon": "fas fa-toggle-on"
+                },
+                "compute_fitness_a": {
+                    "type": "number",
+                    "default": 22.897590714815188,
+                    "description": "Fitness model parameter 'a'.",
+                    "fa_icon": "fas fa-calculator"
+                },
+                "compute_fitness_k": {
+                    "type": "number",
+                    "default": 1,
+                    "description": "Fitness model parameter 'k'.",
+                    "fa_icon": "fas fa-calculator"
+                },
+                "compute_fitness_w": {
+                    "type": "number",
+                    "default": 0.22402192838740312,
+                    "description": "Fitness model parameter 'w'.",
+                    "fa_icon": "fas fa-calculator"
+                },
+                "run_phylowgs": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Run the PhyloWGS subclonal reconstruction step.",
+                    "fa_icon": "fas fa-project-diagram"
+                },
+                "phylo_burnin_samples": {
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "PhyloWGS MCMC burn-in samples.",
+                    "fa_icon": "fas fa-fire"
+                },
+                "phylo_mcmc_samples": {
+                    "type": "integer",
+                    "default": 2500,
+                    "description": "PhyloWGS MCMC samples.",
+                    "fa_icon": "fas fa-dice"
+                },
+                "phylo_num_chains": {
+                    "type": "integer",
+                    "default": 15,
+                    "description": "PhyloWGS number of MCMC chains.",
+                    "fa_icon": "fas fa-link"
+                },
+                "mutalyzer_cache_dir": {
+                    "type": "string",
+                    "description": "Directory for caching Mutalyzer reference data.",
+                    "fa_icon": "fas fa-folder-open"
                 }
             }
         },
@@ -88,6 +158,27 @@
                     "fa_icon": "fas fa-ban",
                     "hidden": true,
                     "default": "s3://ngi-igenomes/igenomes/"
+                },
+                "iedbfasta": {
+                    "type": "string",
+                    "description": "Path or URL to IEDB FASTA file.",
+                    "fa_icon": "fas fa-database",
+                    "default": "https://raw.githubusercontent.com/mskcc-omics-workflows/test-datasets/neoantigen/neoantigen/neoantigenEditing/data/iedb.fasta"
+                },
+                "cds": {
+                    "type": "string",
+                    "description": "Path to reference CDS FASTA file.",
+                    "fa_icon": "fas fa-dna"
+                },
+                "cdna": {
+                    "type": "string",
+                    "description": "Path to reference cDNA FASTA file.",
+                    "fa_icon": "fas fa-dna"
+                },
+                "gtf": {
+                    "type": "string",
+                    "description": "Path to reference GTF annotation file.",
+                    "fa_icon": "fas fa-file-alt"
                 }
             }
         },
@@ -235,7 +326,10 @@
                     "hidden": true
                 },
                 "help": {
-                    "type": ["boolean", "string"],
+                    "type": [
+                        "boolean",
+                        "string"
+                    ],
                     "description": "Display the help message."
                 },
                 "help_full": {
@@ -252,6 +346,9 @@
     "allOf": [
         {
             "$ref": "#/$defs/input_output_options"
+        },
+        {
+            "$ref": "#/$defs/pipeline_options"
         },
         {
             "$ref": "#/$defs/reference_genome_options"
