@@ -7,83 +7,116 @@
                 "msk": {
                     "generatemutfasta": {
                         "branch": "neoantigen",
-                        "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["generate_mutated_peptides"]
+                        "git_sha": "788d1fa840b13c58ffcba3b537babb15940d6445",
+                        "installed_by": [
+                            "generate_mutated_peptides"
+                        ]
                     },
                     "mutalyzer/retriever": {
                         "branch": "neoantigen",
                         "git_sha": "95c8dfe446e8be8340f70571fcdd52c918446be3",
-                        "installed_by": ["generate_mutated_peptides"]
+                        "installed_by": [
+                            "generate_mutated_peptides"
+                        ]
                     },
                     "neoantigenediting/aligntoiedb": {
                         "branch": "neoantigen",
-                        "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["neoantigen_editing"]
+                        "git_sha": "8918c61825c0eaef745ead818cc84626a0c8fddb",
+                        "installed_by": [
+                            "neoantigen_editing"
+                        ]
                     },
                     "neoantigenediting/computefitness": {
                         "branch": "neoantigen",
-                        "git_sha": "f7d4cda4510eb352a4ac5cddbf6b6d1096af193f",
-                        "installed_by": ["neoantigen_editing"]
+                        "git_sha": "c24edc975b7e8e40fea47825d9ef366888d22dd3",
+                        "installed_by": [
+                            "neoantigen_editing"
+                        ]
                     },
                     "neoantigenutils/convertannotjson": {
                         "branch": "neoantigen",
                         "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["modules"]
+                        "installed_by": [
+                            "modules"
+                        ]
                     },
                     "neoantigenutils/formatnetmhcpan": {
                         "branch": "neoantigen",
                         "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["netmhcstabandpan"]
+                        "installed_by": [
+                            "netmhcstabandpan"
+                        ]
                     },
                     "neoantigenutils/generatehlastring": {
                         "branch": "neoantigen",
                         "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["generate_mutated_peptides"]
+                        "installed_by": [
+                            "generate_mutated_peptides"
+                        ]
                     },
                     "neoantigenutils/neoantigeninput": {
                         "branch": "neoantigen",
-                        "git_sha": "f7d4cda4510eb352a4ac5cddbf6b6d1096af193f",
-                        "installed_by": ["modules"]
+                        "git_sha": "c24edc975b7e8e40fea47825d9ef366888d22dd3",
+                        "installed_by": [
+                            "modules"
+                        ]
                     },
                     "neosv": {
                         "branch": "neoantigen",
-                        "git_sha": "8c7332d5c096ffa0720b5805a5ad1c9247ef1676",
-                        "installed_by": ["generate_mutated_peptides", "modules"]
+                        "git_sha": "e7459f2494e1819ed5c810e0d77aee3854bcadc9",
+                        "installed_by": [
+                            "generate_mutated_peptides",
+                            "modules"
+                        ]
                     },
                     "netmhc3": {
                         "branch": "neoantigen",
                         "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["netmhcstabandpan"]
+                        "installed_by": [
+                            "netmhcstabandpan"
+                        ]
                     },
                     "netmhcpan4": {
                         "branch": "neoantigen",
-                        "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["netmhcstabandpan"]
+                        "git_sha": "8918c61825c0eaef745ead818cc84626a0c8fddb",
+                        "installed_by": [
+                            "netmhcstabandpan"
+                        ]
                     },
                     "netmhcstabpan": {
                         "branch": "neoantigen",
-                        "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["netmhcstabandpan"]
+                        "git_sha": "8918c61825c0eaef745ead818cc84626a0c8fddb",
+                        "installed_by": [
+                            "netmhcstabandpan"
+                        ]
                     },
                     "phylowgs/createinput": {
                         "branch": "neoantigen",
                         "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["phylowgs"]
+                        "installed_by": [
+                            "phylowgs"
+                        ]
                     },
                     "phylowgs/multievolve": {
                         "branch": "neoantigen",
                         "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["phylowgs"]
+                        "installed_by": [
+                            "phylowgs"
+                        ]
                     },
                     "phylowgs/parsecnvs": {
                         "branch": "neoantigen",
                         "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["phylowgs"]
+                        "installed_by": [
+                            "phylowgs"
+                        ]
                     },
                     "phylowgs/writeresults": {
                         "branch": "neoantigen",
                         "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["phylowgs"]
+                        "installed_by": [
+                            "phylowgs"
+                        ]
                     }
                 }
             },
@@ -91,23 +124,31 @@
                 "msk": {
                     "generate_mutated_peptides": {
                         "branch": "neoantigen",
-                        "git_sha": "98439a9b98f9a49c6bb66126b9151da0da309bc1",
-                        "installed_by": ["subworkflows"]
+                        "git_sha": "e7459f2494e1819ed5c810e0d77aee3854bcadc9",
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     },
                     "neoantigen_editing": {
                         "branch": "neoantigen",
                         "git_sha": "3284d77f55f0ef756d9ccd0519826fd7edd7d2ec",
-                        "installed_by": ["subworkflows"]
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     },
                     "netmhcstabandpan": {
                         "branch": "neoantigen",
                         "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["subworkflows"]
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     },
                     "phylowgs": {
                         "branch": "neoantigen",
                         "git_sha": "70f2c5d79d57306eb05bf15e62e0b8899961250b",
-                        "installed_by": ["subworkflows"]
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     }
                 }
             }
@@ -118,7 +159,9 @@
                     "multiqc": {
                         "branch": "master",
                         "git_sha": "008f9d3e61209bf995edac3ba531f54e269e1215",
-                        "installed_by": ["modules"]
+                        "installed_by": [
+                            "modules"
+                        ]
                     }
                 }
             },
@@ -127,17 +170,23 @@
                     "utils_nextflow_pipeline": {
                         "branch": "master",
                         "git_sha": "05954dab2ff481bcb999f24455da29a5828af08d",
-                        "installed_by": ["subworkflows"]
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     },
                     "utils_nfcore_pipeline": {
                         "branch": "master",
                         "git_sha": "65f5e638d901a51534c68fd5c1c19e8112fb4df1",
-                        "installed_by": ["subworkflows"]
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     },
                     "utils_nfschema_plugin": {
                         "branch": "master",
                         "git_sha": "fdc08b8b1ae74f56686ce21f7ea11ad11990ce57",
-                        "installed_by": ["subworkflows"]
+                        "installed_by": [
+                            "subworkflows"
+                        ]
                     }
                 }
             }
