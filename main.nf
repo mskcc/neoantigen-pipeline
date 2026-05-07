@@ -1,9 +1,9 @@
 #!/usr/bin/env nextflow
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    msk/neoantigenpipeline
+    mskcc/neoantigenpipeline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Github : https://github.com/msk/neoantigenpipeline
+    Github : https://github.com/mskcc/neoantigenpipeline
 ----------------------------------------------------------------------------------------
 */
 
@@ -38,7 +38,7 @@ params.fasta = getGenomeAttribute('fasta')
 //
 // WORKFLOW: Run main analysis pipeline depending on type of input
 //
-workflow MSK_NEOANTIGENPIPELINE {
+workflow MSKCC_NEOANTIGENPIPELINE {
 
     take:
     samplesheet // channel: samplesheet read in from --input
@@ -85,7 +85,7 @@ workflow {
     //
     // WORKFLOW: Run main workflow
     //
-    MSK_NEOANTIGENPIPELINE (
+    MSKCC_NEOANTIGENPIPELINE (
         PIPELINE_INITIALISATION.out.samplesheet
     )
     //
@@ -97,7 +97,7 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        MSK_NEOANTIGENPIPELINE.out.multiqc_report
+        MSKCC_NEOANTIGENPIPELINE.out.multiqc_report
     )
 }
 

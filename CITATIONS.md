@@ -1,4 +1,4 @@
-# msk/neoantigenpipeline: Citations
+# mskcc/neoantigenpipeline: Citations
 
 ## [nf-core](https://pubmed.ncbi.nlm.nih.gov/32055031/)
 

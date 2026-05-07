@@ -4,4 +4,4 @@ contact_links:
     about: Please join the nf-core community here
   - name: "Slack #neoantigenpipeline channel"
     url: https://nfcore.slack.com/channels/neoantigenpipeline
-    about: Discussion about the msk/neoantigenpipeline pipeline
+    about: Discussion about the mskcc/neoantigenpipeline pipeline

@@ -1,4 +1,4 @@
-# msk/neoantigenpipeline: Output
+# mskcc/neoantigenpipeline: Output
 
 ## Introduction
 

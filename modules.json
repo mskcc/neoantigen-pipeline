@@ -1,6 +1,6 @@
 {
-    "name": "msk/neoantigenpipeline",
-    "homePage": "https://github.com/msk/neoantigenpipeline",
+    "name": "mskcc/neoantigenpipeline",
+    "homePage": "https://github.com/mskcc/neoantigenpipeline",
     "repos": {
         "https://github.com/nf-core/modules.git": {
             "modules": {

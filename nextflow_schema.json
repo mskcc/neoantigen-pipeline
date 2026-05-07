@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/msk/neoantigenpipeline/master/nextflow_schema.json",
-    "title": "msk/neoantigenpipeline pipeline parameters",
+    "$id": "https://raw.githubusercontent.com/mskcc/neoantigenpipeline/master/nextflow_schema.json",
+    "title": "mskcc/neoantigenpipeline pipeline parameters",
     "description": "Pipeline for computing neoantigen qualities from DNA and RNA-Seq data",
     "type": "object",
     "$defs": {
