@@ -3,7 +3,7 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## v1.4.0 - [date]
+## v1.4.0 - 2026-05-08
 
 ### `Added`
 
@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - End-to-end pipeline test (`tests/default.nf.test`) with snapshot validation
 - `.nftignore` rules for non-deterministic pipeline outputs
 - `CLAUDE.md` developer documentation with architecture overview, commands, and key parameter reference
-- nf-core template synced from v3.2.0 to v3.5.2 — includes new GitHub Actions for sharded nf-test runs, `nf-test.yml` workflow, and `template-version-comment.yml`
+- nf-core template synced from v3.2.0 to v4.0.2 — includes new GitHub Actions for sharded nf-test runs, `nf-test.yml` workflow, `template-version-comment.yml`, and updated container config files
 
 ### `Changed`
 
@@ -39,6 +39,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README formatting fixes and added tip for running pipeline with the IRIS Nextflow config
 - Duplicate parameter definitions removed from config files
 - `fix-linting.yml` workflow renamed to `fix_linting.yml` for consistency
+- nf-core lint failures fixed: corrected `nf-test.config` quote style, aligned `multiqc_config.yml` section IDs to pipeline manifest, and expanded `nextflow_schema.json` with `pipeline_options` and reference genome parameter entries
+- MSK modules and subworkflows excluded from `nf-test.config` to avoid duplicate test coverage
+- GitHub CI testing workflow simplified
 
 ### `Dependencies`
 
@@ -47,10 +50,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | `mutalyzer`        | Added (new module)            |
 | `neosv`            | Added (new module)            |
 | `generatemutfasta` | Relocated; script updated     |
+| `aligntoiedb`      | Script updated                |
+| `computefitness`   | Script updated                |
+| `neoantigeninput`  | Script updated                |
+| `netmhcpan4`       | Module updated                |
+| `netmhcstabpan`    | Module updated                |
 | `multiqc`          | Updated to nf-core latest     |
 | `nf-schema`        | v2.3.0 (via nf-core template) |
 | Nextflow           | Minimum version bumped        |
-| nf-core template   | Synced 3.2.0 → 3.5.2          |
+| nf-core template   | Synced 3.2.0 → 4.0.2          |
 
 ### `Deprecated`
 
