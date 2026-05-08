@@ -27,9 +27,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `prod.config` updated: replaced `cds` reference with `reference_fasta` + `reference_gff3`; `run_phylowgs` defaults to `false`; `config_profile_description` corrected to "Production conf to run the pipeline"
 - Workflow-level `new Tuple(...)` calls replaced with list literals `[...]` for Nextflow ≥ 25.04.0 compatibility
 - Local variables in `merge_for_input_generation()` now use explicit `def` keywords as required by Nextflow ≥ 25.04.0
+- `Channel.empty()` calls replaced with `channel.empty()` (lowercase factory) in all MSK subworkflows for Nextflow ≥ 25.04.0 compatibility
 - Software version collection migrated to use `Channel.topic("versions")` for broader process coverage
 - `nf-core lint` CI switched from SSH to HTTPS for modules repository URL
 - Bumped minimum Nextflow version requirement
+- nf-core utility subworkflow `utils_nextflow_pipeline`: improved `dumpParametersToJSON()` with a type-aware `JsonGenerator` (handles `Path`, `Duration`, `MemoryUnit`, `VersionNumber`) and robust `outdir` type handling
+- nf-core utility subworkflow `utils_nfschema_plugin`: added `cli_typecast` parameter support and fixed help-text parameter reference
 
 ### `Fixed`
 
