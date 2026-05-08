@@ -2,8 +2,8 @@ process NEOANTIGENUTILS_GENERATEHLASTRING {
     tag "$meta.id"
     label 'process_single'
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://mskcc/neoantigen-utils-base:1.3.0':
-        'docker.io/mskcc/neoantigen-utils-base:1.3.0' }"
+        'docker://ghcr.io/mskcc-omics-workflows/neoantigen-utils-base:1.4.0':
+        'ghcr.io/mskcc-omics-workflows/neoantigen-utils-base:1.4.0' }"
 
     input:
     tuple val(meta),  path(inputHLA)
@@ -24,9 +24,9 @@ process NEOANTIGENUTILS_GENERATEHLASTRING {
 
 
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        generateHLAstring: \$(echo \$(generateHLAString.sh -v))
-    END_VERSIONS
+	"${task.process}":
+	    generateHLAstring: \$(echo \$(generateHLAString.sh -v))
+	END_VERSIONS
     """
 
     stub:
@@ -36,8 +36,8 @@ process NEOANTIGENUTILS_GENERATEHLASTRING {
     """
         echo "HLA-test:01,HLA-test2:02"
         cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            generateHLAstring: \$(echo \$(generateHLAString.sh -v))
-        END_VERSIONS
+	"${task.process}":
+	    generateHLAstring: \$(echo \$(generateHLAString.sh -v))
+	END_VERSIONS
     """
 }

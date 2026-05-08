@@ -24,9 +24,6 @@ include { getGenomeAttribute      } from './subworkflows/local/utils_nfcore_neoa
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-// TODO nf-core: Remove this line if you don't need a FASTA file
-//   This is an example of how to use getGenomeAttribute() to fetch parameters
-//   from igenomes.config using `--genome`
 params.fasta = getGenomeAttribute('fasta')
 
 /*
@@ -49,7 +46,8 @@ workflow MSKCC_NEOANTIGENPIPELINE {
     // WORKFLOW: Run pipeline
     //
     NEOANTIGENPIPELINE (
-        samplesheet
+        samplesheet,
+        params.outdir
     )
     emit:
     out = NEOANTIGENPIPELINE.out.neo_out
@@ -74,7 +72,10 @@ workflow {
         params.monochrome_logs,
         args,
         params.outdir,
-        params.input
+        params.input,
+        params.help,
+        params.help_full,
+        params.show_hidden
     )
 
     //
@@ -92,7 +93,6 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        params.hook_url,
         MSKCC_NEOANTIGENPIPELINE.out.out
     )
 }

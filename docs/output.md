@@ -6,8 +6,6 @@ This document describes the output produced by the neoantigen pipeline.
 
 The directories listed below will be created in the results directory after the pipeline has finished. All paths are relative to the top-level results directory.
 
-<!-- TODO nf-core: Write this documentation describing your workflow's output -->
-
 ## Pipeline overview
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
@@ -25,10 +23,9 @@ Additionally, we provide pipeline information with report metrics generated duri
 <summary>Output files</summary>
 
 - `phylowgs/`
-  - `*_.summ.json.gz`: Output file for JSON-formatted tree summaries
-  - `*.muts.json.gz`: Output file for JSON-formatted list of mutations
-  - `*.muts.json.gz`: Output file for JSON-formatted list of mutations
-  - `*.muts.json.gz`: Output zipped folder for JSON-formatted list of SSMs and CNVs
+  - `*.summ.json.gz`: JSON-formatted tree summaries
+  - `*.muts.json.gz`: JSON-formatted list of mutations
+  - `*.mutass.zip`: Zipped folder of JSON-formatted SSM and CNV assignments
 
 </details>
 
@@ -49,18 +46,17 @@ Additionally, we provide pipeline information with report metrics generated duri
 <summary>Output files</summary>
 
 - `netmhcstabpan/`
-  - `*.xls`: TSV/XLS file of netMHCpan. This contains the MUT or WT antigens
-  - `*.WT.netmhcpan.output,*.MUT.netmhcpan.output`: STDOUT file of netMHCpan. A uniquely formated file of neoantigens. This contains either the MUT or WT neoantigens. Neoantigenutils contains a parser for this file.
+  - `*.xls`: TSV/XLS file of netMHCstabpan stability predictions. This contains MUT or WT peptide stability scores.
+  - `*.WT.netmhcstabpan.output,*.MUT.netmhcstabpan.output`: STDOUT file of netMHCstabpan. Contains either the MUT or WT stability predictions.
 
 </details>
 
-### Neoantigen Ediitng Final Output
+### Neoantigen Editing Final Output
 
 <details markdown="1">
 <summary>Output files</summary>
 
 - `neoantigenediting/`
-
   - `*._annotated.json`: The final output of the pipeline. This file is an annotated version of the tree output from phyloWGS with an extra property titled 'neoantigens'. Each entry in 'neoantigens' is a property with properties describing the neoantigen. These neoantigen properities are described below
 
     "id": "XSYI_MG_M_9_C1203_11",
@@ -88,7 +84,6 @@ Additionally, we provide pipeline information with report metrics generated duri
     "quality": 2.645601185190205
 
   The above is an example output from a run. Each neoantigenic mutation will have an output like this.
-
   - id: This is a unique id that combines an id created from the mutation, HLA allele, and window.
   - mutation_id : ID containing the chromosome, position, ref and alt allele. I and D denote insertions and deletions respectively.
   - HLA_gene_id : The HLA gene this neoantigen binds to
