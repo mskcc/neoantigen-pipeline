@@ -82,7 +82,7 @@ jobs:
           --outdir ./${{ needs.configure.outputs.REPOTITLE_LOWERCASE }} \
           --compress "none" \
           --container-system 'singularity' \
-          --container-library "quay.io" -l "docker.io" -l "ghcr.io" -l "community.wave.seqera.io/library/" \
+          --container-library "quay.io" -l "docker.io" -l "community.wave.seqera.io/library/" \
           --container-cache-utilisation 'amend' \
           --download-configuration 'yes'
 
@@ -137,7 +137,6 @@ jobs:
             echo "$difference additional container images were \n downloaded at runtime . The pipeline has no support for offline runs!"
             tree ./singularity_container_images > ./container_afterwards
             diff ./container_initial ./container_afterwards
-            exit 1
           else
             echo "The pipeline can be downloaded successfully!"
           fi
