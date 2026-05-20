@@ -100,8 +100,8 @@
                         "installed_by": ["subworkflows"]
                     },
                     "netmhcstabandpan": {
-                        "branch": "neoantigen",
-                        "git_sha": "cd48156aed141b00fedf1bc887966ad4664ba001",
+                        "branch": "develop",
+                        "git_sha": "42c230a46733aa3f2d39ba86014e7129c13d860a",
                         "installed_by": ["subworkflows"]
                     },
                     "phylowgs": {
