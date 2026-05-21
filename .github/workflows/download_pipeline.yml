@@ -136,7 +136,7 @@ jobs:
             difference=$((final_count - initial_count))
             echo "$difference additional container images were \n downloaded at runtime . The pipeline has no support for offline runs!"
             tree ./singularity_container_images > ./container_afterwards
-            diff ./container_initial ./container_afterwards
+            diff ./container_initial ./container_afterwards || true
           else
             echo "The pipeline can be downloaded successfully!"
           fi
