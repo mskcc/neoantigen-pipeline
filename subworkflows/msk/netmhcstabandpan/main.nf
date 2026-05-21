@@ -12,7 +12,7 @@ workflow NETMHCSTABANDPAN {
 
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     ch_netmhcinput = createNETMHCInput(ch_fasta_and_hla, ch_sv_fasta)
 
@@ -20,7 +20,7 @@ workflow NETMHCSTABANDPAN {
 
     ch_versions = ch_versions.mix(NETMHCSTABPAN.out.versions)
 
-    merged_pan_and_stab = Channel.empty()
+    merged_pan_and_stab = channel.empty()
 
     merged_pan_and_stab = merged_pan_and_stab.mix( NETMHCSTABPAN.out.netmhcstabpanoutput )
 
@@ -58,16 +58,19 @@ def createNETMHCInput(fastas_and_hla, sv_fastas) {
                 [it[0],it]
                 }
 
+        // remainder: true keeps samples that have no SV data (sv_fastas is empty when no SVs provided)
         def merged_mut = fastas_and_hla_channel
-            .join(sv_fastas_channel, by:0)
+            .join(sv_fastas_channel, by:0, remainder: true)
             .map({
-                [it[1][0], it[1][1], it[2][1], it[1][3], "MUT"]
+                def sv = it[2] ?: [null, [], []]
+                [it[1][0], it[1][1], sv[1], it[1][3], "MUT"]
             })
 
         def merged_wt = fastas_and_hla_channel
-            .join(sv_fastas_channel, by:0)
+            .join(sv_fastas_channel, by:0, remainder: true)
             .map({
-                [it[1][0], it[1][2], it[2][2], it[1][3], "WT"]
+                def sv = it[2] ?: [null, [], []]
+                [it[1][0], it[1][2], sv[2], it[1][3], "WT"]
             })
         def merged = merged_mut.mix(merged_wt)
         return merged

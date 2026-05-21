@@ -3,7 +3,7 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## v1.4.0 - [date]
+## v1.4.0 - 2026-05-08
 
 ### `Added`
 
@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - End-to-end pipeline test (`tests/default.nf.test`) with snapshot validation
 - `.nftignore` rules for non-deterministic pipeline outputs
 - `CLAUDE.md` developer documentation with architecture overview, commands, and key parameter reference
-- nf-core template synced from v3.2.0 to v3.5.2 — includes new GitHub Actions for sharded nf-test runs, `nf-test.yml` workflow, and `template-version-comment.yml`
+- nf-core template synced from v3.2.0 to v4.0.2 — includes new GitHub Actions for sharded nf-test runs, `nf-test.yml` workflow, `template-version-comment.yml`, and updated container config files
 
 ### `Changed`
 
@@ -27,9 +27,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `prod.config` updated: replaced `cds` reference with `reference_fasta` + `reference_gff3`; `run_phylowgs` defaults to `false`; `config_profile_description` corrected to "Production conf to run the pipeline"
 - Workflow-level `new Tuple(...)` calls replaced with list literals `[...]` for Nextflow ≥ 25.04.0 compatibility
 - Local variables in `merge_for_input_generation()` now use explicit `def` keywords as required by Nextflow ≥ 25.04.0
+- `Channel.empty()` calls replaced with `channel.empty()` (lowercase factory) in all MSK subworkflows for Nextflow ≥ 25.04.0 compatibility
 - Software version collection migrated to use `Channel.topic("versions")` for broader process coverage
 - `nf-core lint` CI switched from SSH to HTTPS for modules repository URL
 - Bumped minimum Nextflow version requirement
+- nf-core utility subworkflow `utils_nextflow_pipeline`: improved `dumpParametersToJSON()` with a type-aware `JsonGenerator` (handles `Path`, `Duration`, `MemoryUnit`, `VersionNumber`) and robust `outdir` type handling
+- nf-core utility subworkflow `utils_nfschema_plugin`: added `cli_typecast` parameter support and fixed help-text parameter reference
 
 ### `Fixed`
 
@@ -39,18 +42,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README formatting fixes and added tip for running pipeline with the IRIS Nextflow config
 - Duplicate parameter definitions removed from config files
 - `fix-linting.yml` workflow renamed to `fix_linting.yml` for consistency
+- nf-core lint failures fixed: corrected `nf-test.config` quote style, aligned `multiqc_config.yml` section IDs to pipeline manifest, and expanded `nextflow_schema.json` with `pipeline_options` and reference genome parameter entries
+- MSK modules and subworkflows excluded from `nf-test.config` to avoid duplicate test coverage
+- GitHub CI testing workflow simplified
 
 ### `Dependencies`
 
-| Module / Tool       | Change                          |
-| ------------------- | ------------------------------- |
-| `mutalyzer`         | Added (new module)              |
-| `neosv`             | Added (new module)              |
-| `generatemutfasta`  | Relocated; script updated       |
-| `multiqc`           | Updated to nf-core latest       |
-| `nf-schema`         | v2.3.0 (via nf-core template)   |
-| Nextflow            | Minimum version bumped          |
-| nf-core template    | Synced 3.2.0 → 3.5.2            |
+| Module / Tool      | Change                        |
+| ------------------ | ----------------------------- |
+| `mutalyzer`        | Added (new module)            |
+| `neosv`            | Added (new module)            |
+| `generatemutfasta` | Relocated; script updated     |
+| `aligntoiedb`      | Script updated                |
+| `computefitness`   | Script updated                |
+| `neoantigeninput`  | Script updated                |
+| `netmhcpan4`       | Module updated                |
+| `netmhcstabpan`    | Module updated                |
+| `multiqc`          | Updated to nf-core latest     |
+| `nf-schema`        | v2.3.0 (via nf-core template) |
+| Nextflow           | Minimum version bumped        |
+| nf-core template   | Synced 3.2.0 → 4.0.2          |
 
 ### `Deprecated`
 
@@ -73,9 +84,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Module / Tool          | Change                        |
-| ---------------------- | ----------------------------- |
-| `neoantigeninput`      | Script updated (v1.9)         |
+| Module / Tool     | Change                |
+| ----------------- | --------------------- |
+| `neoantigeninput` | Script updated (v1.9) |
 
 ---
 
@@ -97,15 +108,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Module / Tool          | Change                                       |
-| ---------------------- | -------------------------------------------- |
-| `netmhcpan`            | Removed as standalone module                 |
-| `neoantigeninput`      | Updated with pyensembl transcript annotation |
-| `computefitness`       | Updated                                      |
-| `convertannotjson`     | Updated                                      |
-| `formatnetmhcpan`      | Updated                                      |
-| `generatehlastring`    | Updated                                      |
-| `generatemutfasta`     | Updated                                      |
+| Module / Tool       | Change                                       |
+| ------------------- | -------------------------------------------- |
+| `netmhcpan`         | Removed as standalone module                 |
+| `neoantigeninput`   | Updated with pyensembl transcript annotation |
+| `computefitness`    | Updated                                      |
+| `convertannotjson`  | Updated                                      |
+| `formatnetmhcpan`   | Updated                                      |
+| `generatehlastring` | Updated                                      |
+| `generatemutfasta`  | Updated                                      |
 
 ---
 
@@ -121,11 +132,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Module / Tool          | Change                                      |
-| ---------------------- | ------------------------------------------- |
-| `neoantigeninput`      | Script fix (v1.8 → v1.9)                   |
-| `multiqc`              | Updated to nf-core latest                   |
-| nf-core template       | Synced to 3.2.0                             |
+| Module / Tool     | Change                    |
+| ----------------- | ------------------------- |
+| `neoantigeninput` | Script fix (v1.8 → v1.9)  |
+| `multiqc`         | Updated to nf-core latest |
+| nf-core template  | Synced to 3.2.0           |
 
 ---
 
@@ -144,9 +155,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Module / Tool     | Change                                       |
-| ----------------- | -------------------------------------------- |
-| nf-core template  | Synced through 3.1.2                         |
+| Module / Tool    | Change               |
+| ---------------- | -------------------- |
+| nf-core template | Synced through 3.1.2 |
 
 ---
 
@@ -176,11 +187,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Module / Tool          | Change                             |
-| ---------------------- | ---------------------------------- |
-| `convertannotjson`     | Added (new module)                 |
-| `nf-schema`            | Replaces `nf-validation`           |
-| nf-core template       | Synced through 3.1.x               |
+| Module / Tool      | Change                   |
+| ------------------ | ------------------------ |
+| `convertannotjson` | Added (new module)       |
+| `nf-schema`        | Replaces `nf-validation` |
+| nf-core template   | Synced through 3.1.x     |
 
 ---
 

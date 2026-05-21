@@ -29,6 +29,7 @@ workflow NEOANTIGENPIPELINE {
 
     take:
     ch_samplesheet // channel: samplesheet read in from --input It should have maf, polysolver file, facets gene level file
+    outdir
 
 
     main:
@@ -131,7 +132,7 @@ workflow NEOANTIGENPIPELINE {
     //
     // Collate and save software versions
     //
-    def topic_versions = Channel.topic("versions")
+    def topic_versions = channel.topic("versions")
         .distinct()
         .branch { entry ->
             versions_file: entry instanceof Path
@@ -148,14 +149,14 @@ workflow NEOANTIGENPIPELINE {
             "${process}:\n${tool_versions.join('\n')}"
         }
 
-    softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
+    def ch_collated_versions = softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
         .mix(topic_versions_string)
         .collectFile(
-            storeDir: "${params.outdir}/pipeline_info",
-            name:  'neoantigenpipeline_software_'  + 'mqc_'  + 'versions.yml',
+            storeDir: "${outdir}/pipeline_info",
+            name:  'neoantigenpipeline_software_versions.yml',
             sort: true,
             newLine: true
-        ).set { ch_collated_versions }
+        )
 
 
     emit:
