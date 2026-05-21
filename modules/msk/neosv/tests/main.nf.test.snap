@@ -1,0 +1,62 @@
+{
+    "neosv - fa": {
+        "content": [
+            [
+                "versions.yml:md5,8d52a32beb1686ebae4ef05d479eabfe"
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test.SV.MUT.fa:md5,6bf4a5a800bbc6e5786d9eea37d54d1e"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test.SV.WT.fa:md5,5387c207180152a8fff2edfa13cb1094"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.10.4"
+        },
+        "timestamp": "2026-05-07T10:57:14.677491077"
+    },
+    "neosv - fa - stub": {
+        "content": [
+            [
+                "versions.yml:md5,8d52a32beb1686ebae4ef05d479eabfe"
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test.SV.MUT.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test.SV.WT.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ]
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2025-12-17T16:42:44.205392928"
+    }
+}

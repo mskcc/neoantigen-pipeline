@@ -3,8 +3,8 @@ process NEOANTIGENEDITING_ALIGNTOIEDB {
     label 'process_medium'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://mskcc/neoantigenediting:1.3':
-        'docker.io/mskcc/neoantigenediting:1.3' }"
+        'docker://ghcr.io/mskcc-omics-workflows/neoantigen-editing:1.3':
+        'ghcr.io/mskcc-omics-workflows/neoantigen-editing:1.3' }"
 
     input:
     tuple val(meta),  path(patient_data)
@@ -29,9 +29,9 @@ process NEOANTIGENEDITING_ALIGNTOIEDB {
 
 
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        neoantigenEditing: \$NEOANTIGEN_EDITING_TAG
-    END_VERSIONS
+	"${task.process}":
+	    neoantigenEditing: \$NEOANTIGEN_EDITING_TAG
+	END_VERSIONS
     """
 
     stub:
@@ -42,8 +42,8 @@ process NEOANTIGENEDITING_ALIGNTOIEDB {
     touch iedb_alignments_example.txt
 
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        neoantigenEditing: \$NEOANTIGEN_EDITING_TAG
-    END_VERSIONS
+	"${task.process}":
+	    neoantigenEditing: \$NEOANTIGEN_EDITING_TAG
+	END_VERSIONS
     """
 }

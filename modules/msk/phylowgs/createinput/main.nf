@@ -1,10 +1,9 @@
 process PHYLOWGS_CREATEINPUT {
     tag "$meta.id"
     label 'process_low'
-
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://mskcc/phylowgs:v1.5-msk':
-        'docker.io/mskcc/phylowgs:v1.5-msk' }"
+        'docker://ghcr.io/mskcc-omics-workflows/phylowgs:v1.5-msk':
+        'ghcr.io/mskcc-omics-workflows/phylowgs:v1.5-msk' }"
 
     input:
     tuple val(meta), path(unfilteredmaf), path(cnv)
@@ -27,9 +26,9 @@ process PHYLOWGS_CREATEINPUT {
 
 
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        phylowgs: \$PHYLOWGS_TAG
-    END_VERSIONS
+	"${task.process}":
+	    phylowgs: \$PHYLOWGS_TAG
+	END_VERSIONS
     """
 
     stub:
@@ -40,8 +39,8 @@ process PHYLOWGS_CREATEINPUT {
     touch ssm_data.txt
 
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        phylowgs: \$PHYLOWGS_TAG
-    END_VERSIONS
+	"${task.process}":
+	    phylowgs: \$PHYLOWGS_TAG
+	END_VERSIONS
     """
 }
