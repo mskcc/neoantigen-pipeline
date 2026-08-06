@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "phylowgs_multievolvego"
+description: >
+  Drop-in Go reimplementation of PHYLOWGS_MULTIEVOLVE (the phylowgs-go/go-port
+  binary). Consumes the same cnv_data/ssm_data pair as PHYLOWGS_MULTIEVOLVE and
+  writes a trees.zip in the same layout, so it can feed PHYLOWGS_WRITERESULTS
+  unchanged for side-by-side comparison against the Python/C++ path. Also
+  emits phylowgs-go's native best_tree.json/mutlist.json/summary.json for
+  direct inspection.
+keywords:
+  - phylowgs
+  - go
+  - CNVs
+  - comparison
+tools:
+  - "phylowgs_multievolvego":
+      description: "Pure Go MCMC sampler for PhyloWGS tree inference (go-port branch)"
+      homepage: "https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0602-8"
+      tool_dev_url: "https://github.com/mskcc/phylowgs"
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1', single_end:false ]`
+    - cnv_data:
+        type: file
+        description: copy number input data from phylowgs_createinput
+        pattern: "*.{txt}"
+    - ssm_data:
+        type: file
+        description: mutation input data from phylowgs_createinput
+        pattern: "*.{txt}"
+output:
+  - trees:
+      - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1', single_end:false ]`
+      - chains/trees.zip:
+          type: file
+          description: >
+            Zip of included tree snapshots. Same file naming/layout as
+            PHYLOWGS_MULTIEVOLVE's trees.zip, but JSON-encoded rather than
+            pickled — feeds PHYLOWGS_MULTIEVOLVEGO's write_results_go.py
+            adapter (in bin/), not the upstream python2 write_results.py
+            directly.
+          pattern: "trees.zip"
+      - chains/mutlist.json:
+          type: file
+          description: Mutation reference table, paired with trees.zip for write_results_go.py
+          pattern: "mutlist.json"
+  - best_tree:
+      - chains/best_tree.json:
+          type: file
+          description: Single best (highest-LLH) tree across all included chains
+          pattern: "best_tree.json"
+  - mutlist:
+      - chains/mutlist.json:
+          type: file
+          description: Mutation reference table
+          pattern: "mutlist.json"
+  - summary:
+      - chains/summary.json:
+          type: file
+          description: Per-chain trace and global summary
+          pattern: "summary.json"
+  - versions:
+      - versions.yml:
+          type: file
+          description: File containing software versions
+          pattern: "versions.yml"
+authors:
+  - "@orgeraj"
+maintainers:
+  - "@orgeraj"

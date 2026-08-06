@@ -103,6 +103,13 @@
                     "description": "PhyloWGS number of MCMC chains.",
                     "fa_icon": "fas fa-link"
                 },
+                "phylowgs_engine": {
+                    "type": "string",
+                    "default": "python",
+                    "enum": ["python", "go", "both"],
+                    "description": "Which PhyloWGS MCMC implementation to run: 'python' (original C++/Python, default), 'go' (phylowgs-go only), or 'both' (run both; Go results also emitted separately as go_summ/go_muts/go_mutass for comparison against the Python/C++ path).",
+                    "fa_icon": "fas fa-code-branch"
+                },
                 "mutalyzer_cache_dir": {
                     "type": "string",
                     "description": "Directory for caching Mutalyzer reference data.",

@@ -2,6 +2,8 @@ include { PHYLOWGS_CREATEINPUT } from '../../../modules/msk/phylowgs/createinput
 include { PHYLOWGS_PARSECNVS } from '../../../modules/msk/phylowgs/parsecnvs/main'
 include { PHYLOWGS_MULTIEVOLVE } from '../../../modules/msk/phylowgs/multievolve/main'
 include { PHYLOWGS_WRITERESULTS } from '../../../modules/msk/phylowgs/writeresults/main'
+include { PHYLOWGS_MULTIEVOLVEGO } from '../../../modules/local/phylowgs/multievolvego/main'
+include { PHYLOWGS_WRITERESULTSGO } from '../../../modules/local/phylowgs/writeresultsgo/main'
 
 workflow PHYLOWGS {
 
@@ -32,20 +34,63 @@ workflow PHYLOWGS {
 
     ch_versions = ch_versions.mix(PHYLOWGS_CREATEINPUT.out.versions)
 
-    PHYLOWGS_MULTIEVOLVE(PHYLOWGS_CREATEINPUT.out.phylowgsinput)
+    // params.phylowgs_engine: 'python' (default) | 'go' | 'both'
+    //   python -> run only the Python/C++ multievolve (original behavior)
+    //   go     -> run only the Go reimplementation; its output becomes summ/muts/mutass
+    //   both   -> run both; summ/muts/mutass stay Python, go_* carries the Go side for diffing
+    def run_python = params.phylowgs_engine in ['python', 'both']
+    def run_go     = params.phylowgs_engine in ['go', 'both']
 
-    ch_versions = ch_versions.mix(PHYLOWGS_MULTIEVOLVE.out.versions)
+    ch_summ      = channel.empty()
+    ch_muts      = channel.empty()
+    ch_mutass    = channel.empty()
+    ch_go_summ   = channel.empty()
+    ch_go_muts   = channel.empty()
+    ch_go_mutass = channel.empty()
 
-    PHYLOWGS_WRITERESULTS(PHYLOWGS_MULTIEVOLVE.out.trees)
+    if (run_python) {
+        PHYLOWGS_MULTIEVOLVE(PHYLOWGS_CREATEINPUT.out.phylowgsinput)
 
-    ch_versions = ch_versions.mix(PHYLOWGS_WRITERESULTS.out.versions)
+        ch_versions = ch_versions.mix(PHYLOWGS_MULTIEVOLVE.out.versions)
 
+        PHYLOWGS_WRITERESULTS(PHYLOWGS_MULTIEVOLVE.out.trees)
+
+        ch_versions = ch_versions.mix(PHYLOWGS_WRITERESULTS.out.versions)
+
+        ch_summ   = PHYLOWGS_WRITERESULTS.out.summ
+        ch_muts   = PHYLOWGS_WRITERESULTS.out.muts
+        ch_mutass = PHYLOWGS_WRITERESULTS.out.mutass
+    }
+
+    if (run_go) {
+        PHYLOWGS_MULTIEVOLVEGO(PHYLOWGS_CREATEINPUT.out.phylowgsinput)
+
+        ch_versions = ch_versions.mix(PHYLOWGS_MULTIEVOLVEGO.out.versions)
+
+        PHYLOWGS_WRITERESULTSGO(PHYLOWGS_MULTIEVOLVEGO.out.trees)
+
+        ch_versions = ch_versions.mix(PHYLOWGS_WRITERESULTSGO.out.versions)
+
+        ch_go_summ   = PHYLOWGS_WRITERESULTSGO.out.summ
+        ch_go_muts   = PHYLOWGS_WRITERESULTSGO.out.muts
+        ch_go_mutass = PHYLOWGS_WRITERESULTSGO.out.mutass
+
+        if (!run_python) {
+            // go-only: Go results are the primary output feeding the rest of the pipeline
+            ch_summ   = ch_go_summ
+            ch_muts   = ch_go_muts
+            ch_mutass = ch_go_mutass
+        }
+    }
 
     emit:
 
-    summ        = PHYLOWGS_WRITERESULTS.out.summ        // channel: [ val(meta), [ summ ] ]
-    muts        = PHYLOWGS_WRITERESULTS.out.muts        // channel: [ val(meta), [ muts ] ]
-    mutass      = PHYLOWGS_WRITERESULTS.out.mutass      // channel: [ val(meta), [ mutass ] ]
+    summ        = ch_summ                               // channel: [ val(meta), [ summ ] ]
+    muts        = ch_muts                                // channel: [ val(meta), [ muts ] ]
+    mutass      = ch_mutass                              // channel: [ val(meta), [ mutass ] ]
+    go_summ     = ch_go_summ                            // channel: [ val(meta), [ summ ] ]   (empty unless phylowgs_engine includes go)
+    go_muts     = ch_go_muts                            // channel: [ val(meta), [ muts ] ]   (empty unless phylowgs_engine includes go)
+    go_mutass   = ch_go_mutass                          // channel: [ val(meta), [ mutass ] ] (empty unless phylowgs_engine includes go)
     versions    = ch_versions                           // channel: [ versions.yml ]
 }
 
