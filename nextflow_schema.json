@@ -107,6 +107,11 @@
                     "type": "string",
                     "description": "Directory for caching Mutalyzer reference data.",
                     "fa_icon": "fas fa-folder-open"
+                },
+                "pyensembl_cache_dir": {
+                    "type": "string",
+                    "description": "Shared directory for caching the pyensembl GTF/cDNA index built by NEOANTIGENUTILS_NEOANTIGENINPUT. If unset, each task builds its own index in a task-local scratch dir. Only point multiple concurrent runs at the same directory once it has already been built once (see module for details) -- concurrent first-time builds into the same directory race.",
+                    "fa_icon": "fas fa-folder-open"
                 }
             }
         },
