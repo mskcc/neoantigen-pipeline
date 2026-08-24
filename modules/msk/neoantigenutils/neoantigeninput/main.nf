@@ -1,7 +1,12 @@
 process NEOANTIGENUTILS_NEOANTIGENINPUT {
     tag "$meta.id"
     label 'process_medium'
-    container "ghcr.io/mskcc-omics-workflows/neoantigen-utils-base:1.6.1"
+    // TEMPORARY: the plain :1.6.1 tag's multi-arch manifest is stale (missing the
+    // unzip fix) because create-ghcr-manifest was skipped upstream when an unrelated
+    // gbcms push failed in the same CI matrix run. The per-arch :1.6.1-amd64 tag was
+    // built and pushed correctly and already has unzip. Revert to :1.6.1 once the
+    // manifest is re-stitched (mskcc-omics-workflows/containers).
+    container "ghcr.io/mskcc-omics-workflows/neoantigen-utils-base:1.6.1-amd64"
 
     input:
     tuple val(meta),  path(inputMaf),      path(inputBedpe, arity: '0..*'),    path(hlaFile)
