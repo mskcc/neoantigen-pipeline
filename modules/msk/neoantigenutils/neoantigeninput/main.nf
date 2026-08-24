@@ -29,6 +29,12 @@ process NEOANTIGENUTILS_NEOANTIGENINPUT {
     def bedpe = inputBedpe ? "--bedpe_file ${inputBedpe}": ""
 
     """
+        # TEMPORARY: pyensembl (via generate_input.py's ensembl_load) defaults its
+        # index cache to \$HOME, which is read-only on iris compute nodes. Redirect
+        # it into the task's own writable work dir. Revert if generate_input.py
+        # grows a --cache-dir flag or pyensembl gains a container-friendly default.
+        export PYENSEMBL_CACHE_DIR="\$PWD/.pyensembl_cache"
+
         tree_folder_name=\$(basename -s .zip "${phyloWGSfolder}")
         mkdir \$tree_folder_name
         unzip ${phyloWGSfolder} -d \$tree_folder_name
