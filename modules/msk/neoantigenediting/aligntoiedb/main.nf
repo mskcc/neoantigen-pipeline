@@ -30,7 +30,7 @@ process NEOANTIGENEDITING_ALIGNTOIEDB {
     """
     align_neoantigens_to_IEDB.py \\
         --fasta ${iedb_fasta} \\
-        --input ${patient_data}
+        --sample_file ${patient_data}
 
 
 
