@@ -324,6 +324,18 @@ class MafParser(MutectSmchetParser):
     def _parse_maf(self, maf_filename):
         variant_list = []
         with open(maf_filename) as maf_file:
+            # Skip leading '#'-prefixed metadata lines (e.g. GenomeNexus's own
+            # '#genome_nexus_version: ...' / '#isoform: ...' lines) that precede
+            # the real tab-separated column header. Without this, DictReader
+            # treats the first comment line as the header and every row lookup
+            # below (single_line["Chromosome"], etc.) raises a KeyError.
+            pos = maf_file.tell()
+            line = maf_file.readline()
+            while line.startswith("#"):
+                pos = maf_file.tell()
+                line = maf_file.readline()
+            maf_file.seek(pos)
+
             for single_line in csv.DictReader(maf_file, dialect="excel-tab"):
                 chrom = single_line["Chromosome"]
                 variant_type = single_line["Variant_Type"]
