@@ -29,7 +29,7 @@ process NEOANTIGENEDITING_COMPUTEFITNESS {
     """
     compute_fitness.py \\
         --alignment ${alignment_file} \\
-        --input ${patient_data} \\
+        --sample_file ${patient_data} \\
         ${args}
 
     cat <<-END_VERSIONS > versions.yml
