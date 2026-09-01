@@ -2,11 +2,11 @@ process PHYLOWGS_MULTIEVOLVEGO {
     tag "$meta.id"
     label 'process_high'
     // Image built from the go-port branch Dockerfile at mskcc/phylowgs (PhyloWGS_refactor/Dockerfile).
-    // Not yet published — build locally and override via `withName: 'PHYLOWGS_MULTIEVOLVEGO' { container = '...' }`
-    // (or `docker build -t phylowgs-go:go-port .` + point this at your registry) before running.
+    // Not yet published to ghcr — temporarily published to orgeraj/phylowgs-go on Docker Hub
+    // (multi-arch: linux/amd64 + linux/arm64) for cohort testing until the ghcr image lands.
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://ghcr.io/mskcc-omics-workflows/phylowgs-go:go-port':
-        'ghcr.io/mskcc-omics-workflows/phylowgs-go:go-port' }"
+        'docker://orgeraj/phylowgs-go:go-port':
+        'orgeraj/phylowgs-go:go-port' }"
 
     input:
     tuple val(meta), path(cnv_data), path(ssm_data)
