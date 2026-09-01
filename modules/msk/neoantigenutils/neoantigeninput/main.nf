@@ -1,7 +1,12 @@
 process NEOANTIGENUTILS_NEOANTIGENINPUT {
     tag "$meta.id"
     label 'process_medium'
-    container "ghcr.io/mskcc-omics-workflows/neoantigen-utils-base:1.4.0"
+    // TEMPORARY: the plain :1.6.1 tag's multi-arch manifest is stale (missing the
+    // unzip fix) because create-ghcr-manifest was skipped upstream when an unrelated
+    // gbcms push failed in the same CI matrix run. The per-arch :1.6.1-amd64 tag was
+    // built and pushed correctly and already has unzip. Revert to :1.6.1 once the
+    // manifest is re-stitched (mskcc-omics-workflows/containers).
+    container "ghcr.io/mskcc-omics-workflows/neoantigen-utils-base:1.6.1-amd64"
 
     input:
     tuple val(meta),  path(inputMaf),      path(inputBedpe, arity: '0..*'),    path(hlaFile)
@@ -22,8 +27,18 @@ process NEOANTIGENUTILS_NEOANTIGENINPUT {
     def patientid = task.ext.cohort ?: "${meta.id}_patient"
     def cohort = task.ext.cohort ?: "${meta.id}_cohort"
     def bedpe = inputBedpe ? "--bedpe_file ${inputBedpe}": ""
+    // TEMPORARY: pyensembl (via generate_input.py's ensembl_load) defaults its index
+    // cache to $HOME, which is read-only on iris compute nodes. Redirect it instead --
+    // to a shared dir when --pyensembl_cache_dir is set (build it once, e.g. via a
+    // single non-concurrent test run, then reuse across a multi-sample run so every
+    // task doesn't rebuild it from scratch), otherwise to the task's own work dir.
+    // Concurrent *first-time* builds into the same shared dir race (see database.create()
+    // in datacache -- no locking, no atomic write) -- only reuse a dir that's already built.
+    def pyensemblCacheDir = params.pyensembl_cache_dir ?: '$PWD/.pyensembl_cache'
 
     """
+        export PYENSEMBL_CACHE_DIR="${pyensemblCacheDir}"
+
         tree_folder_name=\$(basename -s .zip "${phyloWGSfolder}")
         mkdir \$tree_folder_name
         unzip ${phyloWGSfolder} -d \$tree_folder_name

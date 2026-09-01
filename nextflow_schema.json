@@ -76,7 +76,12 @@
                 "compute_fitness_w": {
                     "type": "number",
                     "default": 0.22402192838740312,
-                    "description": "Fitness model parameter 'w'.",
+                    "description": "Fitness model parameter 'w'. NOTE: as of the neoantigen-editing:1.1 script rewrite (modules#258), a/k/w are hardcoded inside compute_fitness.py to these exact default values -- this param (and compute_fitness_a/k) is currently a no-op until the script regains its --a_param/--k_param/--w_param flags.",
+                    "fa_icon": "fas fa-calculator"
+                },
+                "compute_fitness_kd_cutoff": {
+                    "type": "number",
+                    "description": "Maximum Kd (nM) for a neoantigen to be eligible for clone-level fitness scoring (--kd_cutoff_fitness). Required by compute_fitness.py as of the neoantigen-editing:1.1 script rewrite (modules#258) -- distinct from kd_cutoff, which filters weak binders earlier at NEOANTIGENUTILS_NEOANTIGENINPUT. No default is set here deliberately; must be supplied explicitly.",
                     "fa_icon": "fas fa-calculator"
                 },
                 "run_phylowgs": {
@@ -113,6 +118,11 @@
                 "mutalyzer_cache_dir": {
                     "type": "string",
                     "description": "Directory for caching Mutalyzer reference data.",
+                    "fa_icon": "fas fa-folder-open"
+                },
+                "pyensembl_cache_dir": {
+                    "type": "string",
+                    "description": "Shared directory for caching the pyensembl GTF/cDNA index built by NEOANTIGENUTILS_NEOANTIGENINPUT. If unset, each task builds its own index in a task-local scratch dir. Only point multiple concurrent runs at the same directory once it has already been built once (see module for details) -- concurrent first-time builds into the same directory race.",
                     "fa_icon": "fas fa-folder-open"
                 }
             }
