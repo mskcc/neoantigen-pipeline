@@ -15,9 +15,9 @@ lint:
     - .github/ISSUE_TEMPLATE/bug_report.yml
     - .github/workflows/download_pipeline.yml
     - .prettierignore
-  nextflow_config: false
   included_configs: false
-nf_core_version: 4.0.2
+  nextflow_config: false
+nf_core_version: 4.1.0
 repository_type: pipeline
 template:
   author: Nikhil Kumar
