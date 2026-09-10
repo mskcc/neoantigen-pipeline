@@ -4,9 +4,11 @@ process PHYLOWGS_MULTIEVOLVEGO {
     // Image built from the go-port branch Dockerfile at mskcc/phylowgs (PhyloWGS_refactor/Dockerfile).
     // Not yet published to ghcr — temporarily published to orgeraj/phylowgs-go on Docker Hub
     // (multi-arch: linux/amd64 + linux/arm64) for cohort testing until the ghcr image lands.
+    // Needs the explicit docker.io/ host, or nextflow.config's `docker.registry = 'quay.io'`
+    // default gets prepended to this bare `user/repo` reference.
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://orgeraj/phylowgs-go:go-port':
-        'orgeraj/phylowgs-go:go-port' }"
+        'docker://docker.io/orgeraj/phylowgs-go:go-port':
+        'docker.io/orgeraj/phylowgs-go:go-port' }"
 
     input:
     tuple val(meta), path(cnv_data), path(ssm_data)
