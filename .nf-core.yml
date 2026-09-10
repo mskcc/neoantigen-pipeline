@@ -16,10 +16,8 @@ lint:
     - .github/workflows/download_pipeline.yml
     - .prettierignore
   included_configs: false
-  multiqc_config:
-    - report_comment
   nextflow_config: false
-nf_core_version: 4.0.2
+nf_core_version: 4.1.0
 repository_type: pipeline
 template:
   author: Nikhil Kumar
@@ -30,4 +28,4 @@ template:
   org: mskcc
   outdir: .
   skip_features: []
-  version: 1.0.0
+  version: 1.4.0
