@@ -1,4 +1,5 @@
 lint:
+  container_configs: false
   files_exist:
     - CODE_OF_CONDUCT.md
     - assets/nf-core-neoqual-nf_logo_light.png
@@ -16,6 +17,7 @@ lint:
     - .github/workflows/download_pipeline.yml
     - .prettierignore
   included_configs: false
+  multiqc_config: false
   nextflow_config: false
 nf_core_version: 4.1.0
 repository_type: pipeline

@@ -1,6 +1,6 @@
 {
     "name": "mskcc/neoqual-nf",
-    "homePage": "https://github.com/mskcc/NeoQual-nf",
+    "homePage": "https://github.com/mskcc/neoqual-nf",
     "repos": {
         "https://github.com/nf-core/modules.git": {
             "modules": {

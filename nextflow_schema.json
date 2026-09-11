@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/mskcc/NeoQual-nf/master/nextflow_schema.json",
+    "$id": "https://raw.githubusercontent.com/mskcc/neoqual-nf/master/nextflow_schema.json",
     "title": "mskcc/neoqual-nf pipeline parameters",
     "description": "Pipeline for computing neoantigen qualities from DNA and RNA-Seq data",
     "type": "object",

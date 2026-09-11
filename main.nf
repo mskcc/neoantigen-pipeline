@@ -3,7 +3,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     mskcc/neoqual-nf
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Github : https://github.com/mskcc/NeoQual-nf
+    Github : https://github.com/mskcc/neoqual-nf
 ----------------------------------------------------------------------------------------
 */
 
@@ -13,10 +13,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { NEOQUAL                 } from './workflows/neoqual'
-include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_neoqual_nf_pipeline'
-include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_neoqual_nf_pipeline'
-include { getGenomeAttribute      } from './subworkflows/local/utils_nfcore_neoqual_nf_pipeline'
+include { NEOQUAL_NF  } from './workflows/neoqual-nf'
+include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_neoqual-nf_pipeline'
+include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_neoqual-nf_pipeline'
+include { getGenomeAttribute      } from './subworkflows/local/utils_nfcore_neoqual-nf_pipeline'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,7 +38,7 @@ params.fasta = getGenomeAttribute('fasta')
 //
 // WORKFLOW: Run main analysis pipeline depending on type of input
 //
-workflow MSKCC_NEOQUAL {
+workflow MSKCC_NEOQUAL_NF {
 
     take:
     samplesheet // channel: samplesheet read in from --input
@@ -48,7 +48,7 @@ workflow MSKCC_NEOQUAL {
     //
     // WORKFLOW: Run pipeline
     //
-    NEOQUAL (
+    NEOQUAL_NF (
         samplesheet,
         params.multiqc_config,
         params.multiqc_logo,
@@ -56,7 +56,7 @@ workflow MSKCC_NEOQUAL {
         params.outdir,
     )
     emit:
-    multiqc_report = NEOQUAL.out.multiqc_report // channel: /path/to/multiqc_report.html
+    multiqc_report = NEOQUAL_NF.out.multiqc_report // channel: /path/to/multiqc_report.html
 }
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -85,7 +85,7 @@ workflow {
     //
     // WORKFLOW: Run main workflow
     //
-    MSKCC_NEOQUAL (
+    MSKCC_NEOQUAL_NF (
         PIPELINE_INITIALISATION.out.samplesheet
     )
     //
@@ -97,7 +97,7 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        MSKCC_NEOQUAL.out.multiqc_report
+        MSKCC_NEOQUAL_NF.out.multiqc_report
     )
 }
 
