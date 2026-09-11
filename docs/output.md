@@ -1,4 +1,4 @@
-# mskcc/neoantigenpipeline: Output
+# mskcc/neoqual-nf: Output
 
 ## Introduction
 

@@ -8,7 +8,7 @@ include { MULTIQC                } from '../modules/nf-core/multiqc/main'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
-include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
+include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_neoqual_nf_pipeline'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -16,7 +16,7 @@ include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_neoa
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-workflow NEOANTIGENPIPELINE {
+workflow NEOQUAL {
 
     take:
     ch_samplesheet // channel: samplesheet read in from --input
@@ -59,7 +59,7 @@ workflow NEOANTIGENPIPELINE {
         .mix(topic_versions_string)
         .collectFile(
             storeDir: "${outdir}/pipeline_info",
-            name:  'neoantigenpipeline_software_'  + 'mqc_'  + 'versions.yml',
+            name:  'neoqual_software_'  + 'mqc_'  + 'versions.yml',
             sort: true,
             newLine: true
         )
@@ -79,7 +79,7 @@ workflow NEOANTIGENPIPELINE {
     MULTIQC(
         ch_multiqc_files.flatten().collect().map { files ->
             [
-                [id: 'neoantigenpipeline'],
+                [id: 'neoqual'],
                 files,
                 multiqc_config
                     ? file(multiqc_config, checkIfExists: true)

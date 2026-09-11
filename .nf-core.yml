@@ -1,17 +1,17 @@
 lint:
   files_exist:
     - CODE_OF_CONDUCT.md
-    - assets/nf-core-neoantigenpipeline_logo_light.png
-    - docs/images/nf-core-neoantigenpipeline_logo_light.png
-    - docs/images/nf-core-neoantigenpipeline_logo_dark.png
+    - assets/nf-core-neoqual-nf_logo_light.png
+    - docs/images/nf-core-neoqual-nf_logo_light.png
+    - docs/images/nf-core-neoqual-nf_logo_dark.png
     - .github/ISSUE_TEMPLATE/config.yml
     - .github/workflows/awstest.yml
     - .github/workflows/awsfulltest.yml
   files_unchanged:
     - CODE_OF_CONDUCT.md
-    - assets/nf-core-neoantigenpipeline_logo_light.png
-    - docs/images/nf-core-neoantigenpipeline_logo_light.png
-    - docs/images/nf-core-neoantigenpipeline_logo_dark.png
+    - assets/nf-core-neoqual-nf_logo_light.png
+    - docs/images/nf-core-neoqual-nf_logo_light.png
+    - docs/images/nf-core-neoqual-nf_logo_dark.png
     - .github/ISSUE_TEMPLATE/bug_report.yml
     - .github/workflows/download_pipeline.yml
     - .prettierignore
@@ -24,7 +24,7 @@ template:
   description: Pipeline for computing neoantigen qualities from DNA and RNA-Seq data
   force: false
   is_nfcore: false
-  name: neoantigenpipeline
+  name: neoqual-nf
   org: mskcc
   outdir: .
   skip_features: []
