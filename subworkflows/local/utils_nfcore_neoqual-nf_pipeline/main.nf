@@ -1,5 +1,5 @@
 //
-// Subworkflow with functionality specific to the mskcc/neoantigenpipeline pipeline
+// Subworkflow with functionality specific to the mskcc/neoqual-nf pipeline
 //
 
 /*
@@ -71,7 +71,8 @@ workflow PIPELINE_INITIALISATION {
         show_hidden,
         before_text,
         after_text,
-        command
+        command,
+        false
     )
 
     //

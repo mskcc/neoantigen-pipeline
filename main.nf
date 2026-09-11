@@ -1,9 +1,9 @@
 #!/usr/bin/env nextflow
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    mskcc/neoantigenpipeline
+    mskcc/neoqual-nf
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Github : https://github.com/mskcc/neoantigenpipeline
+    Github : https://github.com/mskcc/neoqual-nf
 ----------------------------------------------------------------------------------------
 */
 
@@ -13,10 +13,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { NEOANTIGENPIPELINE  } from './workflows/neoantigenpipeline'
-include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
-include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
-include { getGenomeAttribute      } from './subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
+include { NEOQUAL_NF  } from './workflows/neoqual-nf'
+include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_neoqual-nf_pipeline'
+include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_neoqual-nf_pipeline'
+include { getGenomeAttribute      } from './subworkflows/local/utils_nfcore_neoqual-nf_pipeline'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -35,7 +35,7 @@ params.fasta = getGenomeAttribute('fasta')
 //
 // WORKFLOW: Run main analysis pipeline depending on type of input
 //
-workflow MSKCC_NEOANTIGENPIPELINE {
+workflow MSKCC_NEOQUAL_NF {
 
     take:
     samplesheet // channel: samplesheet read in from --input
@@ -45,13 +45,13 @@ workflow MSKCC_NEOANTIGENPIPELINE {
     //
     // WORKFLOW: Run pipeline
     //
-    NEOANTIGENPIPELINE (
+    NEOQUAL_NF (
         samplesheet,
         params.outdir
     )
     emit:
-    out = NEOANTIGENPIPELINE.out.neo_out
-    tsv = NEOANTIGENPIPELINE.out.tsv_out
+    out = NEOQUAL_NF.out.neo_out
+    tsv = NEOQUAL_NF.out.tsv_out
 
 }
 /*
@@ -81,7 +81,7 @@ workflow {
     //
     // WORKFLOW: Run main workflow
     //
-    MSKCC_NEOANTIGENPIPELINE (
+    MSKCC_NEOQUAL_NF (
         PIPELINE_INITIALISATION.out.samplesheet
     )
     //
@@ -93,7 +93,7 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        MSKCC_NEOANTIGENPIPELINE.out.out
+        MSKCC_NEOQUAL_NF.out.out
     )
 }
 

@@ -1,8 +1,8 @@
-# mskcc/neoantigenpipeline: Output
+# mskcc/neoqual-nf: Output
 
 ## Introduction
 
-This document describes the output produced by the neoantigen pipeline.
+This document describes the output produced by the NeoQual pipeline.
 
 The directories listed below will be created in the results directory after the pipeline has finished. All paths are relative to the top-level results directory.
 
@@ -112,4 +112,4 @@ Additionally, we provide pipeline information with report metrics generated duri
 
 </details>
 
-[Nextflow](https://www.nextflow.io/docs/latest/tracing.html) provides excellent functionality for generating various reports relevant to the running and execution of the pipeline. This will allow you to troubleshoot errors with the running of the pipeline, and also provide you with other information such as launch commands, run times and resource usage.
+[Nextflow](https://docs.seqera.io/platform-cloud/reports/overview) provides excellent functionality for generating various reports relevant to the running and execution of the pipeline. This will allow you to troubleshoot errors with the running of the pipeline, and also provide you with other information such as launch commands, run times and resource usage.

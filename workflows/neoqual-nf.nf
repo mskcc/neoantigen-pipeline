@@ -6,7 +6,7 @@
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
-include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_neoantigenpipeline_pipeline'
+include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_neoqual_nf_pipeline'
 include { PHYLOWGS_CREATEINPUT } from '../modules/msk/phylowgs/createinput/main'
 include { PHYLOWGS_MULTIEVOLVE } from '../modules/msk/phylowgs/multievolve/main'
 include { PHYLOWGS_PARSECNVS } from '../modules/msk/phylowgs/parsecnvs/main'
@@ -25,7 +25,7 @@ include { PHYLOWGS_STUB } from '../modules/local/phylowgs/stub/main'
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-workflow NEOANTIGENPIPELINE {
+workflow NEOQUAL_NF {
 
     take:
     ch_samplesheet // channel: samplesheet read in from --input It should have maf, polysolver file, facets gene level file
@@ -153,7 +153,7 @@ workflow NEOANTIGENPIPELINE {
         .mix(topic_versions_string)
         .collectFile(
             storeDir: "${outdir}/pipeline_info",
-            name:  'neoantigenpipeline_software_versions.yml',
+            name:  'neoqual_software_versions.yml',
             sort: true,
             newLine: true
         )

@@ -21,8 +21,12 @@ pipeline_info/*.{html,json,txt,yml}
 **/*.summ.json.gz
 # netMHC raw outputs vary across platforms
 **/*.netmhc.output
+**/*.netmhcpan.output
 **/*.netmhcstabpan.output
 **/*.xls
+# Alignment and neoantigen result files are nondeterministic
+**/iedb_alignments_*.txt
+**/*_neoantigens.tsv
 # Neoantigen JSON outputs depend on stochastic PhyloWGS results
 **/*_input.json
 **/*_annotated.json

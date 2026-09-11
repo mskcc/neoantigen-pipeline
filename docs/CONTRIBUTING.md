@@ -3,15 +3,15 @@ title: Contributing
 markdownPlugin: checklist
 ---
 
-# `mskcc/neoantigenpipeline`: Contributing guidelines
+# `mskcc/neoqual-nf`: Contributing guidelines
 
 Hi there!
-Thanks for taking an interest in improving mskcc/neoantigenpipeline.
+Thanks for taking an interest in improving mskcc/neoqual-nf.
 
-This page describes the recommended nf-core way to contribute to both mskcc/neoantigenpipeline and nf-core pipelines in general, including:
+This page describes the recommended nf-core way to contribute to both mskcc/neoqual-nf and nf-core pipelines in general, including:
 
 - [General contribution guidelines](#general-contribution-guidelines): common procedures or guides across all nf-core pipelines.
-- [Pipeline-specific contribution guidelines](#pipeline-specific-contribution-guidelines): procedures or guides specific to the development conventions of mskcc/neoantigenpipeline.
+- [Pipeline-specific contribution guidelines](#pipeline-specific-contribution-guidelines): procedures or guides specific to the development conventions of mskcc/neoqual-nf.
 
 ## General contribution guidelines
 
@@ -20,8 +20,9 @@ This page describes the recommended nf-core way to contribute to both mskcc/neoa
 To contribute code to any nf-core pipeline:
 
 - [ ] Ensure you have Nextflow, nf-core tools, and nf-test installed. See the [nf-core/tools repository](https://github.com/nf-core/tools) for instructions.
-- [ ] Check whether a GitHub [issue](https://github.com/mskcc/neoantigenpipeline/issues) about your idea already exists. If an issue does not exist, create one so that others are aware you are working on it.
-- [ ] [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the [mskcc/neoantigenpipeline repository](https://github.com/mskcc/neoantigenpipeline) to your GitHub account.
+- [ ] Check whether a GitHub [issue](https://github.com/mskcc/neoqual-nf/issues) about your idea already exists. If an issue does not exist, create one so that others are aware you are working on it.
+- [ ] [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the [mskcc/neoqual-nf repository](https://github.com/mskcc/neoqual-nf) to your GitHub account.
+
 - [ ] Create a branch on your forked repository and make your changes following [pipeline conventions](#pipeline-contribution-conventions) (if applicable).
 - [ ] To fix major bugs, name your branch `patch` and follow the [patch release](#patch-release) process.
 - [ ] Update relevant documentation within the `docs/` folder, use nf-core/tools to update `nextflow_schema.json`, and update `CITATIONS.md`.
@@ -33,13 +34,13 @@ If you are not used to this workflow with Git, see the [GitHub documentation](ht
 
 ### GitHub Codespaces
 
-You can contribute to mskcc/neoantigenpipeline without installing a local development environment on your machine by using [GitHub Codespaces](https://github.com/codespaces).
+You can contribute to mskcc/neoqual-nf without installing a local development environment on your machine by using [GitHub Codespaces](https://github.com/codespaces).
 
 [GitHub Codespaces](https://github.com/codespaces) is an online developer environment that runs in your browser, complete with VS Code and a terminal.
 Most nf-core repositories include a devcontainer configuration, which creates a GitHub Codespaces environment specifically for Nextflow development.
 The environment includes pre-installed nf-core tools, Nextflow, and a few other helpful utilities via a Docker container.
 
-To get started, open the repository in [Codespaces](https://github.com/mskcc/neoantigenpipeline/codespaces).
+To get started, open the repository in [Codespaces](https://github.com/mskcc/neoqual-nf/codespaces).
 
 ### Testing
 
@@ -92,7 +93,7 @@ These tests are run with the latest available version of Nextflow and the minimu
 
 ### Pipeline contribution conventions
 
-nf-core semi-standardises how you write code and other contributions to make the mskcc/neoantigenpipeline code and processing logic more understandable for new contributors and to ensure quality.
+nf-core semi-standardises how you write code and other contributions to make the mskcc/neoqual-nf code and processing logic more understandable for new contributors and to ensure quality.
 
 #### Add a new pipeline step
 
@@ -108,7 +109,7 @@ Please also refer to the [pipeline-specific contribution guidelines](#pipeline-s
 - [ ] Perform local tests to validate that the new code works as expected.
   - [ ] If applicable, add a new test in the `tests` directory.
 - [ ] Update `usage.md`, `output.md`, and `citation.md` as appropriate.
-- [ ] [Lint](lint) the code with nf-core/tools.
+- [ ] [Lint](#lint-tests) the code with nf-core/tools.
 - [ ] Update any diagrams or pipeline images as necessary.
 - [ ] Update MultiQC config `assets/multiqc_config.yml` so relevant suffixes, file name cleanup, and module plots are in the appropriate order.
 - [ ] If applicable, create a [MultiQC](https://seqera.io/multiqc/) module.
@@ -146,7 +147,7 @@ Specify these with generic `withLabel:` selectors, so they can be shared across 
 nf-core provides a set of standard labels that you should follow where possible, as seen in the [nf-core pipeline template](https://github.com/nf-core/tools/blob/main/nf_core/pipeline-template/conf/base.config).
 These labels define resource defaults for single-core processes, modules that require a GPU, and different levels of multi-core configurations with increasing memory requirements.
 
-Values assigned within these labels can be dynamically passed to a tool using the the `${task.cpus}` and `${task.memory}` Nextflow variables in the `script:` block of a module (see an example in the [modules repository](https://github.com/nf-core/modules/blob/bd1b6a40f55933d94b8c9ca94ec8c1ea0eaf4b82/modules/nf-core/samtools/bam2fq/main.nf#L30)).
+Values assigned within these labels can be dynamically passed to a tool using the `${task.cpus}` and `${task.memory}` Nextflow variables in the `script:` block of a module (see an example in the [modules repository](https://github.com/nf-core/modules/blob/bd1b6a40f55933d94b8c9ca94ec8c1ea0eaf4b82/modules/nf-core/samtools/bam2fq/main.nf#L30)).
 
 #### Nextflow version bumping
 

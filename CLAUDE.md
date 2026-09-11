@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-mskcc/neoantigenpipeline is a **Nextflow DSL2** bioinformatics pipeline (v1.4.0) that computes neoantigen qualities from DNA and RNA-Seq data. Built on the nf-core template (v3.2.0), it implements Luksza et al.'s neoantigen editing and fitness framework for MSKCC investigators. Input is a CSV samplesheet with MAF, Facets CNCF, and HLA files; output is annotated JSON with clonal structure, neoantigen burden, and fitness scores plus a TSV summary.
+mskcc/neoqual-nf (NeoQual-nf) is a **Nextflow DSL2** bioinformatics pipeline (v1.4.0) that computes neoantigen qualities from DNA and RNA-Seq data. Built on the nf-core template (v3.2.0), it implements Luksza et al.'s neoantigen editing and fitness framework for MSKCC investigators. Input is a CSV samplesheet with MAF, Facets CNCF, and HLA files; output is annotated JSON with clonal structure, neoantigen burden, and fitness scores plus a TSV summary.
 
 ## Commands
 
@@ -35,7 +35,7 @@ pre-commit run --all-files
 
 ### Pipeline Stages (in order)
 
-The main workflow is in `workflows/neoantigenpipeline.nf`. Data flows through four major stages:
+The main workflow is in `workflows/neoqual.nf`. Data flows through four major stages:
 
 1. **PhyloWGS** — Reconstructs subclonal composition from MAF + Facets copy number data
    - `parsecnvs` → `createinput` → `multievolve` → `writeresults`
