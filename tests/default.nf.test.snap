@@ -120,7 +120,7 @@
                 "tumor_normal2_netmhcpan.output.MUT.tsv:md5,4808b06dd9ff97927549b536494f6252",
                 "tumor_normal2_netmhcpan.output.WT.tsv:md5,3742cd11b75c0e78f4ff37f10811d5d5",
                 "tumor_normal2_netmhcstabpan.output.MUT.tsv:md5,3405a5776e2dbb95906ca97a0cabfddf",
-                "tumor_normal2_netmhcstabpan.output.WT.tsv:md5,98d97fc3e16b4bcccfbacb056b6ab5a4",
+                "tumor_normal2_netmhcstabpan.output.WT.tsv:md5,98d97fc3e16b4bcccfbacb056b6ab5a4"
             ]
         ],
         "meta": {
