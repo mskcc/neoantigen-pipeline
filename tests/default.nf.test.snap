@@ -108,27 +108,27 @@
                 "tumor_normal2/phylowgs/tumor_normal2.summ.json.gz"
             ],
             [
-                "versions.yml:md5,88999809ef25538868f353fda1c397f1",
+                "versions.yml:md5,98c6698376730bd0e8c4c8f096ccee78",
                 "tumor_normal.MUT.sequences.fa:md5,3d2ff66590a4329f9a24e03bdf84e0ab",
                 "tumor_normal.WT.sequences.fa:md5,4bfcfc4d29d01ddc4108f39350936228",
-                "iedb_alignments_tumor_normal_patient.txt:md5,19d48300d402c063caf787e48acd3723",
+                "iedb_alignments_tumor_normal_patient.txt:md5,908cdf0c3db0b0ea8c0fafb964e7595c",
                 "tumor_normal_neoantigens.tsv:md5,9220791b3959442229e1d9a288a24406",
                 "tumor_normal_netmhcpan.output.MUT.tsv:md5,4808b06dd9ff97927549b536494f6252",
                 "tumor_normal_netmhcpan.output.WT.tsv:md5,3742cd11b75c0e78f4ff37f10811d5d5",
                 "tumor_normal_netmhcstabpan.output.MUT.tsv:md5,3405a5776e2dbb95906ca97a0cabfddf",
                 "tumor_normal_netmhcstabpan.output.WT.tsv:md5,98d97fc3e16b4bcccfbacb056b6ab5a4",
-                "tumor_normal.MUT.netmhcpan.output:md5,7c6e68c47d05569b229849cae614438c",
-                "tumor_normal.WT.netmhcpan.output:md5,88df84f18be2cb1231c0c81434f5115c",
+                "tumor_normal.MUT.netmhcpan.output:md5,653081a8061fafc4f874d650f299c900",
+                "tumor_normal.WT.netmhcpan.output:md5,56a1eca061f52a916e9d78dcd5f90ffb",
                 "tumor_normal2.MUT.sequences.fa:md5,3d2ff66590a4329f9a24e03bdf84e0ab",
                 "tumor_normal2.WT.sequences.fa:md5,4bfcfc4d29d01ddc4108f39350936228",
-                "iedb_alignments_tumor_normal2_patient.txt:md5,908cdf0c3db0b0ea8c0fafb964e7595c",
+                "iedb_alignments_tumor_normal2_patient.txt:md5,19d48300d402c063caf787e48acd3723",
                 "tumor_normal2_neoantigens.tsv:md5,9220791b3959442229e1d9a288a24406",
                 "tumor_normal2_netmhcpan.output.MUT.tsv:md5,4808b06dd9ff97927549b536494f6252",
                 "tumor_normal2_netmhcpan.output.WT.tsv:md5,3742cd11b75c0e78f4ff37f10811d5d5",
                 "tumor_normal2_netmhcstabpan.output.MUT.tsv:md5,3405a5776e2dbb95906ca97a0cabfddf",
                 "tumor_normal2_netmhcstabpan.output.WT.tsv:md5,98d97fc3e16b4bcccfbacb056b6ab5a4",
-                "tumor_normal2.MUT.netmhcpan.output:md5,05f495e18446f469ae2045f3f2ac972a",
-                "tumor_normal2.WT.netmhcpan.output:md5,8a36e83e4cd714895007360f2d5a82d6"
+                "tumor_normal2.MUT.netmhcpan.output:md5,f43f8ca22b14a588bd90febbf2ac972a",
+                "tumor_normal2.WT.netmhcpan.output:md5,fb626e9e807160bb98a9f8c7eb9aa72a"
             ]
         ],
         "meta": {
@@ -250,7 +250,7 @@
                 "tumor_normal2/phylowgs/tumor_normal2.summ.json.gz"
             ],
             [
-                "versions.yml:md5,88999809ef25538868f353fda1c397f1",
+                "versions.yml:md5,98c6698376730bd0e8c4c8f096ccee78",
                 "tumor_normal.MUT.sequences.fa:md5,3d2ff66590a4329f9a24e03bdf84e0ab",
                 "tumor_normal.WT.sequences.fa:md5,4bfcfc4d29d01ddc4108f39350936228",
                 "iedb_alignments_tumor_normal_patient.txt:md5,30b3edf8705b335a360ba428501388da",
@@ -279,7 +279,7 @@
         },
         "timestamp": "2026-09-10T17:15:49.937517"
     },
-    "-profile test - phylowgs": {
+    "-profile test - full": {
         "content": [
             {
                 "GENERATEMUTFASTA": {
@@ -438,6 +438,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-09-10T17:21:01.872472"
+        "timestamp": "2026-09-10T17:10:16.684738"
     }
 }
