@@ -64,14 +64,13 @@ nextflow_pipeline {
         }
     }
 
-    test("-profile test - phylowgs") {
+    test("-profile test - full") {
 
-        config "../conf/test.config"
+        config "../conf/test_full.config"
 
         when {
             params {
                 outdir = "$outputDir"
-                run_phylowgs = true
             }
         }
 
