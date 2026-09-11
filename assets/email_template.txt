@@ -28,4 +28,4 @@ Pipeline Configuration:
 
 --
 mskcc/neoqual-nf
-https://github.com/mskcc/NeoQual-nf
+https://github.com/mskcc/neoqual-nf

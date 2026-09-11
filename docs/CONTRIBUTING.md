@@ -20,8 +20,15 @@ This page describes the recommended nf-core way to contribute to both mskcc/neoq
 To contribute code to any nf-core pipeline:
 
 - [ ] Ensure you have Nextflow, nf-core tools, and nf-test installed. See the [nf-core/tools repository](https://github.com/nf-core/tools) for instructions.
+      <<<<<<< HEAD
 - [ ] Check whether a GitHub [issue](https://github.com/mskcc/NeoQual-nf/issues) about your idea already exists. If an issue does not exist, create one so that others are aware you are working on it.
 - [ ] [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the [mskcc/NeoQual-nf repository](https://github.com/mskcc/NeoQual-nf) to your GitHub account.
+      \=======
+- [ ] Check whether a GitHub [issue](https://github.com/mskcc/neoqual-nf/issues) about your idea already exists. If an issue does not exist, create one so that others are aware you are working on it.
+- [ ] [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the [mskcc/neoqual-nf repository](https://github.com/mskcc/neoqual-nf) to your GitHub account.
+
+> > > > > > > bdb35afa250178c73671f9d843a76a085e599999
+
 - [ ] Create a branch on your forked repository and make your changes following [pipeline conventions](#pipeline-contribution-conventions) (if applicable).
 - [ ] To fix major bugs, name your branch `patch` and follow the [patch release](#patch-release) process.
 - [ ] Update relevant documentation within the `docs/` folder, use nf-core/tools to update `nextflow_schema.json`, and update `CITATIONS.md`.
@@ -39,7 +46,7 @@ You can contribute to mskcc/neoqual-nf without installing a local development en
 Most nf-core repositories include a devcontainer configuration, which creates a GitHub Codespaces environment specifically for Nextflow development.
 The environment includes pre-installed nf-core tools, Nextflow, and a few other helpful utilities via a Docker container.
 
-To get started, open the repository in [Codespaces](https://github.com/mskcc/NeoQual-nf/codespaces).
+To get started, open the repository in [Codespaces](https://github.com/mskcc/neoqual-nf/codespaces).
 
 ### Testing
 

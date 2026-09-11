@@ -1,7 +1,7 @@
-id: "msk-neoqual-nf-methods-description"
+id: "mskcc-neoqual-nf-methods-description"
 description: "Suggested text and references to use when describing pipeline usage within the methods section of a publication."
 section_name: "mskcc/neoqual-nf Methods Description"
-section_href: "https://github.com/mskcc/NeoQual-nf"
+section_href: "https://github.com/mskcc/neoqual-nf"
 plot_type: "html"
 ## You inject any metadata in the Nextflow '${workflow}' object
 data: |

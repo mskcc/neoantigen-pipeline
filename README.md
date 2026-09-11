@@ -1,8 +1,8 @@
 # mskcc/neoqual-nf
 
-[![Open in GitHub Codespaces](https://img.shields.io/badge/Open_In_GitHub_Codespaces-black?labelColor=grey&logo=github)](https://github.com/codespaces/new/mskcc/NeoQual-nf)
-[![GitHub Actions CI Status](https://github.com/mskcc/NeoQual-nf/actions/workflows/nf-test.yml/badge.svg)](https://github.com/mskcc/NeoQual-nf/actions/workflows/nf-test.yml)
-[![GitHub Actions Linting Status](https://github.com/mskcc/NeoQual-nf/actions/workflows/linting.yml/badge.svg)](https://github.com/mskcc/NeoQual-nf/actions/workflows/linting.yml)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.XXXXXXX-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open_In_GitHub_Codespaces-black?labelColor=grey&logo=github)](https://github.com/codespaces/new/mskcc/neoqual-nf)
+[![GitHub Actions CI Status](https://github.com/mskcc/neoqual-nf/actions/workflows/nf-test.yml/badge.svg)](https://github.com/mskcc/neoqual-nf/actions/workflows/nf-test.yml)
+[![GitHub Actions Linting Status](https://github.com/mskcc/neoqual-nf/actions/workflows/linting.yml/badge.svg)](https://github.com/mskcc/neoqual-nf/actions/workflows/linting.yml)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.XXXXXXX-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.XXXXXXX)
 [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
 
 [![Nextflow](https://img.shields.io/badge/version-%E2%89%A525.10.4-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)
