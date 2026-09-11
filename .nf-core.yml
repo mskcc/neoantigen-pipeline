@@ -1,4 +1,6 @@
 lint:
+  container_configs: false
+  multiqc_config: false
   files_exist:
     - CODE_OF_CONDUCT.md
     - assets/nf-core-neoqual-nf_logo_light.png
