@@ -1,4 +1,4 @@
-# mskcc/neoantigenpipeline: Changelog
+# mskcc/neoqual-nf: Changelog
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -149,7 +149,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Fixed`
 
-- Versions output file renamed from generic `pipeline_software_mqc_versions.yml` to `neoantigenpipeline_software_mqc_versions.yml`
+- Versions output file renamed from generic `pipeline_software_mqc_versions.yml` to `neoqual_software_versions.yml`
 - Singularity profile: disabled Apptainer fallback to fix container engine conflicts in CI
 - Reverted unstable `download_pipeline` config change that broke CI
 
@@ -197,7 +197,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## v1.0.0 - 2024-07-31
 
-Initial release of mskcc/neoantigenpipeline, created with the [nf-core](https://nf-co.re/) template.
+Initial release of mskcc/neoqual-nf, created with the [nf-core](https://nf-co.re/) template.
 
 ### `Added`
 

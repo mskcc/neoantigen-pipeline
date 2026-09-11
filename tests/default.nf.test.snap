@@ -38,7 +38,7 @@
                     "phylowgs_stub": "1.0"
                 },
                 "Workflow": {
-                    "mskcc/neoantigenpipeline": "v1.4.0"
+                    "mskcc/neoqual-nf": "v1.4.0"
                 }
             },
             [
@@ -49,7 +49,7 @@
                 "mutalyzer_retriever_Homo_sapiens.GRCh37.dna_rm.chromosome.chr2_16.fa.bgzip.gz_Homo_sapiens.GRCh37.87.chr2_16.gff3/mutalyzer",
                 "mutalyzer_retriever_Homo_sapiens.GRCh37.dna_rm.chromosome.chr2_16.fa.bgzip.gz_Homo_sapiens.GRCh37.87.chr2_16.gff3/mutalyzer/mutalyzer_retriever_Homo_sapiens.GRCh37.dna_rm.chromosome.chr2_16.fa.bgzip.gz_Homo_sapiens.GRCh37.87.chr2_16.gff3.tar.gz",
                 "pipeline_info",
-                "pipeline_info/neoantigenpipeline_software_versions.yml",
+                "pipeline_info/neoqual_software_versions.yml",
                 "tumor_normal",
                 "tumor_normal/generatemutfasta",
                 "tumor_normal/generatemutfasta/tumor_normal_out",
@@ -176,7 +176,7 @@
                     "phylowgs_stub": "1.0"
                 },
                 "Workflow": {
-                    "mskcc/neoantigenpipeline": "v1.4.0"
+                    "mskcc/neoqual-nf": "v1.4.0"
                 }
             },
             [
@@ -187,7 +187,7 @@
                 "mutalyzer_retriever_Homo_sapiens.GRCh37.dna_rm.chromosome.chr2_16.fa.bgzip.gz_Homo_sapiens.GRCh37.87.chr2_16.gff3/mutalyzer",
                 "mutalyzer_retriever_Homo_sapiens.GRCh37.dna_rm.chromosome.chr2_16.fa.bgzip.gz_Homo_sapiens.GRCh37.87.chr2_16.gff3/mutalyzer/mutalyzer_retriever_Homo_sapiens.GRCh37.dna_rm.chromosome.chr2_16.fa.bgzip.gz_Homo_sapiens.GRCh37.87.chr2_16.gff3.tar.gz",
                 "pipeline_info",
-                "pipeline_info/neoantigenpipeline_software_versions.yml",
+                "pipeline_info/neoqual_software_versions.yml",
                 "tumor_normal",
                 "tumor_normal/generatemutfasta",
                 "tumor_normal/generatemutfasta/tumor_normal_out",
@@ -327,7 +327,7 @@
                     "phylowgs": "v1.5.2-msk"
                 },
                 "Workflow": {
-                    "mskcc/neoantigenpipeline": "v1.4.0"
+                    "mskcc/neoqual-nf": "v1.4.0"
                 }
             },
             [
@@ -338,7 +338,7 @@
                 "mutalyzer_retriever_Homo_sapiens.GRCh37.dna_rm.chromosome.chr2_16.fa.bgzip.gz_Homo_sapiens.GRCh37.87.chr2_16.gff3/mutalyzer",
                 "mutalyzer_retriever_Homo_sapiens.GRCh37.dna_rm.chromosome.chr2_16.fa.bgzip.gz_Homo_sapiens.GRCh37.87.chr2_16.gff3/mutalyzer/mutalyzer_retriever_Homo_sapiens.GRCh37.dna_rm.chromosome.chr2_16.fa.bgzip.gz_Homo_sapiens.GRCh37.87.chr2_16.gff3.tar.gz",
                 "pipeline_info",
-                "pipeline_info/neoantigenpipeline_software_versions.yml",
+                "pipeline_info/neoqual_software_versions.yml",
                 "tumor_normal",
                 "tumor_normal/generatemutfasta",
                 "tumor_normal/generatemutfasta/tumor_normal_out",

@@ -1,5 +1,5 @@
 //
-// Subworkflow with functionality specific to the mskcc/neoantigenpipeline pipeline
+// Subworkflow with functionality specific to the mskcc/neoqual-nf pipeline
 //
 
 /*

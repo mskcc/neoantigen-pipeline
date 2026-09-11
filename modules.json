@@ -1,6 +1,6 @@
 {
-    "name": "mskcc/neoantigenpipeline",
-    "homePage": "https://github.com/mskcc/neoantigenpipeline",
+    "name": "mskcc/neoqual-nf",
+    "homePage": "https://github.com/mskcc/NeoQual-nf",
     "repos": {
         "https://github.com/mskcc-omics-workflows/modules": {
             "modules": {
