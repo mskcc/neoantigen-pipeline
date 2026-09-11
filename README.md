@@ -41,7 +41,7 @@ tumor_normal2,temp_test_somatic_unfiltered.maf,facets_hisens.cncf.txt,winners.hl
 Now, you can run the pipeline using:
 
 ```bash
-nextflow run mskcc/NeoQual-nf \
+nextflow run mskcc/neoqual-nf \
    -profile prod,<docker/singularity> \
    --input samplesheet.csv \
    --outdir <OUTDIR>

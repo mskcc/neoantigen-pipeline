@@ -51,7 +51,7 @@
             "properties": {
                 "kd_cutoff": {
                     "type": "number",
-                    "default": 500,
+                    "default": 2000,
                     "description": "Binding affinity (Kd) cutoff in nM for neoantigen prediction.",
                     "fa_icon": "fas fa-filter"
                 },
@@ -79,9 +79,10 @@
                     "description": "Fitness model parameter 'w'. NOTE: as of the neoantigen-editing:1.1 script rewrite (modules#258), a/k/w are hardcoded inside compute_fitness.py to these exact default values -- this param (and compute_fitness_a/k) is currently a no-op until the script regains its --a_param/--k_param/--w_param flags.",
                     "fa_icon": "fas fa-calculator"
                 },
-                "compute_fitness_kd_cutoff": {
+                "kd_cutoff_fitness": {
                     "type": "number",
-                    "description": "Maximum Kd (nM) for a neoantigen to be eligible for clone-level fitness scoring (--kd_cutoff_fitness). Required by compute_fitness.py as of the neoantigen-editing:1.1 script rewrite (modules#258) -- distinct from kd_cutoff, which filters weak binders earlier at NEOANTIGENUTILS_NEOANTIGENINPUT. No default is set here deliberately; must be supplied explicitly.",
+                    "default": 500,
+                    "description": "Maximum Kd (nM) for a neoantigen to be eligible for clone-level fitness scoring (--kd_cutoff_fitness). Distinct from kd_cutoff, which filters weak binders earlier at NEOANTIGENUTILS_NEOANTIGENINPUT.",
                     "fa_icon": "fas fa-calculator"
                 },
                 "run_phylowgs": {
